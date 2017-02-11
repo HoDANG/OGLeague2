@@ -258,6 +258,7 @@ public:
     virtual void OnPayload(uint32_t cid, EGP_RequestReskin_s *payload, size_t size); //0x65
     virtual void OnPayload(uint32_t cid, EGP_RequestRename_s *payload, size_t size); //0x66
     virtual void OnPayload(uint32_t cid, EGP_TeamRosterUpdate_s *payload, size_t size); //0x67
+    virtual void OnPayload(uint32_t cid, EGP_Chat_s *payload, size_t size);
 };
 
 #endif // NETCLIENT_H

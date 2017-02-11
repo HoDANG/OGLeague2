@@ -30,7 +30,7 @@ bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
     rpkt.clientID = pkt->playerID;
     rpkt.playerID = pkt->playerID;
     rpkt.checkId = pkt->checkId;
-    sendPacket(pkt->playerID, rpkt);
+    sendPacket(pkt->playerID, rpkt, CHANNEL_DEFAULT);
     pClient->OnConnected(pkt->playerID);
     return true;
 }

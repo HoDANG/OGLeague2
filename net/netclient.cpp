@@ -1,11 +1,23 @@
 #include "netclient.h"
 #include <iostream>
 
+void printPacket(uint8_t *data, size_t size)
+{
+    std::cout<<std::hex;
+    for(int i=0;i<size;i++)
+    {
+        if(i != 0  && i%8 == 0) std::cout<<std::endl;
+        if(data[i] < 16) std::cout<<0;
+        std::cout<<(uint32_t) data[i]<<" ";
+    }
+    std::cout<<std::dec<<std::endl;
+}
+
 void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
 {
     switch(channel)
     {
-        case CHANNEL_GENERIC_APP_BROADCAST:
+        case CHANNEL_GENERIC_APP_TO_SERVER:
         switch(data[0])
         {
         case PKT_Dummy: OnPacket(cid, (PKT_Dummy_s*) data, size); break; //0
@@ -251,6 +263,7 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
             break;
         }
         break;
+    case CHANNEL_MIDDLE_TIER_CHAT:
     case CHANNEL_MIDDLE_TIER_ROSTER:
         switch(data[0])
         {
@@ -259,7 +272,7 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case EGP_RequestRename: OnPayload(cid, (EGP_RequestRename_s*)data, size); break; //0x66
         case EGP_TeamRosterUpdate: OnPayload(cid, (EGP_TeamRosterUpdate_s*)data, size); break; //0x67
         default:
-            std::cout<<"Unkown payload type: "<<(uint32_t)(data[0])<<std::endl;
+            OnPayload(cid, (EGP_Chat_s*) data, size);
             break;
         }
         break;
@@ -1485,6 +1498,11 @@ void NetClient::OnPayload(uint32_t cid, EGP_RequestRename_s *payload, size_t siz
 }
 
 void NetClient::OnPayload(uint32_t cid, EGP_TeamRosterUpdate_s *payload, size_t size) //0x67
+{
+
+}
+
+void NetClient::OnPayload(uint32_t cid, EGP_Chat_s *payload, size_t size)
 {
 
 }

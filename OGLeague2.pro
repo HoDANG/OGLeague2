@@ -343,7 +343,8 @@ HEADERS += \
     net/egp/64_egp_requestjointeam.h \
     net/egp/66_egp_requestrename.h \
     net/egp/65_egp_requestreskin.h \
-    net/egp/67_egp_teamrosterupdate.h
+    net/egp/67_egp_teamrosterupdate.h \
+    net/egp/egp_chat.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

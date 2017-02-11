@@ -3,8 +3,10 @@
 
 #include <string>
 #include <stdint.h>
-#include "../dep/enet.hpp"
+#include <vector>
+#include <sstream>
 #include "../dep/buffer.hpp"
+#include "../dep/enet.hpp"
 #include "common/connectioninfo.h"
 #include "common/playerliteinfo.h"
 
@@ -300,26 +302,42 @@ struct PKT_KeyCheck_s
 };
 
 template<class FROM>
-class DynamicPacket : std::stringstream
+class DynamicPacket : public std::stringstream
 {
 public:
+    struct hack : public std::basic_streambuf<char>
+    {
+        char *eback()
+        {
+            return std::basic_streambuf<char>::eback();
+        }
+    };
+
     DynamicPacket()
     {
-        this<FROM();
+        *this < FROM();
     }
     DynamicPacket(const FROM &from)
     {
-        this<from;
+        *this < from;
     }
     DynamicPacket(FROM *from)
     {
-        this<*from;
+        *this < *from;
     }
     size_t size()
     {
-        seekg(0, ios::end);
-        return tellg();
+        return str().size();
+    }
+    uint8_t* data()
+    {
+        return (uint8_t*) ((hack*)rdbuf())->eback();
+    }
+    FROM* base()
+    {
+        return (FROM*) data();
     }
 };
+
 
 #endif // PKT_BASE_H

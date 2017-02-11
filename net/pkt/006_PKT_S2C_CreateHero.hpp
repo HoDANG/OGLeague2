@@ -14,8 +14,8 @@ struct PKT_S2C_CreateHero_s : DefaultPacket<PKT_S2C_CreateHero>
     int8_t botRank;
     int8_t spawnPosIndex;
     int skinID;
-    int8_t Name[40];
-    int8_t Skin[40];
+    char Name[40];
+    char Skin[40];
 };
 #pragma pack(pop)
 

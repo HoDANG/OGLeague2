@@ -244,5 +244,6 @@
 #include "egp/65_egp_requestreskin.h"
 #include "egp/66_egp_requestrename.h"
 #include "egp/67_egp_teamrosterupdate.h"
+#include "egp/egp_chat.h"
 
 #endif //PACKETS_HPP
