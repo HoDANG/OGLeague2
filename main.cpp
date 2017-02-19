@@ -6,7 +6,7 @@
 using namespace std;
 
 NetServer *server;
-string aChampion = "Annie";
+string aChampion = "Averdrian";
 string aName = "Test";
 int aSkin = 0;
 int aMap = 1;
