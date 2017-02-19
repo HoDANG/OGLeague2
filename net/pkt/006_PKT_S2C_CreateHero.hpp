@@ -11,8 +11,6 @@ struct PKT_S2C_CreateHero_s : DefaultPacket<PKT_S2C_CreateHero>
     int8_t skillLevel;
     int8_t teamIsOrder;
     int8_t isBot;
-    int8_t botRank;
-    int8_t spawnPosIndex;
     int skinID;
     char Name[40];
     char Skin[40];

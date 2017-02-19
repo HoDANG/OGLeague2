@@ -50,24 +50,17 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_CHAR_SpawnPet_s *packet, size_t size); //32
     virtual void OnPacket(uint32_t cid, PKT_CHAR_SetCooldown_s *packet, size_t size); //33
     virtual void OnPacket(uint32_t cid, PKT_NPC_Die_s *packet, size_t size); //34
-    virtual void OnPacket(uint32_t cid, PKT_NPC_ForceDead_s *packet, size_t size); //35
     virtual void OnPacket(uint32_t cid, PKT_NPC_CastSpellReq_s *packet, size_t size); //36
     virtual void OnPacket(uint32_t cid, PKT_NPC_CastSpellAns_s *packet, size_t size); //37
     virtual void OnPacket(uint32_t cid, PKT_NPC_BuffAdd2_s *packet, size_t size); //38
-    virtual void OnPacket(uint32_t cid, PKT_NPC_BuffAddGroup_s *packet, size_t size); //39
-    virtual void OnPacket(uint32_t cid, PKT_NPC_BuffReplace_s *packet, size_t size); //40
-    virtual void OnPacket(uint32_t cid, PKT_NPC_BuffReplaceGroup_s *packet, size_t size); //41
     virtual void OnPacket(uint32_t cid, PKT_NPC_BuffRemove2_s *packet, size_t size); //42
-    virtual void OnPacket(uint32_t cid, PKT_NPC_BuffRemoveGroup_s *packet, size_t size); //43
     virtual void OnPacket(uint32_t cid, PKT_NPC_SetAutocast_s *packet, size_t size); //44
-    virtual void OnPacket(uint32_t cid, PKT_SetItem_s *packet, size_t size); //46
     virtual void OnPacket(uint32_t cid, PKT_BuyItemReq_s *packet, size_t size); //46
     virtual void OnPacket(uint32_t cid, PKT_BuyItemAns_s *packet, size_t size); //47
     virtual void OnPacket(uint32_t cid, PKT_RemoveItemReq_s *packet, size_t size); //48
     virtual void OnPacket(uint32_t cid, PKT_RemoveItemAns_s *packet, size_t size); //49
     virtual void OnPacket(uint32_t cid, PKT_SwapItemReq_s *packet, size_t size); //50
     virtual void OnPacket(uint32_t cid, PKT_SwapItemAns_s *packet, size_t size); //51
-    virtual void OnPacket(uint32_t cid, PKT_UseItemAns_s *packet, size_t size); //52
     virtual void OnPacket(uint32_t cid, PKT_NPC_LevelUp_s *packet, size_t size); //53
     virtual void OnPacket(uint32_t cid, PKT_NPC_InstantStop_Attack_s *packet, size_t size); //54
     virtual void OnPacket(uint32_t cid, PKT_Barrack_SpawnUnit_s *packet, size_t size); //55
@@ -112,7 +105,6 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_CheatSpawnMinionS2C_s *packet, size_t size); //94
     virtual void OnPacket(uint32_t cid, PKT_CheatSpawnBotC2S_s *packet, size_t size); //95
     virtual void OnPacket(uint32_t cid, PKT_CheatBarrackTurnOnOff_s *packet, size_t size); //97
-    virtual void OnPacket(uint32_t cid, PKT_CheatKillTurrets_s *packet, size_t size); //98
     virtual void OnPacket(uint32_t cid, PKT_CheatMakeMinionsInvulnerable_s *packet, size_t size); //99
     virtual void OnPacket(uint32_t cid, PKT_CheatTeleport_s *packet, size_t size); //100
     virtual void OnPacket(uint32_t cid, PKT_CheatSetRespawnTime_s *packet, size_t size); //101
@@ -124,12 +116,9 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_C2S_PlayAnimation_s *packet, size_t size); //107
     virtual void OnPacket(uint32_t cid, PKT_CheatPacketsEnd_s *packet, size_t size); //118
     virtual void OnPacket(uint32_t cid, PKT_CheatDebugPoint_s *packet, size_t size); //108
-    virtual void OnPacket(uint32_t cid, PKT_Cheat_StepTime_s *packet, size_t size); //109
     virtual void OnPacket(uint32_t cid, PKT_Cheat_Pause_Toggle_s *packet, size_t size); //110
     virtual void OnPacket(uint32_t cid, PKT_Cheat_IncTime_s *packet, size_t size); //111
     virtual void OnPacket(uint32_t cid, PKT_Cheat_DecTime_s *packet, size_t size); //112
-    virtual void OnPacket(uint32_t cid, PKT_Cheat_ResetGameC2S_s *packet, size_t size); //113
-    virtual void OnPacket(uint32_t cid, PKT_Cheat_ResetTurretS2C_s *packet, size_t size); //114
     virtual void OnPacket(uint32_t cid, PKT_SPM_HierarchicalProfilerUpdate_s *packet, size_t size); //119
     virtual void OnPacket(uint32_t cid, PKT_SPM_HierarchicalMemoryUpdate_s *packet, size_t size); //120
     virtual void OnPacket(uint32_t cid, PKT_SPM_HierarchicalBBProfileUpdate_s *packet, size_t size); //121
@@ -146,7 +135,6 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_WaypointListHeroWithSpeed_s *packet, size_t size); //132
     virtual void OnPacket(uint32_t cid, PKT_ServerGameSettings_s *packet, size_t size); //133
     virtual void OnPacket(uint32_t cid, PKT_NPC_BuffUpdateCount_s *packet, size_t size); //134
-    virtual void OnPacket(uint32_t cid, PKT_NPC_BuffUpdateCountGroup_s *packet, size_t size); //135
     virtual void OnPacket(uint32_t cid, PKT_C2S_PlayEmoticon_s *packet, size_t size); //136
     virtual void OnPacket(uint32_t cid, PKT_S2C_PlayEmoticon_s *packet, size_t size); //137
     virtual void OnPacket(uint32_t cid, PKT_AvatarInfo_Server_s *packet, size_t size); //138
@@ -155,7 +143,6 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_AddPosPerceptionBubble_s *packet, size_t size); //141
     virtual void OnPacket(uint32_t cid, PKT_SpawnMinionS2C_s *packet, size_t size); //142
     virtual void OnPacket(uint32_t cid, PKT_S2C_StopAnimation_s *packet, size_t size); //143
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ShowHealthBar_s *packet, size_t size); //144
     virtual void OnPacket(uint32_t cid, PKT_UpdateGoldRedirectTarget_s *packet, size_t size); //145
     virtual void OnPacket(uint32_t cid, PKT_S2C_ChangeCharacterData_s *packet, size_t size); //146
     virtual void OnPacket(uint32_t cid, PKT_S2C_PopCharacterData_s *packet, size_t size); //147
@@ -190,13 +177,11 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_Connected_s *packet, size_t size); //176
     virtual void OnPacket(uint32_t cid, PKT_S2C_ToggleInputLockingFlag_s *packet, size_t size); //177
     virtual void OnPacket(uint32_t cid, PKT_S2C_ToggleFoW_s *packet, size_t size); //178
-    virtual void OnPacket(uint32_t cid, PKT_S2C_SetFoWStatus_s *packet, size_t size); //179
     virtual void OnPacket(uint32_t cid, PKT_S2C_SetCircularCameraRestriction_s *packet, size_t size); //180
     virtual void OnPacket(uint32_t cid, PKT_S2C_LockCamera_s *packet, size_t size); //181
     virtual void OnPacket(uint32_t cid, PKT_OnReplication_s *packet, size_t size); //182
     virtual void OnPacket(uint32_t cid, PKT_OnReplication_Acc_s *packet, size_t size); //183
     virtual void OnPacket(uint32_t cid, PKT_S2C_MoveCameraToPoint_s *packet, size_t size); //184
-    virtual void OnPacket(uint32_t cid, PKT_S2C_PlayVOAudioEvent_s *packet, size_t size); //190
     virtual void OnPacket(uint32_t cid, PKT_ChangeSlotSpellType_s *packet, size_t size); //191
     virtual void OnPacket(uint32_t cid, PKT_PausePacket_s *packet, size_t size); //192
     virtual void OnPacket(uint32_t cid, PKT_ResumePacket_s *packet, size_t size); //193
@@ -209,50 +194,6 @@ public:
     virtual void OnPacket(uint32_t cid, PKT_C2S_OnTutorialPopupClosed_s *packet, size_t size); //200
     virtual void OnPacket(uint32_t cid, PKT_S2C_OpenAFKWarningMessage_s *packet, size_t size); //201
     virtual void OnPacket(uint32_t cid, PKT_S2C_CloseShop_s *packet, size_t size); //202
-    virtual void OnPacket(uint32_t cid, PKT_S2C_SetInputLockingFlag_s *packet, size_t size); //203
-    virtual void OnPacket(uint32_t cid, PKT_C2S_OnShopOpened_s *packet, size_t size); //204
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ShowObjectiveText_s *packet, size_t size); //206
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HideObjectiveText_s *packet, size_t size); //207
-    virtual void OnPacket(uint32_t cid, PKT_S2C_RefreshObjectiveText_s *packet, size_t size); //208
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ShowAuxiliaryText_s *packet, size_t size); //209
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HideAuxiliaryText_s *packet, size_t size); //210
-    virtual void OnPacket(uint32_t cid, PKT_S2C_RefreshAuxiliaryText_s *packet, size_t size); //211
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HighlightHUDElement_s *packet, size_t size); //212
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HighlightShopElement_s *packet, size_t size); //213
-    virtual void OnPacket(uint32_t cid, PKT_C2S_TeamSurrenderVote_s *packet, size_t size); //214
-    virtual void OnPacket(uint32_t cid, PKT_S2C_TeamSurrenderVote_s *packet, size_t size); //215
-    virtual void OnPacket(uint32_t cid, PKT_S2C_TeamSurrenderCountDown_s *packet, size_t size); //216
-    virtual void OnPacket(uint32_t cid, PKT_S2C_TeamSurrenderStatus_s *packet, size_t size); //217
-    virtual void OnPacket(uint32_t cid, PKT_S2C_LineMissileHitList_s *packet, size_t size); //218
-    virtual void OnPacket(uint32_t cid, PKT_C2S_TutorialAudioEventFinished_s *packet, size_t size); //219
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HighlightTitanBarElement_s *packet, size_t size); //220
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ToggleUIHighlight_s *packet, size_t size); //221
-    virtual void OnPacket(uint32_t cid, PKT_S2C_DisplayLocalizedTutorialChatText_s *packet, size_t size); //222
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ToolTipVars_s *packet, size_t size); //223
-    virtual void OnPacket(uint32_t cid, PKT_S2C_MuteVolumeCategory_s *packet, size_t size); //224
-    virtual void OnPacket(uint32_t cid, PKT_S2C_OnEventWorld_s *packet, size_t size); //225
-    virtual void OnPacket(uint32_t cid, PKT_S2C_AnimatedBuildingSetCurrentSkin_s *packet, size_t size); //226
-    virtual void OnPacket(uint32_t cid, PKT_S2C_SetGreyscaleEnabledWhenDead_s *packet, size_t size); //227
-    virtual void OnPacket(uint32_t cid, PKT_S2C_DisableHUDForEndOfGame_s *packet, size_t size); //228
-    virtual void OnPacket(uint32_t cid, PKT_ChangeSlotSpellName_s *packet, size_t size); //229
-    virtual void OnPacket(uint32_t cid, PKT_S2C_SwitchNexusesToOnIdleParticles_s *packet, size_t size); //230
-    virtual void OnPacket(uint32_t cid, PKT_S2C_FadeMinions_s *packet, size_t size); //231
-    virtual void OnPacket(uint32_t cid, PKT_S2C_FadeOutMainSFX_s *packet, size_t size); //232
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HeroStats_s *packet, size_t size); //233
-    virtual void OnPacket(uint32_t cid, PKT_S2C_SetAnimStates_s *packet, size_t size); //234
-    virtual void OnPacket(uint32_t cid, PKT_ClientCheatDetectionSignal_s *packet, size_t size); //235
-    virtual void OnPacket(uint32_t cid, PKT_S2C_AddDebugCircle_s *packet, size_t size); //236
-    virtual void OnPacket(uint32_t cid, PKT_S2C_RemoveDebugCircle_s *packet, size_t size); //237
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ModifyDebugCircleRadius_s *packet, size_t size); //238
-    virtual void OnPacket(uint32_t cid, PKT_S2C_ModifyDebugCircleColor_s *packet, size_t size); //239
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HandleQuestUpdate_s *packet, size_t size); //185
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HandleTipUpdate_s *packet, size_t size); //187
-    virtual void OnPacket(uint32_t cid, PKT_S2C_HandleUIHighlight_s *packet, size_t size); //188
-    virtual void OnPacket(uint32_t cid, PKT_C2S_OnTipEvent_s *packet, size_t size); //189
-    virtual void OnPacket(uint32_t cid, PKT_C2S_OnQuestEvent_s *packet, size_t size); //186
-    virtual void OnPacket(uint32_t cid, PKT_Undefined_s *packet, size_t size); //240
-    virtual void OnPacket(uint32_t cid, PKT_S2C_Neutral_Camp_Empty_s *packet, size_t size); //241
-    virtual void OnPacket(uint32_t cid, PKT_Batched_s *packet, size_t size); //255
 
     virtual void OnPayload(uint32_t cid, EGP_RequestJoinTeam_s *payload, size_t size); //0x64
     virtual void OnPayload(uint32_t cid, EGP_RequestReskin_s *payload, size_t size); //0x65

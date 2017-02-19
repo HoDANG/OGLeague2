@@ -134,24 +134,17 @@ HEADERS += \
     net/pkt/032_PKT_CHAR_SpawnPet.hpp \
     net/pkt/033_PKT_CHAR_SetCooldown.hpp \
     net/pkt/034_PKT_NPC_Die.hpp \
-    net/pkt/035_PKT_NPC_ForceDead.hpp \
     net/pkt/036_PKT_NPC_CastSpellReq.hpp \
     net/pkt/037_PKT_NPC_CastSpellAns.hpp \
     net/pkt/038_PKT_NPC_BuffAdd2.hpp \
-    net/pkt/039_PKT_NPC_BuffAddGroup.hpp \
-    net/pkt/040_PKT_NPC_BuffReplace.hpp \
-    net/pkt/041_PKT_NPC_BuffReplaceGroup.hpp \
     net/pkt/042_PKT_NPC_BuffRemove2.hpp \
-    net/pkt/043_PKT_NPC_BuffRemoveGroup.hpp \
     net/pkt/044_PKT_NPC_SetAutocast.hpp \
     net/pkt/046_PKT_BuyItemReq.hpp \
-    net/pkt/046_PKT_SetItem.hpp \
     net/pkt/047_PKT_BuyItemAns.hpp \
     net/pkt/048_PKT_RemoveItemReq.hpp \
     net/pkt/049_PKT_RemoveItemAns.hpp \
     net/pkt/050_PKT_SwapItemReq.hpp \
     net/pkt/051_PKT_SwapItemAns.hpp \
-    net/pkt/052_PKT_UseItemAns.hpp \
     net/pkt/053_PKT_NPC_LevelUp.hpp \
     net/pkt/054_PKT_NPC_InstantStop_Attack.hpp \
     net/pkt/055_PKT_Barrack_SpawnUnit.hpp \
@@ -196,7 +189,6 @@ HEADERS += \
     net/pkt/094_PKT_CheatSpawnMinionS2C.hpp \
     net/pkt/095_PKT_CheatSpawnBotC2S.hpp \
     net/pkt/097_PKT_CheatBarrackTurnOnOff.hpp \
-    net/pkt/098_PKT_CheatKillTurrets.hpp \
     net/pkt/099_PKT_CheatMakeMinionsInvulnerable.hpp \
     net/pkt/100_PKT_CheatTeleport.hpp \
     net/pkt/101_PKT_CheatSetRespawnTime.hpp \
@@ -207,12 +199,9 @@ HEADERS += \
     net/pkt/106_PKT_CheatRunBVT.hpp \
     net/pkt/107_PKT_C2S_PlayAnimation.hpp \
     net/pkt/108_PKT_CheatDebugPoint.hpp \
-    net/pkt/109_PKT_Cheat_StepTime.hpp \
     net/pkt/110_PKT_Cheat_Pause_Toggle.hpp \
     net/pkt/111_PKT_Cheat_IncTime.hpp \
     net/pkt/112_PKT_Cheat_DecTime.hpp \
-    net/pkt/113_PKT_Cheat_ResetGameC2S.hpp \
-    net/pkt/114_PKT_Cheat_ResetTurretS2C.hpp \
     net/pkt/118_PKT_CheatPacketsEnd.hpp \
     net/pkt/119_PKT_SPM_HierarchicalProfilerUpdate.hpp \
     net/pkt/120_PKT_SPM_HierarchicalMemoryUpdate.hpp \
@@ -230,7 +219,6 @@ HEADERS += \
     net/pkt/132_PKT_WaypointListHeroWithSpeed.hpp \
     net/pkt/133_PKT_ServerGameSettings.hpp \
     net/pkt/134_PKT_NPC_BuffUpdateCount.hpp \
-    net/pkt/135_PKT_NPC_BuffUpdateCountGroup.hpp \
     net/pkt/136_PKT_C2S_PlayEmoticon.hpp \
     net/pkt/137_PKT_S2C_PlayEmoticon.hpp \
     net/pkt/138_PKT_AvatarInfo_Server.hpp \
@@ -239,7 +227,6 @@ HEADERS += \
     net/pkt/141_PKT_AddPosPerceptionBubble.hpp \
     net/pkt/142_PKT_SpawnMinionS2C.hpp \
     net/pkt/143_PKT_S2C_StopAnimation.hpp \
-    net/pkt/144_PKT_S2C_ShowHealthBar.hpp \
     net/pkt/145_PKT_UpdateGoldRedirectTarget.hpp \
     net/pkt/146_PKT_S2C_ChangeCharacterData.hpp \
     net/pkt/147_PKT_S2C_PopCharacterData.hpp \
@@ -274,18 +261,11 @@ HEADERS += \
     net/pkt/176_PKT_Connected.hpp \
     net/pkt/177_PKT_S2C_ToggleInputLockingFlag.hpp \
     net/pkt/178_PKT_S2C_ToggleFoW.hpp \
-    net/pkt/179_PKT_S2C_SetFoWStatus.hpp \
     net/pkt/180_PKT_S2C_SetCircularCameraRestriction.hpp \
     net/pkt/181_PKT_S2C_LockCamera.hpp \
     net/pkt/182_PKT_OnReplication.hpp \
     net/pkt/183_PKT_OnReplication_Acc.hpp \
     net/pkt/184_PKT_S2C_MoveCameraToPoint.hpp \
-    net/pkt/185_PKT_S2C_HandleQuestUpdate.hpp \
-    net/pkt/186_PKT_C2S_OnQuestEvent.hpp \
-    net/pkt/187_PKT_S2C_HandleTipUpdate.hpp \
-    net/pkt/188_PKT_S2C_HandleUIHighlight.hpp \
-    net/pkt/189_PKT_C2S_OnTipEvent.hpp \
-    net/pkt/190_PKT_S2C_PlayVOAudioEvent.hpp \
     net/pkt/191_PKT_ChangeSlotSpellType.hpp \
     net/pkt/192_PKT_PausePacket.hpp \
     net/pkt/193_PKT_ResumePacket.hpp \
@@ -298,45 +278,6 @@ HEADERS += \
     net/pkt/200_PKT_C2S_OnTutorialPopupClosed.hpp \
     net/pkt/201_PKT_S2C_OpenAFKWarningMessage.hpp \
     net/pkt/202_PKT_S2C_CloseShop.hpp \
-    net/pkt/203_PKT_S2C_SetInputLockingFlag.hpp \
-    net/pkt/204_PKT_C2S_OnShopOpened.hpp \
-    net/pkt/206_PKT_S2C_ShowObjectiveText.hpp \
-    net/pkt/207_PKT_S2C_HideObjectiveText.hpp \
-    net/pkt/208_PKT_S2C_RefreshObjectiveText.hpp \
-    net/pkt/209_PKT_S2C_ShowAuxiliaryText.hpp \
-    net/pkt/210_PKT_S2C_HideAuxiliaryText.hpp \
-    net/pkt/211_PKT_S2C_RefreshAuxiliaryText.hpp \
-    net/pkt/212_PKT_S2C_HighlightHUDElement.hpp \
-    net/pkt/213_PKT_S2C_HighlightShopElement.hpp \
-    net/pkt/214_PKT_C2S_TeamSurrenderVote.hpp \
-    net/pkt/215_PKT_S2C_TeamSurrenderVote.hpp \
-    net/pkt/216_PKT_S2C_TeamSurrenderCountDown.hpp \
-    net/pkt/217_PKT_S2C_TeamSurrenderStatus.hpp \
-    net/pkt/218_PKT_S2C_LineMissileHitList.hpp \
-    net/pkt/219_PKT_C2S_TutorialAudioEventFinished.hpp \
-    net/pkt/220_PKT_S2C_HighlightTitanBarElement.hpp \
-    net/pkt/221_PKT_S2C_ToggleUIHighlight.hpp \
-    net/pkt/222_PKT_S2C_DisplayLocalizedTutorialChatText.hpp \
-    net/pkt/223_PKT_S2C_ToolTipVars.hpp \
-    net/pkt/224_PKT_S2C_MuteVolumeCategory.hpp \
-    net/pkt/225_PKT_S2C_OnEventWorld.hpp \
-    net/pkt/226_PKT_S2C_AnimatedBuildingSetCurrentSkin.hpp \
-    net/pkt/227_PKT_S2C_SetGreyscaleEnabledWhenDead.hpp \
-    net/pkt/228_PKT_S2C_DisableHUDForEndOfGame.hpp \
-    net/pkt/229_PKT_ChangeSlotSpellName.hpp \
-    net/pkt/230_PKT_S2C_SwitchNexusesToOnIdleParticles.hpp \
-    net/pkt/231_PKT_S2C_FadeMinions.hpp \
-    net/pkt/232_PKT_S2C_FadeOutMainSFX.hpp \
-    net/pkt/233_PKT_S2C_HeroStats.hpp \
-    net/pkt/234_PKT_S2C_SetAnimStates.hpp \
-    net/pkt/235_PKT_ClientCheatDetectionSignal.hpp \
-    net/pkt/236_PKT_S2C_AddDebugCircle.hpp \
-    net/pkt/237_PKT_S2C_RemoveDebugCircle.hpp \
-    net/pkt/238_PKT_S2C_ModifyDebugCircleRadius.hpp \
-    net/pkt/239_PKT_S2C_ModifyDebugCircleColor.hpp \
-    net/pkt/240_PKT_Undefined.hpp \
-    net/pkt/241_PKT_S2C_Neutral_Camp_Empty.hpp \
-    net/pkt/255_PKT_Batched.hpp \
     net/packets.hpp \
     net/common/connectioninfo.h \
     net/common/playerliteinfo.h \
@@ -344,7 +285,8 @@ HEADERS += \
     net/egp/66_egp_requestrename.h \
     net/egp/65_egp_requestreskin.h \
     net/egp/67_egp_teamrosterupdate.h \
-    net/egp/egp_chat.h
+    net/egp/egp_chat.h \
+    net/pkt_enums.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

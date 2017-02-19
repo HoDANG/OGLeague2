@@ -30,7 +30,7 @@ bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
     rpkt.clientID = pkt->playerID;
     rpkt.playerID = pkt->playerID;
     rpkt.checkId = pkt->checkId;
-    sendPacket(pkt->playerID, rpkt, CHANNEL_DEFAULT);
+    sendPacket(pkt->playerID, (uint8_t*) &rpkt, sizeof(rpkt), CHANNEL_DEFAULT);
     pClient->OnConnected(pkt->playerID);
     return true;
 }
@@ -121,10 +121,4 @@ void NetServer::sendPacket(uint32_t cid, uint8_t *pkt, size_t size, uint8_t chan
     ENetPacket *packet = enet_packet_create(data, size, flags);
     enet_peer_send(peer, channel, packet);
     delete[] data;
-}
-
-template<class PKT>
-void NetServer::sendPacket(uint32_t cid, PKT &pkt, uint8_t channel, uint32_t flags)
-{
-    sendPacket(cid, (uint8_t*)&pkt, sizeof(PKT), channel, flags);
 }

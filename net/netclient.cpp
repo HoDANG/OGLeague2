@@ -55,24 +55,17 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_CHAR_SpawnPet: OnPacket(cid, (PKT_CHAR_SpawnPet_s*) data, size); break; //32
         case PKT_CHAR_SetCooldown: OnPacket(cid, (PKT_CHAR_SetCooldown_s*) data, size); break; //33
         case PKT_NPC_Die: OnPacket(cid, (PKT_NPC_Die_s*) data, size); break; //34
-        case PKT_NPC_ForceDead: OnPacket(cid, (PKT_NPC_ForceDead_s*) data, size); break; //35
         case PKT_NPC_CastSpellReq: OnPacket(cid, (PKT_NPC_CastSpellReq_s*) data, size); break; //36
         case PKT_NPC_CastSpellAns: OnPacket(cid, (PKT_NPC_CastSpellAns_s*) data, size); break; //37
         case PKT_NPC_BuffAdd2: OnPacket(cid, (PKT_NPC_BuffAdd2_s*) data, size); break; //38
-        case PKT_NPC_BuffAddGroup: OnPacket(cid, (PKT_NPC_BuffAddGroup_s*) data, size); break; //39
-        case PKT_NPC_BuffReplace: OnPacket(cid, (PKT_NPC_BuffReplace_s*) data, size); break; //40
-        case PKT_NPC_BuffReplaceGroup: OnPacket(cid, (PKT_NPC_BuffReplaceGroup_s*) data, size); break; //41
         case PKT_NPC_BuffRemove2: OnPacket(cid, (PKT_NPC_BuffRemove2_s*) data, size); break; //42
-        case PKT_NPC_BuffRemoveGroup: OnPacket(cid, (PKT_NPC_BuffRemoveGroup_s*) data, size); break; //43
         case PKT_NPC_SetAutocast: OnPacket(cid, (PKT_NPC_SetAutocast_s*) data, size); break; //44
-        case PKT_SetItem: OnPacket(cid, (PKT_SetItem_s*) data, size); break; //46 -> 45
         case PKT_BuyItemReq: OnPacket(cid, (PKT_BuyItemReq_s*) data, size); break; //46
         case PKT_BuyItemAns: OnPacket(cid, (PKT_BuyItemAns_s*) data, size); break; //47
         case PKT_RemoveItemReq: OnPacket(cid, (PKT_RemoveItemReq_s*) data, size); break; //48
         case PKT_RemoveItemAns: OnPacket(cid, (PKT_RemoveItemAns_s*) data, size); break; //49
         case PKT_SwapItemReq: OnPacket(cid, (PKT_SwapItemReq_s*) data, size); break; //50
         case PKT_SwapItemAns: OnPacket(cid, (PKT_SwapItemAns_s*) data, size); break; //51
-        case PKT_UseItemAns: OnPacket(cid, (PKT_UseItemAns_s*) data, size); break; //52
         case PKT_NPC_LevelUp: OnPacket(cid, (PKT_NPC_LevelUp_s*) data, size); break; //53
         case PKT_NPC_InstantStop_Attack: OnPacket(cid, (PKT_NPC_InstantStop_Attack_s*) data, size); break; //54
         case PKT_Barrack_SpawnUnit: OnPacket(cid, (PKT_Barrack_SpawnUnit_s*) data, size); break; //55
@@ -117,7 +110,6 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_CheatSpawnMinionS2C: OnPacket(cid, (PKT_CheatSpawnMinionS2C_s*) data, size); break; //94
         case PKT_CheatSpawnBotC2S: OnPacket(cid, (PKT_CheatSpawnBotC2S_s*) data, size); break; //95
         case PKT_CheatBarrackTurnOnOff: OnPacket(cid, (PKT_CheatBarrackTurnOnOff_s*) data, size); break; //97
-        case PKT_CheatKillTurrets: OnPacket(cid, (PKT_CheatKillTurrets_s*) data, size); break; //98
         case PKT_CheatMakeMinionsInvulnerable: OnPacket(cid, (PKT_CheatMakeMinionsInvulnerable_s*) data, size); break; //99
         case PKT_CheatTeleport: OnPacket(cid, (PKT_CheatTeleport_s*) data, size); break; //100
         case PKT_CheatSetRespawnTime: OnPacket(cid, (PKT_CheatSetRespawnTime_s*) data, size); break; //101
@@ -129,12 +121,9 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_C2S_PlayAnimation: OnPacket(cid, (PKT_C2S_PlayAnimation_s*) data, size); break; //107
         case PKT_CheatPacketsEnd: OnPacket(cid, (PKT_CheatPacketsEnd_s*) data, size); break; //118
         case PKT_CheatDebugPoint: OnPacket(cid, (PKT_CheatDebugPoint_s*) data, size); break; //108
-        case PKT_Cheat_StepTime: OnPacket(cid, (PKT_Cheat_StepTime_s*) data, size); break; //109
         case PKT_Cheat_Pause_Toggle: OnPacket(cid, (PKT_Cheat_Pause_Toggle_s*) data, size); break; //110
         case PKT_Cheat_IncTime: OnPacket(cid, (PKT_Cheat_IncTime_s*) data, size); break; //111
         case PKT_Cheat_DecTime: OnPacket(cid, (PKT_Cheat_DecTime_s*) data, size); break; //112
-        case PKT_Cheat_ResetGameC2S: OnPacket(cid, (PKT_Cheat_ResetGameC2S_s*) data, size); break; //113
-        case PKT_Cheat_ResetTurretS2C: OnPacket(cid, (PKT_Cheat_ResetTurretS2C_s*) data, size); break; //114
         case PKT_SPM_HierarchicalProfilerUpdate: OnPacket(cid, (PKT_SPM_HierarchicalProfilerUpdate_s*) data, size); break; //119
         case PKT_SPM_HierarchicalMemoryUpdate: OnPacket(cid, (PKT_SPM_HierarchicalMemoryUpdate_s*) data, size); break; //120
         case PKT_SPM_HierarchicalBBProfileUpdate: OnPacket(cid, (PKT_SPM_HierarchicalBBProfileUpdate_s*) data, size); break; //121
@@ -151,7 +140,6 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_WaypointListHeroWithSpeed: OnPacket(cid, (PKT_WaypointListHeroWithSpeed_s*) data, size); break; //132
         case PKT_ServerGameSettings: OnPacket(cid, (PKT_ServerGameSettings_s*) data, size); break; //133
         case PKT_NPC_BuffUpdateCount: OnPacket(cid, (PKT_NPC_BuffUpdateCount_s*) data, size); break; //134
-        case PKT_NPC_BuffUpdateCountGroup: OnPacket(cid, (PKT_NPC_BuffUpdateCountGroup_s*) data, size); break; //135
         case PKT_C2S_PlayEmoticon: OnPacket(cid, (PKT_C2S_PlayEmoticon_s*) data, size); break; //136
         case PKT_S2C_PlayEmoticon: OnPacket(cid, (PKT_S2C_PlayEmoticon_s*) data, size); break; //137
         case PKT_AvatarInfo_Server: OnPacket(cid, (PKT_AvatarInfo_Server_s*) data, size); break; //138
@@ -160,7 +148,6 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_AddPosPerceptionBubble: OnPacket(cid, (PKT_AddPosPerceptionBubble_s*) data, size); break; //141
         case PKT_SpawnMinionS2C: OnPacket(cid, (PKT_SpawnMinionS2C_s*) data, size); break; //142
         case PKT_S2C_StopAnimation: OnPacket(cid, (PKT_S2C_StopAnimation_s*) data, size); break; //143
-        case PKT_S2C_ShowHealthBar: OnPacket(cid, (PKT_S2C_ShowHealthBar_s*) data, size); break; //144
         case PKT_UpdateGoldRedirectTarget: OnPacket(cid, (PKT_UpdateGoldRedirectTarget_s*) data, size); break; //145
         case PKT_S2C_ChangeCharacterData: OnPacket(cid, (PKT_S2C_ChangeCharacterData_s*) data, size); break; //146
         case PKT_S2C_PopCharacterData: OnPacket(cid, (PKT_S2C_PopCharacterData_s*) data, size); break; //147
@@ -195,13 +182,11 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_Connected: OnPacket(cid, (PKT_Connected_s*) data, size); break; //176
         case PKT_S2C_ToggleInputLockingFlag: OnPacket(cid, (PKT_S2C_ToggleInputLockingFlag_s*) data, size); break; //177
         case PKT_S2C_ToggleFoW: OnPacket(cid, (PKT_S2C_ToggleFoW_s*) data, size); break; //178
-        case PKT_S2C_SetFoWStatus: OnPacket(cid, (PKT_S2C_SetFoWStatus_s*) data, size); break; //179
         case PKT_S2C_SetCircularCameraRestriction: OnPacket(cid, (PKT_S2C_SetCircularCameraRestriction_s*) data, size); break; //180
         case PKT_S2C_LockCamera: OnPacket(cid, (PKT_S2C_LockCamera_s*) data, size); break; //181
         case PKT_OnReplication: OnPacket(cid, (PKT_OnReplication_s*) data, size); break; //182
         case PKT_OnReplication_Acc: OnPacket(cid, (PKT_OnReplication_Acc_s*) data, size); break; //183
         case PKT_S2C_MoveCameraToPoint: OnPacket(cid, (PKT_S2C_MoveCameraToPoint_s*) data, size); break; //184
-        case PKT_S2C_PlayVOAudioEvent: OnPacket(cid, (PKT_S2C_PlayVOAudioEvent_s*) data, size); break; //190
         case PKT_ChangeSlotSpellType: OnPacket(cid, (PKT_ChangeSlotSpellType_s*) data, size); break; //191
         case PKT_PausePacket: OnPacket(cid, (PKT_PausePacket_s*) data, size); break; //192
         case PKT_ResumePacket: OnPacket(cid, (PKT_ResumePacket_s*) data, size); break; //193
@@ -214,50 +199,6 @@ void NetClient::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, si
         case PKT_C2S_OnTutorialPopupClosed: OnPacket(cid, (PKT_C2S_OnTutorialPopupClosed_s*) data, size); break; //200
         case PKT_S2C_OpenAFKWarningMessage: OnPacket(cid, (PKT_S2C_OpenAFKWarningMessage_s*) data, size); break; //201
         case PKT_S2C_CloseShop: OnPacket(cid, (PKT_S2C_CloseShop_s*) data, size); break; //202
-        case PKT_S2C_SetInputLockingFlag: OnPacket(cid, (PKT_S2C_SetInputLockingFlag_s*) data, size); break; //203
-        case PKT_C2S_OnShopOpened: OnPacket(cid, (PKT_C2S_OnShopOpened_s*) data, size); break; //204
-        case PKT_S2C_ShowObjectiveText: OnPacket(cid, (PKT_S2C_ShowObjectiveText_s*) data, size); break; //206
-        case PKT_S2C_HideObjectiveText: OnPacket(cid, (PKT_S2C_HideObjectiveText_s*) data, size); break; //207
-        case PKT_S2C_RefreshObjectiveText: OnPacket(cid, (PKT_S2C_RefreshObjectiveText_s*) data, size); break; //208
-        case PKT_S2C_ShowAuxiliaryText: OnPacket(cid, (PKT_S2C_ShowAuxiliaryText_s*) data, size); break; //209
-        case PKT_S2C_HideAuxiliaryText: OnPacket(cid, (PKT_S2C_HideAuxiliaryText_s*) data, size); break; //210
-        case PKT_S2C_RefreshAuxiliaryText: OnPacket(cid, (PKT_S2C_RefreshAuxiliaryText_s*) data, size); break; //211
-        case PKT_S2C_HighlightHUDElement: OnPacket(cid, (PKT_S2C_HighlightHUDElement_s*) data, size); break; //212
-        case PKT_S2C_HighlightShopElement: OnPacket(cid, (PKT_S2C_HighlightShopElement_s*) data, size); break; //213
-        case PKT_C2S_TeamSurrenderVote: OnPacket(cid, (PKT_C2S_TeamSurrenderVote_s*) data, size); break; //214
-        case PKT_S2C_TeamSurrenderVote: OnPacket(cid, (PKT_S2C_TeamSurrenderVote_s*) data, size); break; //215
-        case PKT_S2C_TeamSurrenderCountDown: OnPacket(cid, (PKT_S2C_TeamSurrenderCountDown_s*) data, size); break; //216
-        case PKT_S2C_TeamSurrenderStatus: OnPacket(cid, (PKT_S2C_TeamSurrenderStatus_s*) data, size); break; //217
-        case PKT_S2C_LineMissileHitList: OnPacket(cid, (PKT_S2C_LineMissileHitList_s*) data, size); break; //218
-        case PKT_C2S_TutorialAudioEventFinished: OnPacket(cid, (PKT_C2S_TutorialAudioEventFinished_s*) data, size); break; //219
-        case PKT_S2C_HighlightTitanBarElement: OnPacket(cid, (PKT_S2C_HighlightTitanBarElement_s*) data, size); break; //220
-        case PKT_S2C_ToggleUIHighlight: OnPacket(cid, (PKT_S2C_ToggleUIHighlight_s*) data, size); break; //221
-        case PKT_S2C_DisplayLocalizedTutorialChatText: OnPacket(cid, (PKT_S2C_DisplayLocalizedTutorialChatText_s*) data, size); break; //222
-        case PKT_S2C_ToolTipVars: OnPacket(cid, (PKT_S2C_ToolTipVars_s*) data, size); break; //223
-        case PKT_S2C_MuteVolumeCategory: OnPacket(cid, (PKT_S2C_MuteVolumeCategory_s*) data, size); break; //224
-        case PKT_S2C_OnEventWorld: OnPacket(cid, (PKT_S2C_OnEventWorld_s*) data, size); break; //225
-        case PKT_S2C_AnimatedBuildingSetCurrentSkin: OnPacket(cid, (PKT_S2C_AnimatedBuildingSetCurrentSkin_s*) data, size); break; //226
-        case PKT_S2C_SetGreyscaleEnabledWhenDead: OnPacket(cid, (PKT_S2C_SetGreyscaleEnabledWhenDead_s*) data, size); break; //227
-        case PKT_S2C_DisableHUDForEndOfGame: OnPacket(cid, (PKT_S2C_DisableHUDForEndOfGame_s*) data, size); break; //228
-        case PKT_ChangeSlotSpellName: OnPacket(cid, (PKT_ChangeSlotSpellName_s*) data, size); break; //229
-        case PKT_S2C_SwitchNexusesToOnIdleParticles: OnPacket(cid, (PKT_S2C_SwitchNexusesToOnIdleParticles_s*) data, size); break; //230
-        case PKT_S2C_FadeMinions: OnPacket(cid, (PKT_S2C_FadeMinions_s*) data, size); break; //231
-        case PKT_S2C_FadeOutMainSFX: OnPacket(cid, (PKT_S2C_FadeOutMainSFX_s*) data, size); break; //232
-        case PKT_S2C_HeroStats: OnPacket(cid, (PKT_S2C_HeroStats_s*) data, size); break; //233
-        case PKT_S2C_SetAnimStates: OnPacket(cid, (PKT_S2C_SetAnimStates_s*) data, size); break; //234
-        case PKT_ClientCheatDetectionSignal: OnPacket(cid, (PKT_ClientCheatDetectionSignal_s*) data, size); break; //235
-        case PKT_S2C_AddDebugCircle: OnPacket(cid, (PKT_S2C_AddDebugCircle_s*) data, size); break; //236
-        case PKT_S2C_RemoveDebugCircle: OnPacket(cid, (PKT_S2C_RemoveDebugCircle_s*) data, size); break; //237
-        case PKT_S2C_ModifyDebugCircleRadius: OnPacket(cid, (PKT_S2C_ModifyDebugCircleRadius_s*) data, size); break; //238
-        case PKT_S2C_ModifyDebugCircleColor: OnPacket(cid, (PKT_S2C_ModifyDebugCircleColor_s*) data, size); break; //239
-        case PKT_S2C_HandleQuestUpdate: OnPacket(cid, (PKT_S2C_HandleQuestUpdate_s*) data, size); break; //185
-        case PKT_S2C_HandleTipUpdate: OnPacket(cid, (PKT_S2C_HandleTipUpdate_s*) data, size); break; //187
-        case PKT_S2C_HandleUIHighlight: OnPacket(cid, (PKT_S2C_HandleUIHighlight_s*) data, size); break; //188
-        case PKT_C2S_OnTipEvent: OnPacket(cid, (PKT_C2S_OnTipEvent_s*) data, size); break; //189
-        case PKT_C2S_OnQuestEvent: OnPacket(cid, (PKT_C2S_OnQuestEvent_s*) data, size); break; //186
-        case PKT_Undefined: OnPacket(cid, (PKT_Undefined_s*) data, size); break; //240
-        case PKT_S2C_Neutral_Camp_Empty: OnPacket(cid, (PKT_S2C_Neutral_Camp_Empty_s*) data, size); break; //241
-        case PKT_Batched: OnPacket(cid, (PKT_Batched_s*) data, size); break; //255
         default:
             std::cout<<"Unkown packet ID: "<<(uint32_t)(data[0])<<std::endl;
             break;
@@ -467,11 +408,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_NPC_Die_s *packet, size_t size) //34
     std::cout<<"Unhandled packet PKT_NPC_Die(34)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_NPC_ForceDead_s *packet, size_t size) //35
-{
-    std::cout<<"Unhandled packet PKT_NPC_ForceDead(35)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_NPC_CastSpellReq_s *packet, size_t size) //36
 {
     std::cout<<"Unhandled packet PKT_NPC_CastSpellReq(36)"<<std::endl;
@@ -487,39 +423,14 @@ void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffAdd2_s *packet, size_t size) 
     std::cout<<"Unhandled packet PKT_NPC_BuffAdd2(38)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffAddGroup_s *packet, size_t size) //39
-{
-    std::cout<<"Unhandled packet PKT_NPC_BuffAddGroup(39)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffReplace_s *packet, size_t size) //40
-{
-    std::cout<<"Unhandled packet PKT_NPC_BuffReplace(40)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffReplaceGroup_s *packet, size_t size) //41
-{
-    std::cout<<"Unhandled packet PKT_NPC_BuffReplaceGroup(41)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffRemove2_s *packet, size_t size) //42
 {
     std::cout<<"Unhandled packet PKT_NPC_BuffRemove2(42)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffRemoveGroup_s *packet, size_t size) //43
-{
-    std::cout<<"Unhandled packet PKT_NPC_BuffRemoveGroup(43)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_NPC_SetAutocast_s *packet, size_t size) //44
 {
     std::cout<<"Unhandled packet PKT_NPC_SetAutocast(44)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_SetItem_s *packet, size_t size) //46
-{
-    std::cout<<"Unhandled packet PKT_SetItem(46)"<<std::endl;
 }
 
 void NetClient::OnPacket(uint32_t cid, PKT_BuyItemReq_s *packet, size_t size) //46
@@ -550,11 +461,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_SwapItemReq_s *packet, size_t size) /
 void NetClient::OnPacket(uint32_t cid, PKT_SwapItemAns_s *packet, size_t size) //51
 {
     std::cout<<"Unhandled packet PKT_SwapItemAns(51)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_UseItemAns_s *packet, size_t size) //52
-{
-    std::cout<<"Unhandled packet PKT_UseItemAns(52)"<<std::endl;
 }
 
 void NetClient::OnPacket(uint32_t cid, PKT_NPC_LevelUp_s *packet, size_t size) //53
@@ -777,11 +683,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_CheatBarrackTurnOnOff_s *packet, size
     std::cout<<"Unhandled packet PKT_CheatBarrackTurnOnOff(97)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_CheatKillTurrets_s *packet, size_t size) //98
-{
-    std::cout<<"Unhandled packet PKT_CheatKillTurrets(98)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_CheatMakeMinionsInvulnerable_s *packet, size_t size) //99
 {
     std::cout<<"Unhandled packet PKT_CheatMakeMinionsInvulnerable(99)"<<std::endl;
@@ -837,11 +738,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_CheatDebugPoint_s *packet, size_t siz
     std::cout<<"Unhandled packet PKT_CheatDebugPoint(108)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_Cheat_StepTime_s *packet, size_t size) //109
-{
-    std::cout<<"Unhandled packet PKT_Cheat_StepTime(109)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_Cheat_Pause_Toggle_s *packet, size_t size) //110
 {
     std::cout<<"Unhandled packet PKT_Cheat_Pause_Toggle(110)"<<std::endl;
@@ -855,16 +751,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_Cheat_IncTime_s *packet, size_t size)
 void NetClient::OnPacket(uint32_t cid, PKT_Cheat_DecTime_s *packet, size_t size) //112
 {
     std::cout<<"Unhandled packet PKT_Cheat_DecTime(112)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_Cheat_ResetGameC2S_s *packet, size_t size) //113
-{
-    std::cout<<"Unhandled packet PKT_Cheat_ResetGameC2S(113)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_Cheat_ResetTurretS2C_s *packet, size_t size) //114
-{
-    std::cout<<"Unhandled packet PKT_Cheat_ResetTurretS2C(114)"<<std::endl;
 }
 
 void NetClient::OnPacket(uint32_t cid, PKT_SPM_HierarchicalProfilerUpdate_s *packet, size_t size) //119
@@ -947,11 +833,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffUpdateCount_s *packet, size_t
     std::cout<<"Unhandled packet PKT_NPC_BuffUpdateCount(134)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_NPC_BuffUpdateCountGroup_s *packet, size_t size) //135
-{
-    std::cout<<"Unhandled packet PKT_NPC_BuffUpdateCountGroup(135)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_C2S_PlayEmoticon_s *packet, size_t size) //136
 {
     std::cout<<"Unhandled packet PKT_C2S_PlayEmoticon(136)"<<std::endl;
@@ -990,11 +871,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_SpawnMinionS2C_s *packet, size_t size
 void NetClient::OnPacket(uint32_t cid, PKT_S2C_StopAnimation_s *packet, size_t size) //143
 {
     std::cout<<"Unhandled packet PKT_S2C_StopAnimation(143)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ShowHealthBar_s *packet, size_t size) //144
-{
-    std::cout<<"Unhandled packet PKT_S2C_ShowHealthBar(144)"<<std::endl;
 }
 
 void NetClient::OnPacket(uint32_t cid, PKT_UpdateGoldRedirectTarget_s *packet, size_t size) //145
@@ -1167,11 +1043,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_S2C_ToggleFoW_s *packet, size_t size)
     std::cout<<"Unhandled packet PKT_S2C_ToggleFoW(178)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_SetFoWStatus_s *packet, size_t size) //179
-{
-    std::cout<<"Unhandled packet PKT_S2C_SetFoWStatus(179)"<<std::endl;
-}
-
 void NetClient::OnPacket(uint32_t cid, PKT_S2C_SetCircularCameraRestriction_s *packet, size_t size) //180
 {
     std::cout<<"Unhandled packet PKT_S2C_SetCircularCameraRestriction(180)"<<std::endl;
@@ -1195,11 +1066,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_OnReplication_Acc_s *packet, size_t s
 void NetClient::OnPacket(uint32_t cid, PKT_S2C_MoveCameraToPoint_s *packet, size_t size) //184
 {
     std::cout<<"Unhandled packet PKT_S2C_MoveCameraToPoint(184)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_PlayVOAudioEvent_s *packet, size_t size) //190
-{
-    std::cout<<"Unhandled packet PKT_S2C_PlayVOAudioEvent(190)"<<std::endl;
 }
 
 void NetClient::OnPacket(uint32_t cid, PKT_ChangeSlotSpellType_s *packet, size_t size) //191
@@ -1262,225 +1128,6 @@ void NetClient::OnPacket(uint32_t cid, PKT_S2C_CloseShop_s *packet, size_t size)
     std::cout<<"Unhandled packet PKT_S2C_CloseShop(202)"<<std::endl;
 }
 
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_SetInputLockingFlag_s *packet, size_t size) //203
-{
-    std::cout<<"Unhandled packet PKT_S2C_SetInputLockingFlag(203)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_C2S_OnShopOpened_s *packet, size_t size) //204
-{
-    std::cout<<"Unhandled packet PKT_C2S_OnShopOpened(204)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ShowObjectiveText_s *packet, size_t size) //206
-{
-    std::cout<<"Unhandled packet PKT_S2C_ShowObjectiveText(206)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HideObjectiveText_s *packet, size_t size) //207
-{
-    std::cout<<"Unhandled packet PKT_S2C_HideObjectiveText(207)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_RefreshObjectiveText_s *packet, size_t size) //208
-{
-    std::cout<<"Unhandled packet PKT_S2C_RefreshObjectiveText(208)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ShowAuxiliaryText_s *packet, size_t size) //209
-{
-    std::cout<<"Unhandled packet PKT_S2C_ShowAuxiliaryText(209)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HideAuxiliaryText_s *packet, size_t size) //210
-{
-    std::cout<<"Unhandled packet PKT_S2C_HideAuxiliaryText(210)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_RefreshAuxiliaryText_s *packet, size_t size) //211
-{
-    std::cout<<"Unhandled packet PKT_S2C_RefreshAuxiliaryText(211)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HighlightHUDElement_s *packet, size_t size) //212
-{
-    std::cout<<"Unhandled packet PKT_S2C_HighlightHUDElement(212)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HighlightShopElement_s *packet, size_t size) //213
-{
-    std::cout<<"Unhandled packet PKT_S2C_HighlightShopElement(213)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_C2S_TeamSurrenderVote_s *packet, size_t size) //214
-{
-    std::cout<<"Unhandled packet PKT_C2S_TeamSurrenderVote(214)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_TeamSurrenderVote_s *packet, size_t size) //215
-{
-    std::cout<<"Unhandled packet PKT_S2C_TeamSurrenderVote(215)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_TeamSurrenderCountDown_s *packet, size_t size) //216
-{
-    std::cout<<"Unhandled packet PKT_S2C_TeamSurrenderCountDown(216)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_TeamSurrenderStatus_s *packet, size_t size) //217
-{
-    std::cout<<"Unhandled packet PKT_S2C_TeamSurrenderStatus(217)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_LineMissileHitList_s *packet, size_t size) //218
-{
-    std::cout<<"Unhandled packet PKT_S2C_LineMissileHitList(218)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_C2S_TutorialAudioEventFinished_s *packet, size_t size) //219
-{
-    std::cout<<"Unhandled packet PKT_C2S_TutorialAudioEventFinished(219)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HighlightTitanBarElement_s *packet, size_t size) //220
-{
-    std::cout<<"Unhandled packet PKT_S2C_HighlightTitanBarElement(220)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ToggleUIHighlight_s *packet, size_t size) //221
-{
-    std::cout<<"Unhandled packet PKT_S2C_ToggleUIHighlight(221)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_DisplayLocalizedTutorialChatText_s *packet, size_t size) //222
-{
-    std::cout<<"Unhandled packet PKT_S2C_DisplayLocalizedTutorialChatText(222)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ToolTipVars_s *packet, size_t size) //223
-{
-    std::cout<<"Unhandled packet PKT_S2C_ToolTipVars(223)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_MuteVolumeCategory_s *packet, size_t size) //224
-{
-    std::cout<<"Unhandled packet PKT_S2C_MuteVolumeCategory(224)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_OnEventWorld_s *packet, size_t size) //225
-{
-    std::cout<<"Unhandled packet PKT_S2C_OnEventWorld(225)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_AnimatedBuildingSetCurrentSkin_s *packet, size_t size) //226
-{
-    std::cout<<"Unhandled packet PKT_S2C_AnimatedBuildingSetCurrentSkin(226)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_SetGreyscaleEnabledWhenDead_s *packet, size_t size) //227
-{
-    std::cout<<"Unhandled packet PKT_S2C_SetGreyscaleEnabledWhenDead(227)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_DisableHUDForEndOfGame_s *packet, size_t size) //228
-{
-    std::cout<<"Unhandled packet PKT_S2C_DisableHUDForEndOfGame(228)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_ChangeSlotSpellName_s *packet, size_t size) //229
-{
-    std::cout<<"Unhandled packet PKT_ChangeSlotSpellName(229)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_SwitchNexusesToOnIdleParticles_s *packet, size_t size) //230
-{
-    std::cout<<"Unhandled packet PKT_S2C_SwitchNexusesToOnIdleParticles(230)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_FadeMinions_s *packet, size_t size) //231
-{
-    std::cout<<"Unhandled packet PKT_S2C_FadeMinions(231)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_FadeOutMainSFX_s *packet, size_t size) //232
-{
-    std::cout<<"Unhandled packet PKT_S2C_FadeOutMainSFX(232)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HeroStats_s *packet, size_t size) //233
-{
-    std::cout<<"Unhandled packet PKT_S2C_HeroStats(233)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_SetAnimStates_s *packet, size_t size) //234
-{
-    std::cout<<"Unhandled packet PKT_S2C_SetAnimStates(234)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_ClientCheatDetectionSignal_s *packet, size_t size) //235
-{
-    std::cout<<"Unhandled packet PKT_ClientCheatDetectionSignal(235)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_AddDebugCircle_s *packet, size_t size) //236
-{
-    std::cout<<"Unhandled packet PKT_S2C_AddDebugCircle(236)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_RemoveDebugCircle_s *packet, size_t size) //237
-{
-    std::cout<<"Unhandled packet PKT_S2C_RemoveDebugCircle(237)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ModifyDebugCircleRadius_s *packet, size_t size) //238
-{
-    std::cout<<"Unhandled packet PKT_S2C_ModifyDebugCircleRadius(238)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_ModifyDebugCircleColor_s *packet, size_t size) //239
-{
-    std::cout<<"Unhandled packet PKT_S2C_ModifyDebugCircleColor(239)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HandleQuestUpdate_s *packet, size_t size) //185
-{
-    std::cout<<"Unhandled packet PKT_S2C_HandleQuestUpdate(185)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HandleTipUpdate_s *packet, size_t size) //187
-{
-    std::cout<<"Unhandled packet PKT_S2C_HandleTipUpdate(187)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_HandleUIHighlight_s *packet, size_t size) //188
-{
-    std::cout<<"Unhandled packet PKT_S2C_HandleUIHighlight(188)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_C2S_OnTipEvent_s *packet, size_t size) //189
-{
-    std::cout<<"Unhandled packet PKT_C2S_OnTipEvent(189)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_C2S_OnQuestEvent_s *packet, size_t size) //186
-{
-    std::cout<<"Unhandled packet PKT_C2S_OnQuestEvent(186)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_Undefined_s *packet, size_t size) //240
-{
-    std::cout<<"Unhandled packet PKT_Undefined(240)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_S2C_Neutral_Camp_Empty_s *packet, size_t size) //241
-{
-    std::cout<<"Unhandled packet PKT_S2C_Neutral_Camp_Empty(241)"<<std::endl;
-}
-
-void NetClient::OnPacket(uint32_t cid, PKT_Batched_s *packet, size_t size) //255
-{
-    std::cout<<"Unhandled packet PKT_Batched(255)"<<std::endl;
-}
 
 void NetClient::OnPayload(uint32_t cid, EGP_RequestJoinTeam_s *payload, size_t size) //0x64
 {

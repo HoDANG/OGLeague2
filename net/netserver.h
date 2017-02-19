@@ -27,11 +27,6 @@ public:
     ~NetServer();
     bool start();
     bool host(uint32_t timeout = 0);
-
-    template<class PKT>
-    void sendPacket(uint32_t cid, PKT &pkt,
-                    uint8_t channel = CHANNEL_GENERIC_APP_BROADCAST,
-                    uint32_t flags = ENET_PACKET_FLAG_RELIABLE);
     void sendPacket(uint32_t cid, uint8_t *pkt, size_t size,
                     uint8_t channel = CHANNEL_GENERIC_APP_BROADCAST,
                     uint32_t flags = ENET_PACKET_FLAG_RELIABLE);

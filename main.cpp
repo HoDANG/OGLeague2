@@ -9,7 +9,7 @@ NetServer *server;
 string aChampion = "Annie";
 string aName = "Test";
 int aSkin = 0;
-int aMap = 0;
+int aMap = 1;
 
 class BasicClient : public NetClient
 {
@@ -39,7 +39,6 @@ public:
         PKT_SynchVersionS2C_s ans;
         ans.fromID = cid;
         ans.mIsVersionOk = true;
-        strcpy(ans.mMapMode, "Automatic");
         ans.mMapToLoad = aMap;
         strcpy(ans.mVersionString , req->mVersionString);
         ans.playerInfo[0].ID = cid;
@@ -57,10 +56,8 @@ public:
         server->sendPacket(cid, (uint8_t*)&ans1, sizeof(ans1));
 
         PKT_S2C_CreateHero_s ans3;
-        ans3.botRank = 0;
         ans3.isBot = 0;
         ans3.teamIsOrder = 1;
-        ans3.spawnPosIndex = 1;
         ans3.skinID = aSkin;
         strcpy(ans3.Skin, aChampion.c_str());
         ans3.skillLevel = 1;
@@ -150,6 +147,10 @@ int main(int argc, char ** argv)
         aSkin = stoi(argv[3]);
     if(argc > 4)
         aName = argv[4];
+    cout<<"Map: "<<aMap<<endl;
+    cout<<"Champion: "<<aChampion<<endl;
+    cout<<"Skin: "<<aSkin<<endl;
+    cout<<"Name: "<<aName<<endl;
 
     enet_initialize();
     auto client = new BasicClient;

@@ -9,7 +9,6 @@ struct PKT_SynchVersionS2C_s : DefaultPacket<PKT_SynchVersionS2C>
     int mMapToLoad;
     PlayerLiteInfo playerInfo[12];
     char mVersionString[256];
-    char mMapMode[128];
 };
 #pragma pack(pop)
 
