@@ -31,7 +31,7 @@
 
 #include <utility>
 
-#include <wink/detail/FastDelegate.h>
+#include "detail/FastDelegate.h"
 
 namespace wink
 {

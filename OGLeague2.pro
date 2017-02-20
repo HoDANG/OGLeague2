@@ -44,8 +44,10 @@ SOURCES += main.cpp \
     dep/lua/lundump.c \
     dep/lua/lvm.c \
     dep/lua/lzio.c \
-    net/netclient.cpp \
-    net/netserver.cpp
+    net/netserver.cpp \
+    dep/r3d/r3dmesh.cpp \
+    nav/navgrid.cpp \
+    nav/navgridcell.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -95,7 +97,6 @@ HEADERS += \
     dep/enet.hpp \
     dep/sol.hpp \
     dep/wink.hpp \
-    net/netclient.h \
     net/netserver.h \
     dep/buffer.hpp \
     net/base.h \
@@ -344,7 +345,15 @@ HEADERS += \
     net/egp/66_egp_requestrename.h \
     net/egp/65_egp_requestreskin.h \
     net/egp/67_egp_teamrosterupdate.h \
-    net/egp/egp_chat.h
+    net/egp/egp_chat.h \
+    net/common/pkt_enums.h \
+    dep/r3d/r3dbox3d.h \
+    dep/r3d/r3dfile.h \
+    dep/r3d/r3dmesh.h \
+    dep/r3d/r3dpoint.h \
+    dep/r3d.hpp \
+    nav/navgrid.h \
+    nav/navgridcell.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

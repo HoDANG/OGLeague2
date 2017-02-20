@@ -29,7 +29,7 @@
 
 #include <queue>
 
-#include <wink/signal.hpp>
+#include "signal.hpp"
 
 namespace wink
 {

@@ -33,7 +33,7 @@
 #include <vector>
 #include <utility>
 
-#include <wink/slot.hpp>
+#include "slot.hpp"
 
 namespace wink
 {

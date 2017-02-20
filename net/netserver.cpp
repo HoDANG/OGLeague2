@@ -31,14 +31,31 @@ bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
     rpkt.playerID = pkt->playerID;
     rpkt.checkId = pkt->checkId;
     sendPacket(pkt->playerID, rpkt, CHANNEL_DEFAULT);
-    pClient->OnConnected(pkt->playerID);
+    OnConnected(pkt->playerID);
     return true;
 }
 
-NetServer::NetServer(NetClient *client,uint32_t address, uint16_t port,
+void NetServer::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
+{
+    switch(channel)
+    {
+    case CHANNEL_GENERIC_APP_TO_SERVER:
+        OnPacket[data[0]](cid, data, size);
+        break;
+    case CHANNEL_MIDDLE_TIER_CHAT:
+    case CHANNEL_MIDDLE_TIER_ROSTER:
+        OnPayload[data[0]](cid, data, size);
+        break;
+    default:
+        std::cout<<"Unkown channel: "<<(uint32_t)channel<<std::endl;
+        break;
+    }
+}
+
+NetServer::NetServer(uint32_t address, uint16_t port,
                      std::string key, uint32_t maxclients) :
     mBlowFish(std::make_unique<BlowFish>((uint8_t*)(key.c_str()), 16)),
-    mMax(maxclients+1), mHost(nullptr), mCount(1), pClient(client)
+    mMax(maxclients+1), mHost(nullptr), mCount(1)
 {
     mAddress.host = address;
     mAddress.port = port;
@@ -80,7 +97,7 @@ bool NetServer::host(uint32_t timeout)
                 {
                     mCount--;
                     mPeers[(uint32_t)(event.peer->data)] = 0;
-                    pClient->OnDisconnected((uint32_t)(event.peer->data));
+                    OnDisconnected((uint32_t)(event.peer->data));
                 }
             break;
             case ENET_EVENT_TYPE_RECEIVE:
@@ -91,7 +108,7 @@ bool NetServer::host(uint32_t timeout)
                     if(event.packet->dataLength >= 8)
                         mBlowFish->Decrypt(event.packet->data,
                                            event.packet->dataLength-(event.packet->dataLength%8));
-                        pClient->OnNetworkPacket((uint32_t)(event.peer->data),
+                        OnNetworkPacket((uint32_t)(event.peer->data),
                                           event.channelID,
                                           (uint8_t*)(event.packet->data),
                                           event.packet->dataLength);
