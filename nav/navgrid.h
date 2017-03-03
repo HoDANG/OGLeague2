@@ -34,6 +34,21 @@ public:
     std::vector<NavHintGridNode> mHintGrid;
 
     void load(std::string name);
+
+    int GetCellIndex(NavGridCell* cell);
+    bool IsValidCell(float inX, float inY, float width, float height, float border);
+    bool IsValidCell(float inX, float inY);
+    bool IsValidCellCellUnits(int inX, int inY);
+    r3dPoint3D GetCellCenter(int x, int y);
+    r3dPoint3D GetCellCenter(NavGridCellLocator &locator);
+    void GetCellCenterXY(NavGridCell *cell, float &x, float &y);
+
+    NavGridCellLocator GetCellLocator(r3dPoint3D &inPos);
+    NavGridCell* GetCell(int y, int x);
+    NavGridCell* GetCell(r3dPoint3D &pos);
+    NavGridCell* GetCellInner(int y, int x);
+
+    bool IsSolidPassable(r3dPoint3D &pos);
 };
 
 

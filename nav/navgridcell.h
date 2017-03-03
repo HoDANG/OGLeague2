@@ -41,6 +41,8 @@ struct  NavGridCell
   char mArrivalDirection;
   NavGridCellFlags mFlags;
   uint16_t mRefHintNode[2];
+
+  bool isPassable();
 };
 
 #endif // NAVGRIDCELL_H
