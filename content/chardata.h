@@ -17,7 +17,11 @@ struct PassiveData
 
 struct CharData
 {
-    void load(std::string name, Manager &manager);
+    void load(std::string name, Manager *manager);
+    void load(std::string name, Manager &manager)
+    {
+        load(name, &manager);
+    }
 
     bool bIsWaypoint;
     bool bIsMelee;

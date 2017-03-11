@@ -5,11 +5,11 @@ using namespace std;
 using namespace Content;
 
 
-void CharData::load(string name, Manager &manager)
+void CharData::load(string name, Manager *manager)
 {
 
-    Config conf = manager.config("DATA/Characters/"+name+"/"+name+".ini");
-    Config general = manager.config("DATA/Characters/GeneralCharacterData.ini");
+    Config conf = manager->config("DATA/Characters/"+name+"/"+name+".ini");
+    Config general = manager->config("DATA/Characters/GeneralCharacterData.ini");
 
     bIsMelee = stricmp(conf.getString("Data", "IsMelee", "no").c_str(),
                        "yes") == 0;
@@ -71,6 +71,4 @@ void CharData::load(string name, Manager &manager)
     {
         ExtraSpells[i] = conf.getString("Data", "ExtraSpell"+to_string(i+1), "");
     }
-
-
 }

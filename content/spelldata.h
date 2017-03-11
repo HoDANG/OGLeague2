@@ -119,10 +119,11 @@ struct SpellData
       float mLength[6];
     };
 
-    bool loaded = false;
-    bool tryLoaded = false;
-
-    void load(std::string name, Manager &manager);
+    void load(std::string name, Manager *manager);
+    void load(std::string name, Manager &manager)
+    {
+        load(name, &manager);
+    }
 
     unsigned int Flags;
     unsigned int mHash;

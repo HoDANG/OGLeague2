@@ -7,9 +7,9 @@
 using namespace std;
 using namespace Content;
 
-void SpellData::load(string name, Manager &manager)
+void SpellData::load(string name, Manager *manager)
 {
-    Config conf = manager.config("DATA/Spells/"+name+".ini");
+    Config conf = manager->config("DATA/Spells/"+name+".ini");
     mName = name;
     for(int i = 0; i < 5; i++)
     {
