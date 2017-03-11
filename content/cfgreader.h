@@ -5,7 +5,10 @@
 #include <string>
 #include <array>
 #include <sstream>
+#include <fstream>
 
+namespace Content
+{
 class Config
 {
 private:
@@ -24,10 +27,32 @@ private:
     }
 
     std::map<uint32_t, std::string> mStrings;
-
+    bool mLoaded = false;
+    bool mTryLoaded = false;
 public:
-    void readAscii(std::string fileName);
-    void readBinary(std::string fileName);
+    void readAscii(std::ifstream &file);
+    void readBinary(std::ifstream &file);
+    void read(std::ifstream &file)
+    {
+        if(file.flags() & std::ios::binary)
+            readBinary(file);
+        else
+            readAscii(file);
+    }
+
+    void readAscii(std::string fileName)
+    {
+        readAscii(std::ifstream(fileName));
+    }
+    void readBinary(std::string fileName)
+    {
+        readBinary(std::ifstream(fileName, std::ios::binary));
+    }
+
+    inline bool has(std::string section, std::string name)
+    {
+        return mStrings.find(hash(section, name)) != mStrings.end();
+    }
 
     inline std::string getString(std::string section, std::string name, std::string def = "")
     {
@@ -79,6 +104,9 @@ public:
     }
 
     std::map<uint32_t, std::string> getStrings() const;
+    bool getLoaded() const;
+    bool getTryLoaded() const;
 };
+}
 
 #endif // CFGREADER_H

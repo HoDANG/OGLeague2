@@ -6,50 +6,7 @@
 #include <functional>
 
 using namespace std;
-
-std::map<uint32_t, std::string> Config::getStrings() const
-{
-    return mStrings;
-}
-
-void Config::readAscii(std::string fileName)
-{
-    ifstream file(fileName);
-    string section = "";
-    while(true)
-    {
-        string tmp;
-        if(!getline(file,tmp))
-            break;
-        if(tmp[0] == ';')
-            continue;
-        if(tmp[0] == '[')
-        {
-            size_t end = tmp.find(']');
-            if(end == string::npos)
-                continue;
-            section = tmp.substr(1, end-1);
-            continue;
-        }
-        size_t eq = tmp.find('=');
-        if(eq == string::npos)
-            continue;
-        if(section == "")
-            continue;
-        string name = tmp.substr(0, eq);
-        string value = tmp.substr(eq+1);
-        value.erase(0, value.find_first_not_of(' '));
-        name.erase(name.find_last_not_of(' ')+1, name.length());
-        if(name == "")
-            continue;
-        if(section == "*")
-        {
-            mStrings[stoi(name)] = value;
-            continue;
-        }
-        mStrings[hash(section, name)] = value;
-    }
-}
+using namespace Content;
 
 namespace
 {
@@ -135,9 +92,68 @@ namespace
     }
 }
 
-void Config::readBinary(std::string fileName)
+std::map<uint32_t, std::string> Config::getStrings() const
 {
-    ifstream file(fileName, ios::binary);
+    return mStrings;
+}
+
+bool Config::getLoaded() const
+{
+    return mLoaded;
+}
+
+bool Config::getTryLoaded() const
+{
+    return mTryLoaded;
+}
+
+void Config::readAscii(ifstream &file)
+{
+    mTryLoaded = true;
+    if(!file.is_open())
+        return;
+    string section = "";
+    while(true)
+    {
+        string tmp;
+        if(!getline(file,tmp))
+            break;
+        if(tmp[0] == ';')
+            continue;
+        if(tmp[0] == '[')
+        {
+            size_t end = tmp.find(']');
+            if(end == string::npos)
+                continue;
+            section = tmp.substr(1, end-1);
+            continue;
+        }
+        size_t eq = tmp.find('=');
+        if(eq == string::npos)
+            continue;
+        if(section == "")
+            continue;
+        string name = tmp.substr(0, eq);
+        string value = tmp.substr(eq+1);
+        value.erase(0, value.find_first_not_of(' '));
+        name.erase(name.find_last_not_of(' ')+1, name.length());
+        if(name == "")
+            continue;
+        if(section == "*")
+        {
+            mStrings[stoi(name)] = value;
+            continue;
+        }
+        mStrings[hash(section, name)] = value;
+    }
+    mLoaded = true;
+}
+
+void Config::readBinary(ifstream &file)
+{
+    mTryLoaded = true;
+    if(!file.is_open())
+        return;
     uint8_t version;
 
     file > version;
@@ -177,6 +193,7 @@ void Config::readBinary(std::string fileName)
             readNums<array<float, 4>>(file, mStrings);
         if(flags[12])
             readStrings(file, mStrings, stringsLength);
+        mLoaded = true;
     }
 
     if(version == 1)
@@ -201,6 +218,7 @@ void Config::readBinary(std::string fileName)
         {
             mStrings[entries[i][0]] = string(&data[entries[i][1]]);
         }
+        mLoaded = true;
     }
 }
 

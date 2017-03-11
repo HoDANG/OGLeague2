@@ -2,6 +2,7 @@
 #define RD3POINT_H
 
 #include <math.h>
+#include <array>
 
 struct r3dPoint2D
 {
@@ -22,6 +23,13 @@ struct r3dPoint3D
         result.y = tmp * y;
         result.z = tmp * z;
         return result;
+    }
+    r3dPoint3D& operator=(std::array<float,3> arr)
+    {
+        this->x = arr[0];
+        this->y = arr[1];
+        this->z = arr[2];
+        return *this;
     }
 };
 

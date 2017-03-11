@@ -48,7 +48,10 @@ SOURCES += main.cpp \
     dep/r3d/r3dmesh.cpp \
     nav/navgrid.cpp \
     nav/navgridcell.cpp \
-    cfg/cfgreader.cpp
+    content/manager.cpp \
+    content/spelldata.cpp \
+    content/cfgreader.cpp \
+    content/chardata.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -355,7 +358,10 @@ HEADERS += \
     dep/r3d.hpp \
     nav/navgrid.h \
     nav/navgridcell.h \
-    cfg/cfgreader.h
+    content/manager.h \
+    content/spelldata.h \
+    content/cfgreader.h \
+    content/chardata.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm
