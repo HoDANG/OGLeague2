@@ -53,7 +53,8 @@ SOURCES += main.cpp \
     content/cfgreader.cpp \
     content/chardata.cpp \
     game/world.cpp \
-    game/map.cpp
+    game/map.cpp \
+    content/itemdata.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -365,7 +366,8 @@ HEADERS += \
     content/cfgreader.h \
     content/chardata.h \
     game/world.h \
-    game/map.h
+    game/map.h \
+    content/itemdata.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm
