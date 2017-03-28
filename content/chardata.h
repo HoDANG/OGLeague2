@@ -23,6 +23,7 @@ struct CharData
         load(name, &manager);
     }
 
+    std::string CritAttackNameStr;
     bool bIsWaypoint;
     bool bIsMelee;
     bool bIsArcane;
@@ -61,10 +62,10 @@ struct CharData
     float mAttackDelayCastOffsetPercent[7];
     float mAttackDelayOffsetPercent[7];
     float mAttackProbability[7];
+
     float mAttackSpeedPerLevel;
     float mAcquisitionRange;
     float mAttackAutoInterruptPercent;
-
     float mGoldGivenOnDeath;
     float mExpGivenOnDeath;
     float mSoulGivenOnDeath;
@@ -74,26 +75,23 @@ struct CharData
     float mAbilityPower;
     float mAbilityPowerIncPerLevel;
 
-    //missingo
-    std::string mArmorMaterial;
-    std::string mWeaponMaterial;
-    std::vector<std::string> mWeaponMaterialAry;
-
     std::string SpellNames[4];
     std::string ExtraSpells[8];
-
     PassiveData Passives[6];
     float mHitFxScale;
+
+    //missingo v2
     int m_RecItems[6];
     unsigned int mNumberOfAttacksAnims;
     std::vector<std::string> attackNames;
     int validAttackNames;
+
     float mOverrideCollisionHeight;
     float mOverrideCollisionRadius;
     float PathfindingCollisionRadius;
     float GameplayCollisionRadius;
-    std::vector<std::vector<unsigned int>> mSpellsUpLevelsOverride;
-    std::vector<unsigned int> mSpellMaxLevelsOverride;
+    std::array<std::array<unsigned int, 6>, 4> mSpellsUpLevelsOverride;
+    std::array<unsigned int, 4> mSpellMaxLevelsOverride;
     //GlobalCharacterData::DataStruct *m_GlobalData;
 };
 }

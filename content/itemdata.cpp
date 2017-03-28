@@ -24,7 +24,7 @@ void Content::ItemData::load(int id, Content::Manager *manager)
     //mbIsPurchasable
     IsRecipe = conf.getNum("Data", "IsRecipe", 0);
     ComboItem = conf.getNum("Data", "ComboItem", 0);
-    Consumed = conf.getNum("Data", "Consume", 0);
+    Consumed = conf.getNum("Data", "Consumed", 0);
     UsableInStore = conf.getNum("Data", "UsableInStore", 0);
     for(int i = 0;i<6;i++)
     {
@@ -115,25 +115,26 @@ void Content::ItemData::load(int id, Content::Manager *manager)
     mPARStatsArray[0].flatPARModPerLevel = conf.getNum("Data", "rFlatMPModPerLevel", 0.0f);
     mPARStatsArray[0].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatMPRegenModPerLevel", 0.0f);
     //Energy
-    mPARStatsArray[0].flatPARPoolMod = conf.getNum("Data", "FlatEnergyPoolMod", 0.0f);
-    mPARStatsArray[0].percentPARPoolMod = conf.getNum("Data", "PercentEnergyPoolMod", 0.0f);
-    mPARStatsArray[0].flatPARRegenMod = conf.getNum("Data", "FlatEnergyRegenMod", 0.0f);
-    mPARStatsArray[0].percentPARRegenMod = conf.getNum("Data", "PercentEnergyRegenMod", 0.0f);
-    mPARStatsArray[0].flatPARModPerLevel = conf.getNum("Data", "rFlatEnergyModPerLevel", 0.0f);
-    mPARStatsArray[0].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatEnergyRegenModPerLevel", 0.0f);
+    mPARStatsArray[1].flatPARPoolMod = conf.getNum("Data", "FlatEnergyPoolMod", 0.0f);
+    mPARStatsArray[1].percentPARPoolMod = conf.getNum("Data", "PercentEnergyPoolMod", 0.0f);
+    mPARStatsArray[1].flatPARRegenMod = conf.getNum("Data", "FlatEnergyRegenMod", 0.0f);
+    mPARStatsArray[1].percentPARRegenMod = conf.getNum("Data", "PercentEnergyRegenMod", 0.0f);
+    mPARStatsArray[1].flatPARModPerLevel = conf.getNum("Data", "rFlatEnergyModPerLevel", 0.0f);
+    mPARStatsArray[1].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatEnergyRegenModPerLevel", 0.0f);
     //Souls
-    mPARStatsArray[0].flatPARPoolMod = conf.getNum("Data", "FlatSoulsPoolMod", 0.0f);
-    mPARStatsArray[0].percentPARPoolMod = conf.getNum("Data", "PercentSoulsPoolMod", 0.0f);
-    mPARStatsArray[0].flatPARRegenMod = conf.getNum("Data", "FlatSoulsRegenMod", 0.0f);
-    mPARStatsArray[0].percentPARRegenMod = conf.getNum("Data", "PercentSoulsRegenMod", 0.0f);
-    mPARStatsArray[0].flatPARModPerLevel = conf.getNum("Data", "rFlatSoulsModPerLevel", 0.0f);
-    mPARStatsArray[0].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatSoulsRegenModPerLevel", 0.0f);
+    mPARStatsArray[2].flatPARPoolMod = conf.getNum("Data", "FlatSoulsPoolMod", 0.0f);
+    mPARStatsArray[2].percentPARPoolMod = conf.getNum("Data", "PercentSoulsPoolMod", 0.0f);
+    mPARStatsArray[2].flatPARRegenMod = conf.getNum("Data", "FlatSoulsRegenMod", 0.0f);
+    mPARStatsArray[2].percentPARRegenMod = conf.getNum("Data", "PercentSoulsRegenMod", 0.0f);
+    mPARStatsArray[2].flatPARModPerLevel = conf.getNum("Data", "rFlatSoulsModPerLevel", 0.0f);
+    mPARStatsArray[2].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatSoulsRegenModPerLevel", 0.0f);
     //Shield
-    mPARStatsArray[0].flatPARPoolMod = conf.getNum("Data", "FlatShieldPoolMod", 0.0f);
-    mPARStatsArray[0].percentPARPoolMod = conf.getNum("Data", "PercentShieldPoolMod", 0.0f);
-    mPARStatsArray[0].flatPARRegenMod = conf.getNum("Data", "FlatShieldRegenMod", 0.0f);
-    mPARStatsArray[0].percentPARRegenMod = conf.getNum("Data", "PercentShieldRegenMod", 0.0f);
-    mPARStatsArray[0].flatPARModPerLevel = conf.getNum("Data", "rFlatShieldModPerLevel", 0.0f);
-    mPARStatsArray[0].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatShieldRegenModPerLevel", 0.0f);
+    mPARStatsArray[3].flatPARPoolMod = conf.getNum("Data", "FlatShieldPoolMod", 0.0f);
+    mPARStatsArray[3].percentPARPoolMod = conf.getNum("Data", "PercentShieldPoolMod", 0.0f);
+    mPARStatsArray[3].flatPARRegenMod = conf.getNum("Data", "FlatShieldRegenMod", 0.0f);
+    mPARStatsArray[3].percentPARRegenMod = conf.getNum("Data", "PercentShieldRegenMod", 0.0f);
+    mPARStatsArray[3].flatPARModPerLevel = conf.getNum("Data", "rFlatShieldModPerLevel", 0.0f);
+    mPARStatsArray[3].flatPARRegenModPerLevel = conf.getNum("Data", "rFlatShieldRegenModPerLevel", 0.0f);
     InStore = conf.getNum("Data", "InStore", 1);
+    UseEffect = conf.getNum("Data", "UseEffect", 0);
 }

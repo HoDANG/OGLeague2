@@ -109,7 +109,7 @@ void SpellData::load(string name, Manager *manager)
         mLocationTargettingTypeInfo.mWidth[i] = conf.getNum("SpellData", "LocationTargettingWidth"+to_string(i), 0.0f);
         mLocationTargettingTypeInfo.mLength[i] = conf.getNum("SpellData", "LocationTargettingLength"+to_string(i), 0.0f);
     }
-    mParticleStartOffset = conf.getArray<float,3>("SpellData", "ParticleStartOffset", {0,0,0});
+    mParticleStartOffset = conf.getArray<float,3>("SpellData", "ParticleStartOffset", {0, 0, 0});
     mSpellRevealsChampion = conf.getNum("SpellData", "SpellRevealsChampion", 1) != 0;
     string prefrence = conf.getString("SpellData", "SelectionPreference", "none");
     if(prefrence == "friend")
