@@ -8,7 +8,7 @@ namespace Game
 class ObjLake : public ObjBuilding
 {
 public:
-    ObjLake();
+    ObjLake(World *world);
 };
 }
 

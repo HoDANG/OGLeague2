@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjAiMinion::ObjAiMinion()
+ObjAiMinion::ObjAiMinion(World *world)
+    : ObjAiBase(world)
 {
 
 }

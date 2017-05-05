@@ -72,7 +72,10 @@ SOURCES += main.cpp \
     obj/attackableunits/building/objshop.cpp \
     obj/attackableunits/building/objlake.cpp \
     obj/attackableunits/building/objnavpoint.cpp \
-    obj/spellmissile/objspellmissile.cpp
+    obj/spellmissile/objspellmissile.cpp \
+    rep/replicationmanager.cpp \
+    rep/replicationhelper.cpp \
+    common/health.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -406,7 +409,10 @@ HEADERS += \
     obj/attackableunits/building/objnavpoint.h \
     obj/spellmissile/objspellmissile.h \
     obj/gameobjectsall.h \
-    common/stringutils.h
+    common/stringutils.h \
+    rep/replicationmanager.h \
+    rep/replicationhelper.h \
+    common/health.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

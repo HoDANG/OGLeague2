@@ -2,13 +2,17 @@
 #define OBJHQ_H
 
 #include "objanimatedbuilding.h"
+#include "../../../../rep/replicationhelper.h"
 
 namespace Game
 {
 class ObjHQ : public ObjAnimatedBuilding
 {
+protected:
+    ReplicationManager mReplicationManager;
 public:
-    ObjHQ();
+    ObjHQ(World *world);
+    void SetupReplicationInfo();
 };
 }
 

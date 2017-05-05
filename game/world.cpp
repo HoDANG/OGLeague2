@@ -36,46 +36,44 @@ GameObject *World::CreateGameObject(string className, string loadName, r3dPoint3
 {
     GameObject *obj;
     if(className == "ObjAiBase")
-        obj = new ObjAiBase();
+        obj = new ObjAiBase(this);
     else if(className == "ObjAiMinion")
-        obj = new ObjAiMinion();
+        obj = new ObjAiMinion(this);
     else if(className == "ObjAiHero")
-        obj = new ObjAiHero();
+        obj = new ObjAiHero(this);
     else if(className == "ObjAiTurret")
-        obj = new ObjAiTurret();
+        obj = new ObjAiTurret(this);
     else if(className == "AttackableUnit")
-        obj = new AttackableUnit();
+        obj = new AttackableUnit(this);
     else if(className == "ObjAnimatedBuilding")
-        obj = new ObjAnimatedBuilding();
+        obj = new ObjAnimatedBuilding(this);
     else if(className == "ObjBarracksDampener")
-        obj = new ObjBarracksDampener();
+        obj = new ObjBarracksDampener(this);
     else if(className == "ObjHQ")
-        obj = new ObjHQ();
+        obj = new ObjHQ(this);
     else if(className == "ObjTurret")
-        obj = new ObjTurret();
+        obj = new ObjTurret(this);
     else if(className == "ObjBarracks")
-        obj = new ObjBarracks();
+        obj = new ObjBarracks(this);
     else if(className == "ObjBuilding")
-        obj = new ObjBuilding();
+        obj = new ObjBuilding(this);
     else if(className == "ObjLake")
-        obj = new ObjLake();
+        obj = new ObjLake(this);
     else if(className == "ObjLevelSizer")
-        obj = new ObjLevelSizer();
+        obj = new ObjLevelSizer(this);
     else if(className == "ObjNavPoint")
-        obj = new ObjNavPoint();
+        obj = new ObjNavPoint(this);
     else if(className == "ObjShop")
-        obj = new ObjShop();
+        obj = new ObjShop(this);
     else if(className == "ObjSpawnPoint")
-        obj = new ObjSpawnPoint();
+        obj = new ObjSpawnPoint(this);
     else if(className == "ObjSpellMissile")
-        obj = new ObjSpellMissile();
+        obj = new ObjSpellMissile(this);
     else if(className == "GameObject")
-        obj = new GameObject();
+        obj = new GameObject(this);
     else
         return nullptr;
 
-    obj->pWorld = this;
-    mObjectManager.add(obj);
     obj->Load(loadName);
     cout<<"Created "<<loadName<<" as "<<className<<": "<<(obj!=nullptr?"true":"false")<<endl;
     return obj;

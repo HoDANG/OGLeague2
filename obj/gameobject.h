@@ -5,6 +5,7 @@
 #include <string>
 #include "../dep/r3d.hpp"
 #include "../common/team_e.h"
+#include "../rep/replicationmanager.h"
 
 namespace Game {
 class World;
@@ -28,7 +29,7 @@ protected:
     team_e Team = team_e::TEAM_UNKNOWN;
     std::string mName;
 public:
-    GameObject();
+    GameObject(World* world);
     virtual bool Load(std::string name);
     uint32_t objFlags() const;
     void setObjFlags(const uint32_t &objFlags);

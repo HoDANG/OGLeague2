@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjNavPoint::ObjNavPoint()
+ObjNavPoint::ObjNavPoint(World *world)
+    : ObjBuilding(world)
 {
 
 }

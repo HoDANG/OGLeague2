@@ -8,7 +8,7 @@ namespace Game
 class ObjBuilding : public AttackableUnit
 {
 public:
-    ObjBuilding();
+    ObjBuilding(World *world);
     bool Load(std::string name);
 };
 }

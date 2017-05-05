@@ -8,7 +8,7 @@ namespace Game
 class ObjTurret : public ObjAnimatedBuilding
 {
 public:
-    ObjTurret();
+    ObjTurret(World *world);
 };
 }
 

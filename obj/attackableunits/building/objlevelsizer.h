@@ -8,7 +8,7 @@ namespace Game
 class ObjLevelSizer : public ObjBuilding
 {
 public:
-    ObjLevelSizer();
+    ObjLevelSizer(World *world);
 };
 }
 

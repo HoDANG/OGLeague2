@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjSpawnPoint::ObjSpawnPoint()
+ObjSpawnPoint::ObjSpawnPoint(World *world)
+    : ObjBuilding(world)
 {
 
 }

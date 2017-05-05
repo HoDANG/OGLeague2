@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjAiHero::ObjAiHero()
+ObjAiHero::ObjAiHero(World *world)
+    : ObjAiBase(world)
 {
 
 }

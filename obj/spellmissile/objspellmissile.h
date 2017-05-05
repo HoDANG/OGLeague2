@@ -8,7 +8,7 @@ namespace Game
 class ObjSpellMissile : public GameObject
 {
 public:
-    ObjSpellMissile();
+    ObjSpellMissile(World *world);
 };
 }
 

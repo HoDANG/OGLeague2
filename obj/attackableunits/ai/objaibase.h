@@ -8,7 +8,7 @@ namespace Game
 class ObjAiBase : public AttackableUnit
 {
 public:
-    ObjAiBase();
+    ObjAiBase(World *world);
 };
 }
 

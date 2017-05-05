@@ -4,6 +4,11 @@
 
 using namespace Game;
 
+GameObject::GameObject(World *world) : pWorld(world)
+{
+
+}
+
 uint32_t GameObject::objFlags() const
 {
     return mObjFlags;
@@ -24,8 +29,7 @@ void GameObject::assignIDByName()
 
 void GameObject::assignID()
 {
-    static int nextID = 1;
-    setNetworkID(0x40000000 | ++nextID);
+    setNetworkID(pWorld->objectmanager()->getNextID());
 }
 
 uint32_t GameObject::networkID() const
@@ -183,11 +187,6 @@ std::string GameObject::getName() const
 void GameObject::setName(const std::string &name)
 {
     mName = name;
-}
-
-GameObject::GameObject()
-{
-
 }
 
 bool GameObject::Load(std::string name)

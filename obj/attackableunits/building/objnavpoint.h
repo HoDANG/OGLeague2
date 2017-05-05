@@ -8,7 +8,7 @@ namespace Game
 class ObjNavPoint : public ObjBuilding
 {
 public:
-    ObjNavPoint();
+    ObjNavPoint(World *world);
 };
 }
 

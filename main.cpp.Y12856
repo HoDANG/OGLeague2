@@ -34,24 +34,6 @@ void testRepLication(int cid)
         return;
     }
     b->mHealth.mCurrent.Set(300);
-
-
-    stringstream buff1;
-    PKT_OnEnterVisiblityClient_s ans2;
-    ans2.fromID = b->networkID();
-    buff1<ans2;
-    for(int i=0;i<13;i++)
-        buff1 < (uint8_t) 0;             //unk
-    buff1 < (float)1.0f;                 //some time?
-    for(int i=0;i<13;i++)
-        buff1 < (uint8_t) 0;              //unk
-    buff1 < (uint8_t) 3                  //type
-            < (uint32_t) 1                      //syncID
-            < (float) 26.0f < (float) 280.0f    //x y
-            < (float) 26.0f < (float) 280.0f;   //x y
-    string tmp1 = buff1.str();
-    //server->sendPacket(cid, (uint8_t*) tmp1.c_str(), tmp1.size());
-
     stringstream buff;
     PKT_OnReplication_s rep;
     rep.syncID = syncID++;
@@ -64,10 +46,9 @@ void testRepLication(int cid)
     buff<repheader;
     buff<((uint32_t)1 << b->mHealth.mCurrent.mIndex);
     buff<b->mHealth.mCurrent.mValue;
-    string tmp2 = buff.str();
-    server->sendPacket(cid, (uint8_t*) tmp2.c_str(), tmp2.size());
+    string tmp = buff.str();
+    server->sendPacket(cid, (uint8_t*) tmp.c_str(), tmp.size());
     cout<<"Sent rep for: "<<hex<<b->networkID()<<endl;
-    cout<<"Type: "<<b->mHealth.mCurrent.mType<<", index: "<<b->mHealth.mCurrent.mIndex<<endl;
 }
 
 void basicServer()
@@ -79,16 +60,9 @@ void basicServer()
     world.LoadWorld();
     server = new NetServer(ENET_HOST_ANY, 5119, "GLzvuWtyCfHyGhF2", 12);
 
-    server->OnConnected.connect([](uint32 cid){
-        cout<<"Connected: "<<cid<<endl;
-    });
-
-    server->OnDisconnected.connect([](uint32 cid){
-        cout<<"Disconnected: "<<cid<<endl;
-    });
-
     server->OnPayload[EGP_Chat].connect([](uint32_t cid, uint8_t* data, size_t size)
     {
+        server->sendPacket(cid, data, size, CHANNEL_MIDDLE_TIER_CHAT);
         EGP_Chat_s* payload = (EGP_Chat_s*)data;
         string chat((char*) &payload->buffer[0]);
         cout<<"Got chat message: "<<chat<<endl;
@@ -151,8 +125,6 @@ void basicServer()
         {
             testRepLication(cid);
         }
-
-        //server->sendPacket(cid, data, size, CHANNEL_MIDDLE_TIER_CHAT);
     });
 
     server->OnPayload[EGP_RequestJoinTeam].connect([](uint32_t cid, uint8_t* data, size_t size)

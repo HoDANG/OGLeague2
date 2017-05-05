@@ -7,8 +7,12 @@ namespace Game
 {
 class ObjBarracks : public ObjBuilding
 {
+protected:
+    ReplicationManager mReplicationManager;
 public:
-    ObjBarracks();
+    ObjBarracks(World *world);
+    void SetupReplicationInfo();
+
 };
 }
 

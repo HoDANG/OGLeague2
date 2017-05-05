@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjAiBase::ObjAiBase()
+ObjAiBase::ObjAiBase(World *world)
+    : AttackableUnit(world)
 {
 
 }

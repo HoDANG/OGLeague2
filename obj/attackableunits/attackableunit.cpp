@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-AttackableUnit::AttackableUnit()
+AttackableUnit::AttackableUnit(World *world)
+    : GameObject(world)
 {
 
 }

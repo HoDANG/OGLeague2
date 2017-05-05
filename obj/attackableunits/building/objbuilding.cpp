@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjBuilding::ObjBuilding()
+ObjBuilding::ObjBuilding(World *world)
+    : AttackableUnit(world)
 {
 
 }

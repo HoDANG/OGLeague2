@@ -8,7 +8,7 @@ namespace Game
 class ObjShop : public ObjBuilding
 {
 public:
-    ObjShop();
+    ObjShop(World *world);
     bool Load(std::string name);
 };
 }

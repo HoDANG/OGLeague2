@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjSpellMissile::ObjSpellMissile()
+ObjSpellMissile::ObjSpellMissile(World *world) :
+    GameObject(world)
 {
 
 }

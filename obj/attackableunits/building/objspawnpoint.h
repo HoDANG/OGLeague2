@@ -8,7 +8,7 @@ namespace Game
 class ObjSpawnPoint : public ObjBuilding
 {
 public:
-    ObjSpawnPoint();
+    ObjSpawnPoint(World *world);
 };
 }
 

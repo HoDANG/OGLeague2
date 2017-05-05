@@ -8,7 +8,7 @@ namespace Game
 class ObjAiHero : public ObjAiBase
 {
 public:
-    ObjAiHero();
+    ObjAiHero(World *world);
 };
 }
 

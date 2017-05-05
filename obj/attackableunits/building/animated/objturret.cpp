@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjTurret::ObjTurret()
+ObjTurret::ObjTurret(World *world)
+    : ObjAnimatedBuilding(world)
 {
 
 }

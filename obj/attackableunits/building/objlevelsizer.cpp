@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjLevelSizer::ObjLevelSizer()
+ObjLevelSizer::ObjLevelSizer(World *world)
+    : ObjBuilding(world)
 {
 
 }

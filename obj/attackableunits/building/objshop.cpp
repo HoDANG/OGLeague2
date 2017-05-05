@@ -3,7 +3,8 @@
 
 using namespace Game;
 
-ObjShop::ObjShop()
+ObjShop::ObjShop(World *world)
+    : ObjBuilding(world)
 {
 
 }

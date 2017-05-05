@@ -8,7 +8,7 @@ namespace Game
 class ObjAiTurret : public ObjAiBase
 {
 public:
-    ObjAiTurret();
+    ObjAiTurret(World *world);
 };
 }
 

@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjAnimatedBuilding::ObjAnimatedBuilding()
+ObjAnimatedBuilding::ObjAnimatedBuilding(World *world)
+    : ObjBuilding(world)
 {
 
 }

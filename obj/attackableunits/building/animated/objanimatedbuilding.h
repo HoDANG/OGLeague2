@@ -8,7 +8,7 @@ namespace Game
 class ObjAnimatedBuilding : public ObjBuilding
 {
 public:
-    ObjAnimatedBuilding();
+    ObjAnimatedBuilding(World *world);
 };
 }
 

@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjAiTurret::ObjAiTurret()
+ObjAiTurret::ObjAiTurret(World *world)
+    : ObjAiBase(world)
 {
 
 }

@@ -2,7 +2,8 @@
 
 using namespace Game;
 
-ObjLake::ObjLake()
+ObjLake::ObjLake(World *world)
+    : ObjBuilding(world)
 {
 
 }
