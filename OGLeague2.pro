@@ -53,8 +53,26 @@ SOURCES += main.cpp \
     content/cfgreader.cpp \
     content/chardata.cpp \
     game/world.cpp \
-    game/map.cpp \
-    content/itemdata.cpp
+    content/itemdata.cpp \
+    obj/gameobject.cpp \
+    obj/attackableunits/attackableunit.cpp \
+    obj/attackableunits/ai/objaibase.cpp \
+    obj/attackableunits/ai/objaihero.cpp \
+    obj/attackableunits/ai/objaiminion.cpp \
+    obj/attackableunits/ai/objaiturret.cpp \
+    game/objectmanager.cpp \
+    obj/attackableunits/building/objbuilding.cpp \
+    obj/attackableunits/building/objbarracks.cpp \
+    obj/attackableunits/building/objspawnpoint.cpp \
+    obj/attackableunits/building/objlevelsizer.cpp \
+    obj/attackableunits/building/animated/objanimatedbuilding.cpp \
+    obj/attackableunits/building/animated/objbarracksdampener.cpp \
+    obj/attackableunits/building/animated/objhq.cpp \
+    obj/attackableunits/building/animated/objturret.cpp \
+    obj/attackableunits/building/objshop.cpp \
+    obj/attackableunits/building/objlake.cpp \
+    obj/attackableunits/building/objnavpoint.cpp \
+    obj/spellmissile/objspellmissile.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -366,8 +384,29 @@ HEADERS += \
     content/cfgreader.h \
     content/chardata.h \
     game/world.h \
-    game/map.h \
-    content/itemdata.h
+    content/itemdata.h \
+    obj/gameobject.h \
+    obj/attackableunits/attackableunit.h \
+    obj/attackableunits/ai/objaibase.h \
+    obj/attackableunits/ai/objaihero.h \
+    obj/attackableunits/ai/objaiminion.h \
+    obj/attackableunits/ai/objaiturret.h \
+    common/team_e.h \
+    game/objectmanager.h \
+    obj/attackableunits/building/objbuilding.h \
+    obj/attackableunits/building/objbarracks.h \
+    obj/attackableunits/building/objspawnpoint.h \
+    obj/attackableunits/building/objlevelsizer.h \
+    obj/attackableunits/building/animated/objanimatedbuilding.h \
+    obj/attackableunits/building/animated/objbarracksdampener.h \
+    obj/attackableunits/building/animated/objhq.h \
+    obj/attackableunits/building/animated/objturret.h \
+    obj/attackableunits/building/objshop.h \
+    obj/attackableunits/building/objlake.h \
+    obj/attackableunits/building/objnavpoint.h \
+    obj/spellmissile/objspellmissile.h \
+    obj/gameobjectsall.h \
+    common/stringutils.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

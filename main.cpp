@@ -1,19 +1,15 @@
 #include <iostream>
 #include <inttypes.h>
 #include <string>
-#include "nav/navgrid.h"
-#include "content/manager.h"
-#include "content/spelldata.h"
-#include "content/itemdata.h"
+#include "game/world.h"
 
 using namespace std;
 
 int main()
 {
-    Content::Manager man;
-    man.setBasePaths({"C:/Games/lol-1.0.0.673"});
-    Content::ItemData sunfire;
-    sunfire.load(3068, man);
-    cout<<sunfire.mFlatArmorMod<<endl;
+    Game::World world;
+    world.content()->setBasePaths({"C:/lol/LoL-1.0.0.673"});
+    world.setLevelName("Map1");
+    world.LoadWorld();
     return 0;
 }

@@ -7,19 +7,14 @@
 using namespace std;
 using namespace Game;
 
-std::string World::levelName() const
-{
-    return mLevelName;
-}
-
-void World::setLevelName(const std::string &levelName)
-{
-    mLevelName = levelName;
-}
-
 Content::Manager *World::content()
 {
     return &mContent;
+}
+
+Map *World::gamemap()
+{
+    return &mMap;
 }
 
 ObjectManager *World::objectmanager()
@@ -34,6 +29,7 @@ void World::init()
 
 GameObject *World::CreateGameObject(string className, string loadName, r3dPoint3D pos, int flags, void *data)
 {
+    std::cout<<className<<std::endl;
     GameObject *obj;
     if(className == "ObjAiBase")
         obj = new ObjAiBase();
@@ -77,18 +73,17 @@ GameObject *World::CreateGameObject(string className, string loadName, r3dPoint3
     obj->pWorld = this;
     mObjectManager.add(obj);
     obj->Load(loadName);
-    cout<<"Created "<<loadName<<" as "<<className<<": "<<(obj!=nullptr?"true":"false")<<endl;
     return obj;
 }
 
 GameObject *World::CreateWorldObject(string loadName)
 {
-
-    static struct {
-        string name; //String identifier in loadName
-        string obj;  //Object class name
-        bool client; //Client only
-    } objs[] = {
+    struct WorldObj {
+        string name;
+        string obj;
+        bool client;
+    };
+    static WorldObj objs[] = {
         {"Spawn_Barracks",  "ObjBarracks",          0},
         {"__Spawn_",        "ObjSpawnPoint",		0},
         {"__LevelSize_",    "ObjLevelSizer",		0},
@@ -102,32 +97,14 @@ GameObject *World::CreateWorldObject(string loadName)
     };
     for(auto o : objs)
     {
-        if(strstr(loadName.c_str(), o.name.c_str())!=0)
+        if(_stricmp(loadName.c_str(), o.name.c_str()))
         {
-            if(o.client)
-                return nullptr;
             r3dPoint3D pos;
             pos.x = 0;
             pos.y = 0;
             pos.z = 0;
-            GameObject* obj = CreateGameObject(o.obj, loadName, pos, 64, 0);
-            obj->assignIDByName();
-            return obj;
+            return CreateGameObject(o.obj, loadName, pos, 64, 0);
         }
     }
     return nullptr;
-}
-
-void World::LoadWorld()
-{
-    mGrid.load(mContent.getFile("LEVELS/"+mLevelName+"/AIPath.aimesh_ngrid"));
-    ifstream dsc(mContent.getFile("LEVELS/"+mLevelName+"/Scene/room.dsc"));
-    std::string name, quality;
-    while(dsc >> name >> quality)
-    {
-        if(name.size()<6)
-            continue;
-        name = name.substr(0, name.size() - 4);
-        CreateWorldObject(name);
-    }
 }

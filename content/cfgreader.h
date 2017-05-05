@@ -42,11 +42,13 @@ public:
 
     void readAscii(std::string fileName)
     {
-        readAscii(std::ifstream(fileName));
+        std::ifstream file(fileName);
+        readAscii(file);
     }
     void readBinary(std::string fileName)
     {
-        readBinary(std::ifstream(fileName, std::ios::binary));
+        std::ifstream file(fileName, std::ios::binary);
+        readBinary(file);
     }
 
     inline bool has(std::string section, std::string name)

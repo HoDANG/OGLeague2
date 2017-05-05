@@ -4,7 +4,9 @@
 #include <memory>
 #include "../content/manager.h"
 #include "../dep/wink.hpp"
-#include "map.h"
+#include "objectmanager.h"
+#include "../obj/gameobject.h"
+#include "../nav/navgrid.h"
 
 namespace Game
 {
@@ -12,11 +14,19 @@ class World
 {
 private:
     Content::Manager mContent;
-    Map mMap = Map(this);
+    ObjectManager mObjectManager = ObjectManager(this);
+    NavGrid mGrid;
+    std::string mLevelName;
 public:
     Content::Manager *content();
-    Map* gamemap();
+    ObjectManager *objectmanager();
     void init();
+    GameObject* CreateGameObject(std::string className, std::string loadName, r3dPoint3D pos,
+                                 int flags, void* data);
+    GameObject* CreateWorldObject(std::string loadName);
+    void LoadWorld();
+    std::string levelName() const;
+    void setLevelName(const std::string &levelName);
 };
 }
 

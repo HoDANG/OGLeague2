@@ -1,6 +1,9 @@
 #include "chardata.h"
 #include "cfgreader.h"
 #include "manager.h"
+
+#include <string.h>
+
 using namespace std;
 using namespace Content;
 
@@ -11,9 +14,9 @@ void CharData::load(string name, Manager *manager)
     Config conf = manager->config("DATA/Characters/"+name+"/"+name+".ini");
     Config general = manager->config("DATA/Characters/GeneralCharacterData.ini");
 
-    bIsMelee = stricmp(conf.getString("Data", "IsMelee", "no").c_str(),
+    bIsMelee = _stricmp(conf.getString("Data", "IsMelee", "no").c_str(),
                        "yes") == 0;
-    bIsWaypoint = stricmp(conf.getString("Data", "IsWaypoint", "no").c_str(),
+    bIsWaypoint = _stricmp(conf.getString("Data", "IsWaypoint", "no").c_str(),
                           "yes") == 0;
 
     string klass = conf.getString("Data", "Classification", "Arcane");
