@@ -21,6 +21,7 @@ public:
     void RegisterNetworkObjects();
     uint32_t getNextID();
     GameObject* getByName(std::string name);
+    void update();
 };
 }
 

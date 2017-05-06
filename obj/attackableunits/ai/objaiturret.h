@@ -9,6 +9,7 @@ class ObjAiTurret : public ObjAiBase
 {
 public:
     ObjAiTurret(World *world);
+    void SetupReplicationInfo();
 };
 }
 

@@ -7,6 +7,20 @@
 #include "../common/team_e.h"
 #include "../rep/replicationmanager.h"
 
+enum EGameObjectFlags
+{
+  OBJFLAG_IgnoreCollisionOnPlacement = 0x1,
+  OBJFLAG_CollideNever = 0x2,
+  OBJFLAG_SkipCastRay = 0x10,
+  OBJFLAG_SkipDraw = 0x20,
+  OBJFLAG_UserCastRay = 0x80,
+  OBJFLAG_SkipUpdate = 0x100,
+  OBJFLAG_NotifyOnEnterExit = 0x200,
+  OBJFLAG_JustCreated = 0x100000,
+  OBJFLAG_DefaultObject = 0x200000,
+};
+
+
 namespace Game {
 class World;
 class GameObject

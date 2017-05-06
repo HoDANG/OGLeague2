@@ -50,7 +50,7 @@ void testRepLication(int cid)
             < (float) 26.0f < (float) 280.0f    //x y
             < (float) 26.0f < (float) 280.0f;   //x y
     string tmp1 = buff1.str();
-    //server->sendPacket(cid, (uint8_t*) tmp1.c_str(), tmp1.size());
+    server->sendPacket(cid, (uint8_t*) &ans2, sizeof(ans2));
 
     stringstream buff;
     PKT_OnReplication_s rep;
@@ -65,9 +65,9 @@ void testRepLication(int cid)
     buff<((uint32_t)1 << b->mHealth.mCurrent.mIndex);
     buff<b->mHealth.mCurrent.mValue;
     string tmp2 = buff.str();
-    server->sendPacket(cid, (uint8_t*) tmp2.c_str(), tmp2.size());
-    cout<<"Sent rep for: "<<hex<<b->networkID()<<endl;
-    cout<<"Type: "<<b->mHealth.mCurrent.mType<<", index: "<<b->mHealth.mCurrent.mIndex<<endl;
+    //server->sendPacket(cid, (uint8_t*) tmp2.c_str(), tmp2.size());
+    //cout<<"Sent rep for: "<<hex<<b->networkID()<<endl;
+    //cout<<"Type: "<<b->mHealth.mCurrent.mType<<", index: "<<b->mHealth.mCurrent.mIndex<<endl;
 }
 
 void basicServer()
@@ -96,57 +96,6 @@ void basicServer()
         string key;
         in<<chat;
         in>>key;
-        /*
-        if(key == "s")
-        {
-            uint32_t mastern;
-            uint32_t fieldn;
-            string type;
-            uint32_t val = 0;
-            in>>mastern;
-            in>>fieldn;
-            in>>type;
-            if(type == "f")
-                in>>*((float*)&val);
-            if(type == "i")
-                in>>*((int32_t*)&val);
-            if(type == "u")
-                in>>val;
-
-            stringstream buff;
-            PKT_OnReplication_s rep;
-            rep.syncID = syncID++;
-            rep.count = 1;
-            rep.fromID = 0;
-            RepHeader repheader;
-            repheader.networkID = 0x40000001;
-            repheader.setMaps = ((uint8_t)1 << (mastern-1));;
-            buff<rep;
-            buff<repheader;
-            buff<((uint32_t)1 << (fieldn-1));
-            buff<val;
-            string tmp = buff.str();
-            server->sendPacket(cid, (uint8_t*) tmp.c_str(), tmp.size());
-        }
-        else if(key == "m")
-        {
-            float x1,y1, x2, y2;
-            in>>x1>>y1>>x2>>y2;
-            DynamicPacket<PKT_OnEnterVisiblityClient_s> ans2;
-            ans2.base()->fromID = 0x40000001;
-            for(int i=0;i<13;i++)
-                ans2 < (uint8_t) 0;
-            ans2 < (float)1.0f;
-            for(int i=0;i<13;i++)
-                ans2 < (uint8_t) 0;
-            ans2 < (uint8_t) 3
-                    < (uint32_t) syncID2++
-                    < x1 <  y1    //x y
-                    < x2  < y2;   //x y
-            server->sendPacket(cid, ans2.data(), ans2.size());
-        }
-        else
-        */
         if(key == "t")
         {
             testRepLication(cid);
@@ -262,6 +211,7 @@ void basicServer()
                 < (float) 26.0f < (float) 280.0f;   //x y
         server->sendPacket(cid, ans2.data(), ans2.size());
     });
+
 
     if(!server->start())
     {

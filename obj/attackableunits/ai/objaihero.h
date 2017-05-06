@@ -9,6 +9,7 @@ class ObjAiHero : public ObjAiBase
 {
 public:
     ObjAiHero(World *world);
+    void SetupReplicationInfo();
 };
 }
 

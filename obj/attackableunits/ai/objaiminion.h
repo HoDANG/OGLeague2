@@ -9,6 +9,7 @@ class ObjAiMinion : public ObjAiBase
 {
 public:
     ObjAiMinion(World *world);
+    void SetupReplicationInfo();
 };
 }
 

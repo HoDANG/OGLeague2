@@ -37,4 +37,9 @@ GameObject *ObjectManager::getByName(std::string name)
     return nullptr;
 }
 
+void ObjectManager::update()
+{
+
+}
+
 

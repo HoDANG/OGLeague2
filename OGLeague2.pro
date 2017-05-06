@@ -75,7 +75,8 @@ SOURCES += main.cpp \
     obj/spellmissile/objspellmissile.cpp \
     rep/replicationmanager.cpp \
     rep/replicationhelper.cpp \
-    common/health.cpp
+    common/health.cpp \
+    common/mana.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -412,7 +413,10 @@ HEADERS += \
     common/stringutils.h \
     rep/replicationmanager.h \
     rep/replicationhelper.h \
-    common/health.h
+    common/health.h \
+    rep/characterintermediaterep.h \
+    rep/characterstate.h \
+    common/mana.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm
