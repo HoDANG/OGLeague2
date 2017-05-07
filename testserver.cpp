@@ -8,7 +8,8 @@ TestServer::TestServer(NetServer *server)
       OnPacket<PKT_C2S_QueryStatusReq, PKT_C2S_QueryStatusReq_s>(server),
       OnPacket<PKT_SynchVersionC2S, PKT_SynchVersionC2S_s>(server),
       OnPacket<PKT_C2S_CharSelected, PKT_C2S_CharSelected_s>(server),
-      OnPacket<PKT_C2S_ClientReady, PKT_C2S_ClientReady_s>(server)
+      OnPacket<PKT_C2S_ClientReady, PKT_C2S_ClientReady_s>(server),
+      OnPayload<EGP_Chat, EGP_Chat_s>(server)
 {
 }
 
@@ -125,6 +126,25 @@ void TestServer::Handle(uint32_t cid, PKT_C2S_ClientReady_s *req, size_t size)
             < (float) 26.0f < (float) 280.0f    //x y
             < (float) 26.0f < (float) 280.0f;   //x y
     server->sendPacket(cid, ans2.data(), ans2.size());
+}
+
+void TestServer::Handle(uint32_t cid, EGP_Chat_s *pkt, size_t size)
+{
+    string chat((char*) &pkt->buffer[0]);
+    cout<<"Got chat message: "<<chat<<endl;
+    stringstream in;
+    string key;
+    in<<chat;
+    in>>key;
+    server->sendPacket(cid, (uint8_t*) pkt, size, CHANNEL_MIDDLE_TIER_CHAT);
+    if(key == "t")
+    {
+        EGP_Chat_s message;
+        strcpy(message.buffer, "Yolo!");
+        message.bufferLen = 5;
+        message.cid = cid;
+        server->sendPacket(cid, (uint8_t*) &message, size, CHANNEL_MIDDLE_TIER_CHAT);
+    }
 }
 
 void TestServer::Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *req, size_t size)

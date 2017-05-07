@@ -22,7 +22,8 @@ struct TestServer:
         public OnPacket<PKT_C2S_QueryStatusReq, PKT_C2S_QueryStatusReq_s>,
         public OnPacket<PKT_SynchVersionC2S, PKT_SynchVersionC2S_s>,
         public OnPacket<PKT_C2S_CharSelected, PKT_C2S_CharSelected_s>,
-        public OnPacket<PKT_C2S_ClientReady, PKT_C2S_ClientReady_s>
+        public OnPacket<PKT_C2S_ClientReady, PKT_C2S_ClientReady_s>,
+        public OnPayload<EGP_Chat, EGP_Chat_s>
 
 {
     NetServer *server;
@@ -50,6 +51,8 @@ struct TestServer:
     void Handle(uint32_t cid, PKT_C2S_CharSelected_s* req, size_t size);
 
     void Handle(uint32_t cid, PKT_C2S_ClientReady_s* req, size_t size);
+
+    void Handle(uint32_t cid, EGP_Chat_s *pkt, size_t size);
 };
 
 #endif // TESTSERVER_H
