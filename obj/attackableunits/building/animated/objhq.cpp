@@ -46,9 +46,8 @@ void ObjHQ::SetupReplicationInfo()
         REP_FLAGS = REP_FLAGS | ONVISIBLE_REP_DATA;
         npc_OnVisibleRepData.numVars = 0;
     }
-    ReplicationHelper::FillBuildingLocalRepData(this, &npc_LocalRepData1, &mReplicationManager, (void*)this);
-    mReplicationManager.Init((void*)this,
-                             &npc_ClientSpecific,
+    ReplicationHelper::FillBuildingLocalRepData(this, &npc_LocalRepData1, &mReplicationManager);
+    mReplicationManager.Init(&npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,

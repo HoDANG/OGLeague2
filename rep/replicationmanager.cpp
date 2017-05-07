@@ -1,7 +1,7 @@
 #include "replicationmanager.h"
 
 
-void ReplicationManager::Init(void *base, CReplInfo32 *npc_ClientOnly,
+void ReplicationManager::Init(CReplInfo32 *npc_ClientOnly,
                               CReplInfo32 *npc_LocalRepData1, CReplInfo32 *npc_LocalRepData2,
                               CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData)
 {
@@ -10,7 +10,6 @@ void ReplicationManager::Init(void *base, CReplInfo32 *npc_ClientOnly,
     mLocalRepData2.Init(npc_LocalRepData2);
     mMapRepData.Init(npc_MapRepData);
     mOnVisibleRepData.Init(npc_OnVisibleRepData);
-    mBase = base;
 }
 
 void ReplicationManager::MarkChanged(ReplicationType type, int index, uint32_t value)
@@ -39,6 +38,7 @@ void ReplicationManager::MarkChanged(ReplicationType type, int index, uint32_t v
     if(rd->info == nullptr)
         return;
     rd->valuesThatHaveChanged |= (1 << index);
+    rd->mValueCopy[index] = value;
 }
 
 

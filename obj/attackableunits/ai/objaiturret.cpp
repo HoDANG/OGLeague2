@@ -46,13 +46,12 @@ void ObjAiTurret::SetupReplicationInfo()
         REP_FLAGS = REP_FLAGS | ONVISIBLE_REP_DATA;
         npc_OnVisibleRepData.numVars = 0;
     }
-    ReplicationHelper::FillBasicLocalRepDataTower(&charInterRep,&npc_LocalRepData1, &mReplicationManager, this);
-    mHealth.mCurrent.SetReplicator(this, "mHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
-    mHealth.mMax.SetReplicator(this, "mMaxHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
-    ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1, &mReplicationManager, this);
-    ReplicationHelper::FillBasicMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager, this);
-    mReplicationManager.Init(this,
-                             &npc_ClientSpecific,
+    ReplicationHelper::FillBasicLocalRepDataTower(&charInterRep,&npc_LocalRepData1, &mReplicationManager);
+    mHealth.mCurrent.SetReplicator("mHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
+    mHealth.mMax.SetReplicator("mMaxHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
+    ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1, &mReplicationManager);
+    ReplicationHelper::FillBasicMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager);
+    mReplicationManager.Init(&npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,

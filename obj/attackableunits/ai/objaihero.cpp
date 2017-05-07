@@ -47,8 +47,7 @@ void ObjAiHero::SetupReplicationInfo()
         REP_FLAGS = REP_FLAGS | ONVISIBLE_REP_DATA;
         npc_OnVisibleRepData.numVars = 0;
     }
-    mReplicationManager.Init((void*)this,
-                             &npc_ClientSpecific,
+    mReplicationManager.Init(&npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,

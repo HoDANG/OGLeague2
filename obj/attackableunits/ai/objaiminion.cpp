@@ -46,24 +46,14 @@ void ObjAiMinion::SetupReplicationInfo()
         REP_FLAGS = REP_FLAGS | ONVISIBLE_REP_DATA;
         npc_OnVisibleRepData.numVars = 0;
     }
-
-    mHealth.mCurrent.mIndex = npc_LocalRepData1.addVar(this, &mHealth.mCurrent, "mHP");
-    mHealth.mCurrent.mType = LOCAL_REP_DATA1;
-    mHealth.mCurrent.mReplicator = &mReplicationManager;
-    mPAR.mCurrent.mIndex = npc_LocalRepData1.addVar(this, &mPAR.mCurrent, "mMP");
-    mPAR.mCurrent.mReplicator = &mReplicationManager;
-    mPAR.mCurrent.mType = LOCAL_REP_DATA1;
-    mHealth.mMax.mIndex = npc_LocalRepData1.addVar(this, &mHealth.mMax, "mMaxHP");
-    mHealth.mMax.mType = LOCAL_REP_DATA1;
-    mHealth.mMax.mReplicator = &mReplicationManager;
-    mPAR.mMax.mIndex = npc_LocalRepData1.addVar(this, &mPAR.mMax, "mMaxMP");
-    mPAR.mMax.mReplicator = &mReplicationManager;
-    mPAR.mMax.mType = LOCAL_REP_DATA1;
-    ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1, &mReplicationManager, this);
-    ReplicationHelper::FillBasicLocalRepData(&charInterRep, &npc_LocalRepData1, &mReplicationManager, this);
-    ReplicationHelper::FillBasicMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager, this);
-    mReplicationManager.Init(this,
-                             &npc_ClientSpecific,
+    mHealth.mCurrent.SetReplicator("mHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
+    mPAR.mCurrent.SetReplicator("mMP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
+    mHealth.mMax.SetReplicator("mMaxHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
+    mPAR.mMax.SetReplicator("mMaxMP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
+    ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1, &mReplicationManager);
+    ReplicationHelper::FillBasicLocalRepData(&charInterRep, &npc_LocalRepData1, &mReplicationManager);
+    ReplicationHelper::FillBasicMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager);
+    mReplicationManager.Init( &npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,

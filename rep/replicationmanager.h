@@ -19,14 +19,12 @@ struct CReplInfo32
 {
     int numVars = 0;
     std::string varNames[32];
-    uint32_t varOffsets[32];
-    int addVar(void *base, void *var, std::string name)
+    int addVar(std::string name)
     {
         if(numVars > 0)
             for(int i = 0;i<numVars;i++)
                 if(_stricmp(varNames[i].c_str(),name.c_str()))
                     return i;
-        varOffsets[numVars] = (uint32_t)var - (uint32_t)base;
         varNames[numVars] = name;
         return numVars++;
     }
@@ -36,6 +34,7 @@ struct CReplData32
 {
     CReplInfo32 *info = nullptr;
     uint32_t valuesThatHaveChanged = 0;
+    uint32_t mValueCopy[32];
     bool firstTime = false;
     void Init(CReplInfo32 *ri)
     {
@@ -57,8 +56,7 @@ struct ReplicationManager
     unsigned int mSyncIDRepData2 = 0;
     unsigned int mSyncIDMapRepData = 0;
     unsigned int mSyncIDOnVisibleRepData = 0;
-    void *mBase;
-    void Init( void *base, CReplInfo32 *npc_ClientOnly, CReplInfo32 *npc_LocalRepData1,
+    void Init(CReplInfo32 *npc_ClientOnly, CReplInfo32 *npc_LocalRepData1,
                CReplInfo32 *npc_LocalRepData2, CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData);
     void MarkChanged(ReplicationType type, int index, uint32_t value);
 };
@@ -70,18 +68,19 @@ struct Replicate
     int mIndex;
     ReplicationType mType;
     ReplicationManager *mReplicator = nullptr;
-    void SetReplicator( void *base, std::string name, CReplInfo32 *crep, ReplicationType type,
+    void SetReplicator(std::string name, CReplInfo32 *crep, ReplicationType type,
                         ReplicationManager *replicator)
     {
-        this->mIndex = crep->addVar(base, (void*) this, name);
+        this->mIndex = crep->addVar(name);
         this->mType = type;
         this->mReplicator = replicator;
+        Set(mValue);
     }
     void Set(T newValue)
     {
         mValue = newValue;
         if(mReplicator != nullptr)
-            mReplicator->MarkChanged(mType, mIndex, mValue);
+            mReplicator->MarkChanged(mType, mIndex, *((uint32_t*)&mValue));
     }
 };
 #endif // REPLICATIONMANAGER_H
