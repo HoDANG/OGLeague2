@@ -37,8 +37,8 @@ public:
                     uint8_t channel = CHANNEL_GENERIC_APP_BROADCAST,
                     uint32_t flags = ENET_PACKET_FLAG_RELIABLE);
 
-    wink::signal<std::function<void(uint32_t cid, uint8_t* data, size_t size)>> OnPacket[255];
-    wink::signal<std::function<void(uint32_t cid, uint8_t* data, size_t size)>> OnPayload[255];
+    wink::signal<wink::slot<void(uint32_t cid, uint8_t* data, size_t size)>> OnPacket[255];
+    wink::signal<wink::slot<void(uint32_t cid, uint8_t* data, size_t size)>> OnPayload[255];
     wink::signal<std::function<void(uint32_t cid)>> OnConnected;
     wink::signal<std::function<void(uint32_t cid)>> OnDisconnected;
 };

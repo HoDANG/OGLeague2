@@ -76,7 +76,8 @@ SOURCES += main.cpp \
     rep/replicationmanager.cpp \
     rep/replicationhelper.cpp \
     common/health.cpp \
-    common/mana.cpp
+    common/mana.cpp \
+    testserver.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -416,7 +417,9 @@ HEADERS += \
     common/health.h \
     rep/characterintermediaterep.h \
     rep/characterstate.h \
-    common/mana.h
+    common/mana.h \
+    net/onpacket.h \
+    testserver.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm
