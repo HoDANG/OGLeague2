@@ -419,7 +419,9 @@ HEADERS += \
     rep/characterstate.h \
     common/mana.h \
     net/onpacket.h \
-    testserver.h
+    testserver.h \
+    common/experience.h \
+    common/gold.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

@@ -15,7 +15,8 @@ namespace
 ObjBarracksDampener::ObjBarracksDampener(World *world)
     : ObjAnimatedBuilding(world)
 {
-
+    mReplicationManager.mBase = this;
+    SetupReplicationInfo();
 }
 
 void ObjBarracksDampener::SetupReplicationInfo()
@@ -50,5 +51,6 @@ void ObjBarracksDampener::SetupReplicationInfo()
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,
-                             &npc_OnVisibleRepData);
+                             &npc_OnVisibleRepData,
+                             this);
 }

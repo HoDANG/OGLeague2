@@ -33,9 +33,12 @@ struct TestServer:
     std::string basePath = "C:/lol/LoL-1.0.0.673";
     int aSkin = 0;
     int aMap = 1;
-    int syncID = 0;
-    int syncID2 = 0;
+    int syncID = 1;
+    ObjAiHero *hero;
+
     TestServer(NetServer* server);
+
+
     void test();
 
     void Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size);

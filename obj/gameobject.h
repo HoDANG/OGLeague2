@@ -44,6 +44,7 @@ protected:
     std::string mName;
 public:
     GameObject(World* world);
+    virtual ~GameObject(){}
     virtual bool Load(std::string name);
     uint32_t objFlags() const;
     void setObjFlags(const uint32_t &objFlags);

@@ -16,7 +16,8 @@ namespace
 ObjBarracks::ObjBarracks(World *world)
     : ObjBuilding(world)
 {
-
+    mReplicationManager.mBase = this;
+    SetupReplicationInfo();
 }
 
 void ObjBarracks::SetupReplicationInfo()
@@ -51,5 +52,6 @@ void ObjBarracks::SetupReplicationInfo()
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,
-                             &npc_OnVisibleRepData);
+                             &npc_OnVisibleRepData,
+                             this);
 }

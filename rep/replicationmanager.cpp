@@ -3,13 +3,14 @@
 
 void ReplicationManager::Init(CReplInfo32 *npc_ClientOnly,
                               CReplInfo32 *npc_LocalRepData1, CReplInfo32 *npc_LocalRepData2,
-                              CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData)
+                              CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData, void *base)
 {
     mClientOnlyRepData1.Init(npc_ClientOnly);
     mLocalRepData1.Init(npc_LocalRepData1);
     mLocalRepData2.Init(npc_LocalRepData2);
     mMapRepData.Init(npc_MapRepData);
     mOnVisibleRepData.Init(npc_OnVisibleRepData);
+    mBase = base;
 }
 
 void ReplicationManager::MarkChanged(ReplicationType type, int index, uint32_t value)
@@ -35,8 +36,7 @@ void ReplicationManager::MarkChanged(ReplicationType type, int index, uint32_t v
     }
     if(rd == nullptr)
         return;
-    if(rd->info == nullptr)
-        return;
+    mModified |= type;
     rd->valuesThatHaveChanged |= (1 << index);
     rd->mValueCopy[index] = value;
 }

@@ -18,6 +18,8 @@ struct ReplicationHelper
                                ReplicationManager* manager);
     static void FillBasicLocalRepData(CharacterIntermediateRep *charInter, CReplInfo32 *ri,
                                  ReplicationManager* manager);
+    static void FillHeroLocalRepData(CharacterIntermediateRep *charInter, CReplInfo32 *ri, ReplicationManager* replicator);
+    static void FillHeroMapRepData(CharacterIntermediateRep *charInter,  CReplInfo32 *ri, ReplicationManager* replicator);
 
 };
 

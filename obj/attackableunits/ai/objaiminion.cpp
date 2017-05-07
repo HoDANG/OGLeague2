@@ -17,6 +17,8 @@ namespace
 ObjAiMinion::ObjAiMinion(World *world)
     : ObjAiBase(world)
 {
+    mReplicationManager.mBase = this;
+    SetupReplicationInfo();
 }
 
 void ObjAiMinion::SetupReplicationInfo()
@@ -53,9 +55,10 @@ void ObjAiMinion::SetupReplicationInfo()
     ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1, &mReplicationManager);
     ReplicationHelper::FillBasicLocalRepData(&charInterRep, &npc_LocalRepData1, &mReplicationManager);
     ReplicationHelper::FillBasicMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager);
-    mReplicationManager.Init( &npc_ClientSpecific,
+    mReplicationManager.Init(&npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,
-                             &npc_OnVisibleRepData);
+                             &npc_OnVisibleRepData,
+                             this);
 }

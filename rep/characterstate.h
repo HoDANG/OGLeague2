@@ -1,6 +1,7 @@
 #ifndef CHARACTERSTATE_H
 #define CHARACTERSTATE_H
 
+#include <streambuf>
 #include "replicationmanager.h"
 
 struct CharacterState
@@ -34,5 +35,19 @@ struct CharacterState
     bool suppressingCallForHelp;
     bool callForHelpSuppresser;
 };
+
+inline std::basic_istream<char> &
+operator >> (std::basic_istream<char> & out, CharacterState::CompressedStates &data)
+{
+    return out >> data.Raw;
+}
+
+
+inline std::basic_ostream<char> &
+operator << (std::basic_ostream<char> & out,  CharacterState::CompressedStates &data)
+{
+    return out << data.Raw;
+}
+
 
 #endif // CHARACTERSTATE_H

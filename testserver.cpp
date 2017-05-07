@@ -1,5 +1,6 @@
 #include "testserver.h"
 
+
 TestServer::TestServer(NetServer *server)
     : server(server),
       OnPayload<EGP_RequestJoinTeam, EGP_RequestJoinTeam_s>(server),
@@ -15,9 +16,11 @@ TestServer::TestServer(NetServer *server)
 
 void TestServer::test()
 {
-    //world.content()->setBasePaths({basePath});
-    //world.setLevelName("Map"+to_string(aMap));
+    world.content()->setBasePaths({basePath});
+    world.setLevelName("Map"+to_string(aMap));
     //world.LoadWorld();
+    hero = dynamic_cast<ObjAiHero*>(world.CreateGameObject("ObjAiHero", "Annie", { 26.0f ,100.0f, 280.0f }, 64, 0));
+    hero->assignID();
     if(!server->start())
     {
         cout<<"Error starting server!"<<endl;
@@ -100,7 +103,7 @@ void TestServer::Handle(uint32_t cid, PKT_C2S_CharSelected_s *req, size_t size)
     strcpy(ans3.Skin, aChampion.c_str());
     ans3.skillLevel = 1;
     ans3.playerUID = cid;
-    ans3.netObjID = 0x40000001;
+    ans3.netObjID = hero->networkID();
     ans3.netNodeID = 0x40;
     strcpy(ans3.Name, aName.c_str());
     server->sendPacket(cid, (uint8_t*)&ans3, sizeof(ans3));
@@ -115,7 +118,7 @@ void TestServer::Handle(uint32_t cid, PKT_C2S_ClientReady_s *req, size_t size)
     server->sendPacket(cid, (uint8_t*)&ans1, sizeof(ans1));
 
     DynamicPacket<PKT_OnEnterVisiblityClient_s> ans2;
-    ans2.base()->fromID = 0x40000001;
+    ans2.base()->fromID = hero->networkID();
     for(int i=0;i<13;i++)
         ans2 < (uint8_t) 0;             //unk
     ans2 < (float)1.0f;                 //some time?
@@ -144,6 +147,32 @@ void TestServer::Handle(uint32_t cid, EGP_Chat_s *pkt, size_t size)
         message.bufferLen = 5;
         message.cid = cid;
         server->sendPacket(cid, (uint8_t*) &message, size, CHANNEL_MIDDLE_TIER_CHAT);
+    }
+    if(key == "stat")
+    {
+        string statName, statValue;
+        in>>statName;
+        in>>statValue;
+        auto rep = hero->mReplicationManager.find(statName);
+        if(rep != nullptr)
+        {
+            rep->Set(statValue);
+            stringstream buff;
+            PKT_OnReplication_s onRep;
+            onRep.syncID = syncID++;
+            onRep.count = 1;
+            onRep.fromID = 0;
+            RepHeader header;
+            header.networkID  = hero->networkID();
+            header.setMaps = rep->Type();
+            buff < onRep;
+            buff < header;
+            buff < ((uint32_t) 1 << rep->Index());
+            buff < rep->Value32();
+            string tmp2 = buff.str();
+            server->sendPacket(cid, (uint8_t*) tmp2.c_str(), tmp2.size());
+            cout<<"Stat "<<statName<<" is now "<<rep->Value()<<endl;
+        }
     }
 }
 

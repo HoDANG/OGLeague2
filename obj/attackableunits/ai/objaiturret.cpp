@@ -17,6 +17,8 @@ ObjAiTurret::ObjAiTurret(World *world)
     : ObjAiBase(world)
 {
 
+    mReplicationManager.mBase = this;
+    SetupReplicationInfo();
 }
 
 void ObjAiTurret::SetupReplicationInfo()
@@ -55,5 +57,6 @@ void ObjAiTurret::SetupReplicationInfo()
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,
                              &npc_MapRepData,
-                             &npc_OnVisibleRepData);
+                             &npc_OnVisibleRepData,
+                             this);
 }

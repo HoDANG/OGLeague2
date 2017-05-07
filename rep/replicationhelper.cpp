@@ -31,7 +31,7 @@ void ReplicationHelper::FillLocalRepData(AttackableUnit *unit, CharacterState *c
     unit->mIsInvulnerable.SetReplicator("IsInvulnerable", ri, LOCAL_REP_DATA1, replicator);
     unit->mIsTargetable.SetReplicator("IsTargetable", ri, LOCAL_REP_DATA1, replicator);
     unit->mIsTargetableToTeam.SetReplicator("IsTargetableToTeam", ri, LOCAL_REP_DATA1, replicator);
-    charState->mStates.SetReplicator("IsPhysicalImmune", ri, LOCAL_REP_DATA1, replicator);
+    unit->mIsPhysicalImmune.SetReplicator("IsPhysicalImmune", ri, LOCAL_REP_DATA1, replicator);
 }
 
 void ReplicationHelper::FillBasicMapRepData(CharacterIntermediateRep *charInter, CReplInfo32 *ri, ReplicationManager *replicator)
@@ -57,4 +57,40 @@ void ReplicationHelper::FillBasicLocalRepData(CharacterIntermediateRep *charInte
     charInter->mPARRegenRate.SetReplicator("mPARRegenRate", ri, LOCAL_REP_DATA1, replicator);
     charInter->mFlatMagicReduction.SetReplicator("mFlatMagicReduction", ri, LOCAL_REP_DATA1, replicator);
     charInter->mPercentCooldownMod.SetReplicator("mPercentMagicReduction", ri, LOCAL_REP_DATA1, replicator);
+}
+
+void ReplicationHelper::FillHeroLocalRepData(CharacterIntermediateRep *charInter,  CReplInfo32 *ri, ReplicationManager *replicator)
+{
+    charInter->mBaseAttackDamage.SetReplicator("mBaseAttackDamage", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mBaseAbilityDamage.SetReplicator("mBaseAbilityDamage", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mDodge.SetReplicator("mDodge", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mCrit.SetReplicator("mCrit", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mArmor.SetReplicator("mArmor", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mSpellBlock.SetReplicator("mSpellBlock", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mHPRegenRate.SetReplicator("mHPRegenRate", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPARRegenRate.SetReplicator("mPARRegenRate", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mAttackRange.SetReplicator("mAttackRange", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mFlatPhysicalDamageMod.SetReplicator("mFlatPhysicalDamageMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentPhysicalDamageMod.SetReplicator("mPercentPhysicalDamageMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mFlatMagicDamageMod.SetReplicator("mFlatMagicDamageMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentMagicDamageMod.SetReplicator("mPercentPhysicalDamageMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mFlatMagicReduction.SetReplicator("mFlatMagicReduction", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentMagicReduction.SetReplicator("mPercentMagicReduction", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mAttackSpeedMod.SetReplicator("mAttackSpeedMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mFlatCastRangeMod.SetReplicator("mFlatCastRangeMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentCooldownMod.SetReplicator("mPercentCooldownMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mFlatArmorPenetration.SetReplicator("mFlatArmorPenetration", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentArmorPenetration.SetReplicator("mPercentArmorPenetration", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mFlatMagicPenetration.SetReplicator("mFlatMagicPenetration", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentMagicPenetration.SetReplicator("mPercentMagicPenetration", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentLifeSteal.SetReplicator("mPercentLifeStealMod", ri, LOCAL_REP_DATA1, replicator);
+    charInter->mPercentSpellVamp.SetReplicator("mPercentSpellVampMod", ri, LOCAL_REP_DATA1, replicator);
+}
+
+void ReplicationHelper::FillHeroMapRepData(CharacterIntermediateRep *charInter,  CReplInfo32 *ri, ReplicationManager *replicator)
+{
+    charInter->mFlatBubbleRadiusMod.SetReplicator("mFlatBubbleRadiusMod", ri, MAP_REPDATA, replicator);
+    charInter->mPercentBubbleRadiusMod.SetReplicator("mPercentBubbleRadiusMod", ri, MAP_REPDATA, replicator);
+    charInter->mMoveSpeed.SetReplicator("mMoveSpeed", ri, MAP_REPDATA, replicator);
+    charInter->mCrit.SetReplicator("mCrit", ri, MAP_REPDATA, replicator);
 }

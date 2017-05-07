@@ -10,10 +10,10 @@ namespace Game
 class ObjAiBase : public AttackableUnit
 {
 protected:
-    ReplicationManager mReplicationManager;
     CharacterIntermediateRep charInterRep;
     CharacterState charState;
 public:
+    ReplicationManager mReplicationManager;
     ObjAiBase(World *world);
 };
 }
