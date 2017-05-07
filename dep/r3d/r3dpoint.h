@@ -15,6 +15,16 @@ struct r3dPoint3D
     float x = 0.0;
     float y = 0.0;
     float z = 0.0;
+    r3dPoint3D() : x(0), y(0), z(0)
+    {
+
+    }
+
+    r3dPoint3D(float X, float Y, float Z) : x(X), y(Y), z(Z)
+    {
+
+    }
+
     r3dPoint3D Normalize()
     {
         r3dPoint3D result;
