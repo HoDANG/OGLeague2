@@ -5,7 +5,6 @@
 #pragma pack(push, 1)
 struct PKT_Dummy_s : DefaultPacket<PKT_Dummy>
 {
-
 };
 #pragma pack(pop)
 

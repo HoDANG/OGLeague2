@@ -1,7 +1,7 @@
 #ifndef HPP_005_PKT_S2C_StartSpawn_HPP
 #define HPP_005_PKT_S2C_StartSpawn_HPP
 #include "../base.h"
-//1
+
 #pragma pack(push, 1)
 struct PKT_S2C_StartSpawn_s : DefaultPacket<PKT_S2C_StartSpawn>
 {

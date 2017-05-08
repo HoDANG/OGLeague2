@@ -5,9 +5,6 @@
 #pragma pack(push, 1)
 struct PKT_NPC_UpgradeSpellAns_s : DefaultPacket<PKT_NPC_UpgradeSpellAns>
 {
-    int8_t slot;
-    int8_t spellLevel;
-    int8_t spellTrainingPoints;
 };
 #pragma pack(pop)
 
