@@ -63,6 +63,7 @@ void ObjAiHero::SetupReplicationInfo()
     ReplicationHelper::FillHeroMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager);
 
     mExp.mLevel.SetReplicator("mLevelRef", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
+    mDebugDrawRadius.SetReplicator("mDebugDrawRadius", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
     mReplicationManager.Init(&npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,

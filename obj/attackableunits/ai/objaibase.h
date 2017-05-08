@@ -12,6 +12,7 @@ class ObjAiBase : public AttackableUnit
 protected:
     CharacterIntermediateRep charInterRep;
     CharacterState charState;
+    Replicate<float> mDebugDrawRadius;
 public:
     ReplicationManager mReplicationManager;
     ObjAiBase(World *world);

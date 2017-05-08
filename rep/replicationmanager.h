@@ -90,8 +90,9 @@ struct CReplData32
             return false;
         data.push_back(valuesThatHaveChanged);
         for(int i = 0; i<info->numVars; i++)
-            if(valuesThatHaveChanged && (1<<i))
+            if(valuesThatHaveChanged & ((uint32_t)1<<i))
                 data.push_back(mValueCopy[i]);
+        valuesThatHaveChanged = 0;
         return true;
     }
 };
@@ -117,6 +118,7 @@ struct ReplicationManager
         mLocalRepData2.Dump(data);
         mMapRepData.Dump(data);
         mOnVisibleRepData.Dump(data);
+        mModified = 0;
         return mModified;
     }
     ReplicateI* find(std::string name)

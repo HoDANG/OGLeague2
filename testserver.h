@@ -28,8 +28,8 @@ struct TestServer:
 {
     NetServer *server;
     Game::World world;
-    string aChampion = "Annie";
-    string aName = "Test";
+    string aChampion = "Bowmaster";
+    string aName = "Mitric";
     std::string basePath = "C:/lol/LoL-1.0.0.673";
     int aSkin = 0;
     int aMap = 1;
