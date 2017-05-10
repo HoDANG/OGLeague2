@@ -4,8 +4,6 @@
 #include "objanimatedbuilding.h"
 #include "../../../../rep/replicationhelper.h"
 
-namespace Game
-{
 class ObjBarracksDampener : public ObjAnimatedBuilding
 {
 protected:
@@ -14,6 +12,5 @@ public:
     ObjBarracksDampener(World *world);
      void SetupReplicationInfo();
 };
-}
 
 #endif // OBJBARRACKSDAMPENER_H

@@ -12,10 +12,9 @@
 #include "../dep/enet.hpp"
 #include "../dep/blowfish.hpp"
 #include "../dep/wink.hpp"
-#include "netserveri.h"
-#include "netpacketstream.hpp"
+#include "netserveri.hpp"
 
-class NetServer
+class NetServer : public NetServerI
 {
 protected:
     struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIABLE>
@@ -35,20 +34,19 @@ private:
 
     void OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
     {
-        std::vector<uint8_t> paket(data, data+size);
         switch(channel)
         {
         case CHANNEL_DEFAULT:
         case CHANNEL_GENERIC_APP_BROADCAST_UNRELIABLE:
         case CHANNEL_GENERIC_APP_BROADCAST:
         case CHANNEL_GENERIC_APP_TO_SERVER:
-            OnPacket[CHANNEL_DEFAULT][data[0]](cid, paket);
+            OnPacket[CHANNEL_DEFAULT][data[0]](cid, data, size);
             break;
         case CHANNEL_MIDDLE_TIER_CHAT:
-            OnPacket[CHANNEL_MIDDLE_TIER_CHAT][EGP_Chat](cid, paket);
+            OnPacket[CHANNEL_MIDDLE_TIER_CHAT][EGP_Chat](cid, data, size);
             break;
         case CHANNEL_MIDDLE_TIER_ROSTER:
-            OnPacket[CHANNEL_MIDDLE_TIER_ROSTER][data[0]](cid, paket);
+            OnPacket[CHANNEL_MIDDLE_TIER_ROSTER][data[0]](cid, data, size);
             break;
         default:
             std::cout<<"Unkown channel: "<<(uint32_t)channel<<std::endl;
@@ -145,24 +143,7 @@ public:
         return true;
     }
 
-    template<typename PKT>
-    bool sendPacketStream(uint32_t cid, NetPacketStream<PKT> stream)
-    {
-        std::vector<uint8_t> data((uint8_t*)&stream, (uint8_t*)&stream + sizeof(PKT));
-        stream > data;
-        sendPacketRaw(cid, &data[0], data.size(), PKT::CHANNEL, PKT::FLAGS);
-    }
-
-    template<typename PKT>
-    bool sendPacket(uint32_t cid, PKT pkt)
-    {
-        std::vector<uint8_t> data((uint8_t*)&pkt, (uint8_t*)&pkt + sizeof(PKT));
-        sendPacketRaw(cid, &data[0], data.size(), PKT::CHANNEL, PKT::FLAGS);
-    }
-
-
-
-    wink::signal<wink::slot<void(uint32_t, std::vector<uint8_t>)>> OnPacket[7][256];
+    wink::signal<wink::slot<void(uint32_t, uint8_t*, size_t)>> OnPacket[7][256];
     wink::signal<std::function<void(uint32_t cid)>> OnConnected;
     wink::signal<std::function<void(uint32_t cid)>> OnDisconnected;
 private:

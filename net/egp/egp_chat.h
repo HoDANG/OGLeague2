@@ -3,7 +3,7 @@
 
 #include "../../dep/enet.hpp"
 #include "../common/pkt_enums.h"
-#include "../netbasepacket.h"
+#include "../netbasepacket.hpp"
 #include <inttypes.h>
 
 

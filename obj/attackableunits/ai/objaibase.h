@@ -5,8 +5,6 @@
 #include "../../../rep/characterintermediaterep.h"
 #include "../../../rep/characterstate.h"
 
-namespace Game
-{
 class ObjAiBase : public AttackableUnit
 {
 protected:
@@ -17,6 +15,5 @@ public:
     ReplicationManager mReplicationManager;
     ObjAiBase(World *world);
 };
-}
 
 #endif // OBJAIBASE_H

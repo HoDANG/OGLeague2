@@ -1,8 +1,6 @@
 #include "objshop.h"
 #include <string.h>
 
-using namespace Game;
-
 ObjShop::ObjShop(World *world)
     : ObjBuilding(world)
 {

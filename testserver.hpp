@@ -8,13 +8,10 @@
 #include "obj/gameobjectsall.h"
 #include "net/netserver.hpp"
 #include "net/packets.hpp"
-#include "net/onpacket.h"
-#include "net/netpacketstream.hpp"
+#include "net/onpacket.hpp"
 
 
 using namespace std;
-using namespace Game;
-
 
 struct TestServer
         :
@@ -27,7 +24,7 @@ struct TestServer
         public OnPacket<PKT_C2S_ClientReady_s>
 {
     NetServer *server;
-    Game::World world;
+    World world;
     string aChampion = "Bowmaster";
     string aName = "Test";
     std::string basePath = "C:/lol/LoL-1.0.0.673";
@@ -67,7 +64,7 @@ struct TestServer
         }
     }
 
-    void Handle(uint32_t cid, const NetPacketStream<EGP_RequestJoinTeam_s>& req)
+    void Handle(uint32_t cid, EGP_RequestJoinTeam_s *req, size_t size)
     {
         EGP_TeamRosterUpdate_s res1;
         res1.orderMembers[0] = cid;
@@ -75,51 +72,51 @@ struct TestServer
         res1.current_teamsize_chaos = 0;
         res1.teamsize_order = 1;
         res1.teamsize_chaos = 0;
-        server->sendPacket(cid, res1);
+        server->sendPacketRaw(cid, (uint8_t*)&res1, sizeof(res1), CHANNEL_MIDDLE_TIER_ROSTER);
 
         EGP_RequestReskin_s res3;
         res3.Id_Player = cid;
         res3.skinID = aSkin;
         strcpy(res3.buffer, aChampion.c_str());
         res3.bufferLen = strlen(res3.buffer);
-        server->sendPacket(cid, res3);
+        server->sendPacketRaw(cid, (uint8_t*)&res3, sizeof(res3), CHANNEL_MIDDLE_TIER_ROSTER);
 
         EGP_RequestRename_s res2;
         res2.Id_Player = cid;
         res2.skinID = aSkin;
         strcpy(res2.buffer, aName.c_str());
         res2.bufferLen = strlen(res2.buffer);
-        server->sendPacket(cid, res2);
+        server->sendPacketRaw(cid, (uint8_t*)&res2, sizeof(res2), CHANNEL_MIDDLE_TIER_ROSTER);
     }
 
-    void Handle(uint32_t cid, const NetPacketStream<PKT_C2S_Ping_Load_Info_s> &req)
+    void Handle(uint32_t cid, PKT_C2S_Ping_Load_Info_s *req, size_t size)
     {
         PKT_S2C_Ping_Load_Info_s ans;
-        ans.info = req.info;
-        server->sendPacket(cid, ans);
+        ans.info = req->info;
+        server->sendPacketRaw(cid, (uint8_t*)&ans, sizeof(ans));
     }
 
-    void Handle(uint32_t cid, const NetPacketStream<PKT_C2S_Reconnect_s> &req)
+    void Handle(uint32_t cid, PKT_C2S_Reconnect_s *req, size_t size)
     {
         PKT_S2C_Reconnect_s ans;
         ans.cid = cid;
         ans.fromID = cid;
-        server->sendPacket(cid, ans);
+        server->sendPacketRaw(cid, (uint8_t*)&ans, sizeof(ans));
     }
-    void Handle(uint32_t cid, const NetPacketStream<PKT_C2S_QueryStatusReq_s> &req)
+    void Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *req, size_t size)
     {
         PKT_S2C_QueryStatusAns_s ans;
         ans.res = true;
-        server->sendPacket(cid, ans);
+        server->sendPacketRaw(cid, (uint8_t*)&ans, sizeof(ans));
     }
-    void Handle(uint32_t cid, const NetPacketStream<PKT_SynchVersionC2S_s> &req)
+    void Handle(uint32_t cid, PKT_SynchVersionC2S_s *req, size_t size)
     {
         PKT_SynchVersionS2C_s ans;
         ans.fromID = cid;
         ans.mIsVersionOk = true;
         strcpy(ans.mMapMode, "Automatic");
         ans.mMapToLoad = aMap;
-        strcpy(ans.mVersionString , req.mVersionString);
+        strcpy(ans.mVersionString , req->mVersionString);
         ans.playerInfo[0].ID = cid;
         ans.playerInfo[0].summonorLevel = 30;
         ans.playerInfo[0].summonorSpell1 = 0;
@@ -127,7 +124,7 @@ struct TestServer
         server->sendPacketRaw(cid, (uint8_t*) &ans, sizeof(ans));
     }
 
-    void Handle(uint32_t cid, const NetPacketStream<PKT_C2S_CharSelected_s> &req)
+    void Handle(uint32_t cid, PKT_C2S_CharSelected_s *req, size_t size)
     {
         PKT_S2C_StartSpawn_s ans1;
         ans1.numbBotsChaos = 0;
@@ -152,7 +149,7 @@ struct TestServer
         server->sendPacketRaw(cid, (uint8_t*)&ans2, sizeof(ans2));
     }
 
-    void Handle(uint32_t cid, const NetPacketStream<PKT_C2S_ClientReady_s> &req)
+    void Handle(uint32_t cid, PKT_C2S_ClientReady_s *req, size_t size)
     {
         PKT_S2C_StartGame_s ans1;
         server->sendPacketRaw(cid, (uint8_t*)&ans1, sizeof(ans1));

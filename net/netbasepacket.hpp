@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <stdint.h>
+#include <sstream>
+#include "netserveri.hpp"
 
 template <uint8_t TID, uint8_t TCHAN, uint32_t TFLAGS>
 struct NetBasePacket

@@ -1,8 +1,6 @@
 #include "objaiminion.h"
 #include "../../../rep/replicationhelper.h"
 
-using namespace Game;
-
 namespace
 {
     uint32_t REP_FLAGS = 0;

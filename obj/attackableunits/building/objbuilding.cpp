@@ -1,7 +1,5 @@
 #include "objbuilding.h"
 
-using namespace Game;
-
 ObjBuilding::ObjBuilding(World *world)
     : AttackableUnit(world)
 {

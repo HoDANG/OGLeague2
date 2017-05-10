@@ -1,8 +1,5 @@
 #include "objhq.h"
 
-
-using namespace Game;
-
 namespace
 {
     uint32_t REP_FLAGS = 0;

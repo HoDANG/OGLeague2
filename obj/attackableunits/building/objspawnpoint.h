@@ -3,13 +3,10 @@
 
 #include "objbuilding.h"
 
-namespace Game
-{
 class ObjSpawnPoint : public ObjBuilding
 {
 public:
     ObjSpawnPoint(World *world);
 };
-}
 
 #endif // OBJSPAWNPOINT_H

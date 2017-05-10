@@ -3,7 +3,7 @@ CONFIG += console c++14
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp \
+SOURCES += \
     dep/blowfish/base64.cpp \
     dep/blowfish/blowfish.cpp \
     dep/crc32/crc32.cpp \
@@ -74,8 +74,7 @@ SOURCES += main.cpp \
     obj/spellmissile/objspellmissile.cpp \
     rep/replicationmanager.cpp \
     rep/replicationhelper.cpp \
-    common/health.cpp \
-    common/mana.cpp
+    main.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -176,7 +175,6 @@ HEADERS += \
     rep/characterintermediaterep.h \
     rep/characterstate.h \
     common/mana.h \
-    net/onpacket.h \
     common/experience.h \
     common/gold.h \
     net/pkt/000_PKT_Dummy.hpp \
@@ -377,10 +375,10 @@ HEADERS += \
     net/pkt/255_PKT_Batched.hpp \
     net/netserver.hpp \
     net/base.hpp \
-    net/netpacketstream.hpp \
     testserver.hpp \
-    net/netbasepacket.h \
-    net/netserveri.h
+    net/netserveri.hpp \
+    net/onpacket.hpp \
+    net/netbasepacket.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm

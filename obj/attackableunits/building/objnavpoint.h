@@ -3,13 +3,10 @@
 
 #include "objbuilding.h"
 
-namespace Game
-{
 class ObjNavPoint : public ObjBuilding
 {
 public:
     ObjNavPoint(World *world);
 };
-}
 
 #endif // OBJNAVPOINT_H

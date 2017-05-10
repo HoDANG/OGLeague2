@@ -203,6 +203,7 @@ enum pkttype_e
 	PKT_Batched = 255,
     PKT_Num_Total = 256
 };
+
 enum egptype_en
 {
   EGP_RequestJoinTeam = 0x64,
@@ -213,6 +214,7 @@ enum egptype_en
   EGP_sendToServer = 0x69,
   EGP_broadcastToClients = 0x6A,
 };
+
 enum EnetChannels : uint8_t
 {
   CHANNEL_DEFAULT = 0x0,

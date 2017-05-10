@@ -3,13 +3,10 @@
 
 #include "objanimatedbuilding.h"
 
-namespace Game
-{
 class ObjTurret : public ObjAnimatedBuilding
 {
 public:
     ObjTurret(World *world);
 };
-}
 
 #endif // OBJTURRET_H

@@ -5,8 +5,6 @@
 #include "testserver.hpp"
 
 using namespace std;
-using namespace Game;
-
 
 int main()
 {

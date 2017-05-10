@@ -3,8 +3,6 @@
 
 #include "objbuilding.h"
 
-namespace Game
-{
 class ObjBarracks : public ObjBuilding
 {
 protected:
@@ -14,6 +12,5 @@ public:
     void SetupReplicationInfo();
 
 };
-}
 
 #endif // OBJBARRACKS_H

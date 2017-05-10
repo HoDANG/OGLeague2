@@ -5,9 +5,6 @@
 #include "../../../common/experience.h"
 #include "../../../common/gold.h"
 
-
-namespace Game
-{
 class ObjAiHero : public ObjAiBase
 {
 public:
@@ -18,6 +15,5 @@ public:
     ObjAiHero(World *world);
     void SetupReplicationInfo();
 };
-}
 
 #endif // OBJAIHERO_H

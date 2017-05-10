@@ -3,8 +3,6 @@
 
 #include "../obj/gameobject.h"
 
-using namespace Game;
-
 ObjectManager::ObjectManager(World *world)
     :pWorld(world)
 {

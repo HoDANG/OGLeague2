@@ -5,8 +5,6 @@
 #include "../../common/health.h"
 #include "../../common/mana.h"
 
-namespace Game
-{
 class AttackableUnit : public GameObject
 {
 public:
@@ -19,6 +17,5 @@ public:
     Replicate<int> mIsMagicImmune;
     AttackableUnit(World *world);
 };
-}
 
 #endif // ATTACKABLEUNIT_H

@@ -4,8 +4,6 @@
 #include <map>
 #include <vector>
 
-namespace Game
-{
 class World;
 class GameObject;
 class ObjectManager
@@ -23,6 +21,5 @@ public:
     GameObject* getByName(std::string name);
     void update();
 };
-}
 
 #endif // OBJECTMANAGER_H

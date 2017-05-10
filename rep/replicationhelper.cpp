@@ -1,7 +1,5 @@
 #include "replicationhelper.h"
 
-using namespace Game;
-
 void ReplicationHelper::FillBuildingLocalRepData(AttackableUnit *building, CReplInfo32 *ri, ReplicationManager* manager)
 {
     building->mHealth.mCurrent.SetReplicator("mHP", ri, LOCAL_REP_DATA1, manager);

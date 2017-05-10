@@ -1,8 +1,6 @@
 #include "objaihero.h"
 #include "../../../rep/replicationhelper.h"
 
-using namespace Game;
-
 ObjAiHero::ObjAiHero(World *world)
     : ObjAiBase(world)
 {

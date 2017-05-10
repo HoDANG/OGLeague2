@@ -8,8 +8,6 @@
 #include "../obj/gameobject.h"
 #include "../nav/navgrid.h"
 
-namespace Game
-{
 class World
 {
 private:
@@ -28,6 +26,5 @@ public:
     std::string levelName() const;
     void setLevelName(const std::string &levelName);
 };
-}
 
 #endif // WORLD_H

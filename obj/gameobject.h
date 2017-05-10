@@ -20,8 +20,6 @@ enum EGameObjectFlags
   OBJFLAG_DefaultObject = 0x200000,
 };
 
-
-namespace Game {
 class World;
 class GameObject
 {
@@ -83,6 +81,5 @@ public:
     std::string getName() const;
     void setName(const std::string &name);
 };
-}
 
 #endif // GAMEOBJECT_H

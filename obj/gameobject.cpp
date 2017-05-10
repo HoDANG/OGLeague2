@@ -2,8 +2,6 @@
 #include "../game/world.h"
 #include "../dep/crc32.hpp"
 
-using namespace Game;
-
 GameObject::GameObject(World *world) : pWorld(world)
 {
 
