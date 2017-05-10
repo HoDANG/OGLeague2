@@ -1,7 +1,7 @@
 #ifndef HPP_66_EGP_REQUESTRENAME_H
 #define HPP_66_EGP_REQUESTRENAME_H
 
-#include "../base.h"
+#include "../base.hpp"
 
 struct EGP_RequestRename_s : DefaultPayload<EGP_RequestRename>
 {

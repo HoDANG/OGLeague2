@@ -44,7 +44,6 @@ SOURCES += main.cpp \
     dep/lua/lundump.c \
     dep/lua/lvm.c \
     dep/lua/lzio.c \
-    net/netserver.cpp \
     dep/r3d/r3dmesh.cpp \
     nav/navgrid.cpp \
     nav/navgridcell.cpp \
@@ -76,8 +75,7 @@ SOURCES += main.cpp \
     rep/replicationmanager.cpp \
     rep/replicationhelper.cpp \
     common/health.cpp \
-    common/mana.cpp \
-    testserver.cpp
+    common/mana.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -127,9 +125,7 @@ HEADERS += \
     dep/enet.hpp \
     dep/sol.hpp \
     dep/wink.hpp \
-    net/netserver.h \
     dep/buffer.hpp \
-    net/base.h \
     net/packets.hpp \
     net/common/connectioninfo.h \
     net/common/playerliteinfo.h \
@@ -181,7 +177,6 @@ HEADERS += \
     rep/characterstate.h \
     common/mana.h \
     net/onpacket.h \
-    testserver.h \
     common/experience.h \
     common/gold.h \
     net/pkt/000_PKT_Dummy.hpp \
@@ -379,7 +374,13 @@ HEADERS += \
     net/pkt/192_PKT_Undefined.hpp \
     net/pkt/193_PKT_S2C_Neutral_Camp_Empty.hpp \
     net/pkt/194_PKT_ResetForSlowLoader.hpp \
-    net/pkt/255_PKT_Batched.hpp
+    net/pkt/255_PKT_Batched.hpp \
+    net/netserver.hpp \
+    net/base.hpp \
+    net/netpacketstream.hpp \
+    testserver.hpp \
+    net/netbasepacket.h \
+    net/netserveri.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

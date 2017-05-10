@@ -1,7 +1,7 @@
 #ifndef HPP_65_EGP_REQUESTRESKIN_H
 #define HPP_65_EGP_REQUESTRESKIN_H
 
-#include "../base.h"
+#include "../base.hpp"
 
 struct EGP_RequestReskin_s : DefaultPayload<EGP_RequestReskin>
 {

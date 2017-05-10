@@ -2,10 +2,11 @@
 #include <inttypes.h>
 #include <string>
 #include <sstream>
-#include "testserver.h"
+#include "testserver.hpp"
 
 using namespace std;
 using namespace Game;
+
 
 int main()
 {

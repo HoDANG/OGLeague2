@@ -1,6 +1,6 @@
 #ifndef HPP_140_PKT_OnReplication_HPP
 #define HPP_140_PKT_OnReplication_HPP
-#include "../base.h"
+#include "../base.hpp"
 
 #pragma pack(push, 1)
 struct PKT_OnReplication_s : DefaultPacket<PKT_OnReplication>

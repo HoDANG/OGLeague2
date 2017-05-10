@@ -1,7 +1,7 @@
 #ifndef HPP_64_EGP_REQUESTJOINTEAM_H
 #define HPP_64_EGP_REQUESTJOINTEAM_H
 
-#include "../base.h"
+#include "../base.hpp"
 
 struct EGP_RequestJoinTeam_s : DefaultPayload<EGP_RequestJoinTeam>
 {

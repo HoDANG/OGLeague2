@@ -1,6 +1,6 @@
 #ifndef HPP_181_PKT_ChangeSlotSpellName_HPP
 #define HPP_181_PKT_ChangeSlotSpellName_HPP
-#include "../base.h"
+#include "../base.hpp"
 
 #pragma pack(push, 1)
 struct PKT_ChangeSlotSpellName_s : DefaultPacket<PKT_ChangeSlotSpellName>

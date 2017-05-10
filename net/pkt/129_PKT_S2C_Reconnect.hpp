@@ -1,6 +1,6 @@
 #ifndef HPP_129_PKT_S2C_Reconnect_HPP
 #define HPP_129_PKT_S2C_Reconnect_HPP
-#include "../base.h"
+#include "../base.hpp"
 
 #pragma pack(push, 1)
 struct PKT_S2C_Reconnect_s : DefaultPacket<PKT_S2C_Reconnect>

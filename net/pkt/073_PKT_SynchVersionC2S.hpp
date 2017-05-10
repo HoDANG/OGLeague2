@@ -1,6 +1,6 @@
 #ifndef HPP_073_PKT_SynchVersionC2S_HPP
 #define HPP_073_PKT_SynchVersionC2S_HPP
-#include "../base.h"
+#include "../base.hpp"
 
 #pragma pack(push, 1)
 struct PKT_SynchVersionC2S_s : DefaultPacket<PKT_SynchVersionC2S>

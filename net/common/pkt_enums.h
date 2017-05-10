@@ -1,5 +1,8 @@
 #ifndef PKT_ENUMS_H
 #define PKT_ENUMS_H
+
+#include <stdint.h>
+
 enum pkttype_e
 {
 	PKT_Dummy = 0,
@@ -198,6 +201,7 @@ enum pkttype_e
 	PKT_S2C_Neutral_Camp_Empty = 193,
 	PKT_ResetForSlowLoader = 194,
 	PKT_Batched = 255,
+    PKT_Num_Total = 256
 };
 enum egptype_en
 {
@@ -209,7 +213,7 @@ enum egptype_en
   EGP_sendToServer = 0x69,
   EGP_broadcastToClients = 0x6A,
 };
-enum EnetChannels
+enum EnetChannels : uint8_t
 {
   CHANNEL_DEFAULT = 0x0,
   CHANNEL_GENERIC_APP_TO_SERVER = 0x1,

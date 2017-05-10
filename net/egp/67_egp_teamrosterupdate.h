@@ -1,7 +1,7 @@
 #ifndef HPP_67_EGP_TEAMROSTERUPDATE_H
 #define HPP_67_EGP_TEAMROSTERUPDATE_H
 
-#include "../base.h"
+#include "../base.hpp"
 
 struct EGP_TeamRosterUpdate_s : DefaultPayload<EGP_TeamRosterUpdate>
 {
