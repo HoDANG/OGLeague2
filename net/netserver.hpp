@@ -37,10 +37,12 @@ private:
         switch(channel)
         {
         case CHANNEL_DEFAULT:
-        case CHANNEL_GENERIC_APP_BROADCAST_UNRELIABLE:
         case CHANNEL_GENERIC_APP_BROADCAST:
+        case CHANNEL_GENERIC_APP_BROADCAST_UNRELIABLE:
+            std::cout<<"unhandled channel: "<<channel<<std::endl;
+            break;
         case CHANNEL_GENERIC_APP_TO_SERVER:
-            OnPacket[CHANNEL_DEFAULT][data[0]](cid, data, size);
+            OnPacket[CHANNEL_GENERIC_APP_TO_SERVER][data[0]](cid, data, size);
             break;
         case CHANNEL_MIDDLE_TIER_CHAT:
             OnPacket[CHANNEL_MIDDLE_TIER_CHAT][EGP_Chat](cid, data, size);
@@ -133,6 +135,7 @@ public:
         ENetPeer *peer = mPeers[cid];
         if(peer == nullptr)
             return false;
+        std::cout<<"Sent packet with id:"<<(uint32_t)pkt[0]<<" on channel"<<(uint32_t)channel<<std::endl;
         ENetPacket *packet = enet_packet_create(pkt, size, flags);
         if(size >= 8)
             mBlowFish->Encrypt(packet->data, size-(size%8));

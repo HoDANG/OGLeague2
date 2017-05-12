@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_SynchVersionC2S_s : DefaultPacket<PKT_SynchVersionC2S>
+struct PKT_SynchVersionC2S_s
+        : DefaultPacket<PKT_SynchVersionC2S,CHANNEL_GENERIC_APP_TO_SERVER>
 {
     float mTime_LastClient;
     uint32_t mClientNetID;

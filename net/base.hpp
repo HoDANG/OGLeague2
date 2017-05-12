@@ -24,7 +24,7 @@ struct DefaultPayload : public NetBasePacket<TID, TCHANNEL, TFLAGS>
 //CHANNEL_GENERIC_APP_BROADCAST
 #pragma pack(push, 1)
 template<uint8_t TID,
-         uint8_t TCHANNEL = CHANNEL_DEFAULT,
+         uint8_t TCHANNEL = CHANNEL_GENERIC_APP_TO_SERVER,
          uint32_t TFLAGS = ENET_PACKET_FLAG_RELIABLE>
 struct DefaultPacket : public  NetBasePacket<TID, TCHANNEL, TFLAGS>
 {

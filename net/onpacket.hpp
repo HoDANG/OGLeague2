@@ -31,7 +31,6 @@ public:
 
     virtual void Handle(uint32_t cid, PKT *pkt, size_t size)
     {
-
     }
 };
 
