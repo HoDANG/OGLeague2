@@ -12,9 +12,9 @@
 #include "../dep/enet.hpp"
 #include "../dep/blowfish.hpp"
 #include "../dep/wink.hpp"
-#include "netserveri.hpp"
+#include "netpacketstream.hpp"
 
-class NetServer : public NetServerI
+class NetServer
 {
 protected:
     struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIABLE>
@@ -133,14 +133,24 @@ public:
         ENetPeer *peer = mPeers[cid];
         if(peer == nullptr)
             return false;
-        uint8_t *data = new uint8_t[size];
-        memcpy(data, pkt, size);
+        ENetPacket *packet = enet_packet_create(pkt, size, flags);
         if(size >= 8)
-            mBlowFish->Encrypt(data, size-(size%8));
-        ENetPacket *packet = enet_packet_create(data, size, flags);
+            mBlowFish->Encrypt(packet->data, size-(size%8));
         enet_peer_send(peer, channel, packet);
-        delete[] data;
         return true;
+    }
+
+    template<class PKT>
+    void sendPacket(uint32_t cid, PKT &pkt)
+    {
+        sendPacketRaw(cid, (uint8_t*) &pkt, sizeof(PKT), PKT::CHANNEL, PKT::FLAGS);
+    }
+
+    template<class PKT>
+    void sendStream(uint32_t cid, const PacketStream<PKT> &stream)
+    {
+        auto data = stream.data();
+        sendPacketRaw(cid, &data[0], data.size(), PKT::CHANNEL, PKT::FLAGS);
     }
 
     wink::signal<wink::slot<void(uint32_t, uint8_t*, size_t)>> OnPacket[7][256];

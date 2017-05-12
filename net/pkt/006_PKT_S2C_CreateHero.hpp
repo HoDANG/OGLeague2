@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_S2C_CreateHero_s : DefaultPacket<PKT_S2C_CreateHero>
+struct PKT_S2C_CreateHero_s
+        : DefaultPacket<PKT_S2C_CreateHero, CHANNEL_GENERIC_APP_BROADCAST>
 {
     uint32_t netObjID;
     uint32_t playerUID;

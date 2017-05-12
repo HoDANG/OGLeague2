@@ -5,10 +5,14 @@
 #include "netbasepacket.hpp"
 
 template<class PKT>
-struct OnPacket
+class OnPacket
 {
+protected:
     NetServer *pServer;
-    OnPacket(NetServer &server) : OnPacket(&server) {
+public:
+    OnPacket(NetServer &server)
+        : OnPacket(&server)
+    {
 
     }
 
@@ -16,13 +20,13 @@ struct OnPacket
     {
         pServer = server;
         pServer->OnPacket[PKT::CHANNEL][PKT::ID].connect(wink::slot<void(uint32_t, uint8_t*, size_t)>(this,
-                                                         (void(OnPacket<PKT>::*)(uint32_t, uint8_t*, size_t))(&OnPacket<PKT>::Handle)));
+                                              (void(OnPacket<PKT>::*)(uint32_t, uint8_t*, size_t))(&OnPacket<PKT>::Handle)));
     }
 
     virtual ~OnPacket()
     {
         pServer->OnPacket[PKT::CHANNEL][PKT::ID].disconnect(wink::slot<void(uint32_t, uint8_t*, size_t)>(this,
-                                                            (void(OnPacket<PKT>::*)(uint32_t, uint8_t*, size_t))(&OnPacket<PKT>::Handle)));
+                                               (void(OnPacket<PKT>::*)(uint32_t, uint8_t*, size_t))(&OnPacket<PKT>::Handle)));
     }
 
     virtual void Handle(uint32_t cid, PKT *pkt, size_t size)

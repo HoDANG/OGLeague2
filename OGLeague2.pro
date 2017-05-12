@@ -376,9 +376,9 @@ HEADERS += \
     net/netserver.hpp \
     net/base.hpp \
     testserver.hpp \
-    net/netserveri.hpp \
     net/onpacket.hpp \
-    net/netbasepacket.hpp
+    net/netbasepacket.hpp \
+    net/netpacketstream.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm

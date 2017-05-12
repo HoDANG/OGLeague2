@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_OnEnterVisiblityClient_s : DefaultPacket<PKT_OnEnterVisiblityClient>
+struct PKT_OnEnterVisiblityClient_s
+        : DefaultPacket<PKT_OnEnterVisiblityClient, CHANNEL_GENERIC_APP_BROADCAST>
 {
 };
 #pragma pack(pop)

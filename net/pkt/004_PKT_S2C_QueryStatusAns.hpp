@@ -4,7 +4,7 @@
 
 #pragma pack(push, 1)
 struct PKT_S2C_QueryStatusAns_s
-        : DefaultPacket<PKT_S2C_QueryStatusAns, CHANNEL_DEFAULT>
+        : DefaultPacket<PKT_S2C_QueryStatusAns, CHANNEL_GENERIC_APP_BROADCAST>
 {
     int8_t res;
 };

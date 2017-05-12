@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_SynchVersionS2C_s : DefaultPacket<PKT_SynchVersionS2C>
+struct PKT_SynchVersionS2C_s
+        : DefaultPacket<PKT_SynchVersionS2C, CHANNEL_GENERIC_APP_BROADCAST>
 {
     int8_t mIsVersionOk;
     int mMapToLoad;

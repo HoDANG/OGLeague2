@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_S2C_EndSpawn_s : DefaultPacket<PKT_S2C_EndSpawn>
+struct PKT_S2C_EndSpawn_s
+        : DefaultPacket<PKT_S2C_EndSpawn, CHANNEL_GENERIC_APP_BROADCAST>
 {
 };
 #pragma pack(pop)

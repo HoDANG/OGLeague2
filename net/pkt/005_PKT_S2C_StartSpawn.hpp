@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_S2C_StartSpawn_s : DefaultPacket<PKT_S2C_StartSpawn>
+struct PKT_S2C_StartSpawn_s
+        : DefaultPacket<PKT_S2C_StartSpawn,CHANNEL_GENERIC_APP_BROADCAST>
 {
     int8_t numbBotsOrder;
     int8_t numbBotsChaos;

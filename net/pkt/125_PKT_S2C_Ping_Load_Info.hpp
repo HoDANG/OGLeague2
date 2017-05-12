@@ -3,7 +3,8 @@
 #include "../base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_S2C_Ping_Load_Info_s : DefaultPacket<PKT_S2C_Ping_Load_Info>
+struct PKT_S2C_Ping_Load_Info_s
+        : DefaultPacket<PKT_S2C_Ping_Load_Info, CHANNEL_GENERIC_APP_BROADCAST>
 {
     ConnectionInfo info;
 };
