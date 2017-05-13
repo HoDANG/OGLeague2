@@ -1,11 +1,7 @@
 #ifndef EGP_CHAT_H
 #define EGP_CHAT_H
 
-#include "../../dep/enet.hpp"
-#include "../common/pkt_enums.h"
-#include "../netbasepacket.hpp"
-#include <inttypes.h>
-
+#include "../base.hpp"
 
 struct EGP_Chat_s : public NetBasePacket<EGP_Chat,
         CHANNEL_MIDDLE_TIER_CHAT,

@@ -3,6 +3,7 @@
 #include "manager.h"
 
 #include <string.h>
+#include "../common/stringutils.h"
 
 using namespace std;
 using namespace Content;
@@ -14,15 +15,15 @@ void CharData::load(string name, Manager *manager)
     Config conf = manager->config("DATA/Characters/"+name+"/"+name+".ini");
     Config general = manager->config("DATA/Characters/GeneralCharacterData.ini");
 
-    bIsMelee = _stricmp(conf.getString("Data", "IsMelee", "no").c_str(),
+    bIsMelee = StringUtils::stringicmp(conf.getString("Data", "IsMelee", "no"),
                        "yes") == 0;
-    bIsWaypoint = _stricmp(conf.getString("Data", "IsWaypoint", "no").c_str(),
+    bIsWaypoint = StringUtils::stringicmp(conf.getString("Data", "IsWaypoint", "no"),
                           "yes") == 0;
 
     string klass = conf.getString("Data", "Classification", "Arcane");
-    bIsArcane = stricmp(klass.c_str(), "Arcane") > -1;
-    bIsDeadly = stricmp(klass.c_str(), "Deadly") > -1;
-    bIsStrong = stricmp(klass.c_str(), "Strong") > -1;
+    bIsArcane = StringUtils::stringicmp(klass.c_str(), "Arcane") > -1;
+    bIsDeadly = StringUtils::stringicmp(klass.c_str(), "Deadly") > -1;
+    bIsStrong = StringUtils::stringicmp(klass.c_str(), "Strong") > -1;
     bNeverRender = conf.getNum("Data", "NeverRender", 0) != 0;
     bServerOnly = conf.getNum("Data", "ServerOnly", 0) != 0;
     bNoAutoAttack = conf.getNum("Data", "NoAutoAttack", 0) != 0;

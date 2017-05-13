@@ -26,7 +26,7 @@ struct TestServer
     NetServer *pServer;
     World world;
     string aChampion = "Annie";
-    string aName = "Test";
+    string aName = "Foxxxy";
     std::string basePath = "C:/lol/LoL-1.0.0.673";
     int aSkin = 0;
     int aMap = 1;

@@ -1,5 +1,6 @@
 #include "objshop.h"
 #include <string.h>
+#include "../../../common/stringutils.h"
 
 ObjShop::ObjShop(World *world)
     : ObjBuilding(world)
@@ -11,9 +12,9 @@ bool ObjShop::Load(std::string name)
 {
     if(!ObjBuilding::Load(name))
         return false;
-    if(_stricmp(name.c_str(), "chaos") >= 0)
+    if(StringUtils::stringicmp(name, "chaos") >= 0)
         this->Team = TEAM_CHAOS;
     else
-        this->Team = _stricmp(name.c_str(), "order") !=0 ? TEAM_ORDER : TEAM_NEUTRAL;
+        this->Team = StringUtils::stringicmp(name, "order") !=0 ? TEAM_ORDER : TEAM_NEUTRAL;
     return true;
 }

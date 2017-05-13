@@ -8,7 +8,8 @@
 class r3dFile : public std::ifstream
 {
 public:
-    r3dFile(std::string name) : std::ifstream(name, std::ios::binary)
+    r3dFile(std::string name)
+        : std::ifstream(name, std::ios::binary)
     {
 
     }

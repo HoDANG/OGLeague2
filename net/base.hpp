@@ -7,9 +7,9 @@
 #include <sstream>
 #include "../dep/buffer.hpp"
 #include "../dep/enet.hpp"
-#include "common/connectioninfo.h"
-#include "common/playerliteinfo.h"
-#include "common/pkt_enums.h"
+#include "../common/connectioninfo.h"
+#include "../common/playerliteinfo.h"
+#include "packetenums.hpp"
 #include "netbasepacket.hpp"
 
 //CHANNEL_MIDDLE_TIER_ROSTER

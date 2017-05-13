@@ -126,14 +126,11 @@ HEADERS += \
     dep/wink.hpp \
     dep/buffer.hpp \
     net/packets.hpp \
-    net/common/connectioninfo.h \
-    net/common/playerliteinfo.h \
     net/egp/64_egp_requestjointeam.h \
     net/egp/66_egp_requestrename.h \
     net/egp/65_egp_requestreskin.h \
     net/egp/67_egp_teamrosterupdate.h \
     net/egp/egp_chat.h \
-    net/common/pkt_enums.h \
     dep/r3d/r3dbox3d.h \
     dep/r3d/r3dfile.h \
     dep/r3d/r3dmesh.h \
@@ -168,7 +165,6 @@ HEADERS += \
     obj/attackableunits/building/objnavpoint.h \
     obj/spellmissile/objspellmissile.h \
     obj/gameobjectsall.h \
-    common/stringutils.h \
     rep/replicationmanager.h \
     rep/replicationhelper.h \
     common/health.h \
@@ -378,7 +374,11 @@ HEADERS += \
     testserver.hpp \
     net/onpacket.hpp \
     net/netbasepacket.hpp \
-    net/netpacketstream.hpp
+    net/netpacketstream.hpp \
+    common/stringutils.h \
+    common/connectioninfo.h \
+    common/playerliteinfo.h \
+    net/packetenums.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm

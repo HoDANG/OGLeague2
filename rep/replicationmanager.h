@@ -5,6 +5,7 @@
 #include <string.h>
 #include <bitset>
 #include <sstream>
+#include "../common/stringutils.h"
 
 enum ReplicationType
 {
@@ -48,7 +49,7 @@ struct CReplInfo32
     {
         if(numVars > 0)
             for(int i = 0;i<numVars;i++)
-                if(_stricmp(varNames[i].c_str(), name.c_str()) == 0)
+                if(StringUtils::stringicmp(varNames[i], name) == 0)
                     return i;
         varNames[numVars] = name;
         varOffsets[numVars] = offset;
@@ -58,7 +59,7 @@ struct CReplInfo32
     {
         if(numVars > 0)
             for(int i = 0;i<numVars;i++)
-                if(_stricmp(varNames[i].c_str(), name.c_str()) == 0)
+                if(StringUtils::stringicmp(varNames[i], name) == 0)
                     return varOffsets[i];
         return nullptr;
     }

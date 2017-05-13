@@ -1,7 +1,7 @@
 #ifndef CONNECTIONINFO_H
 #define CONNECTIONINFO_H
 
-#include <stdint.h>
+#include <inttypes.h>
 
 #pragma pack(push, 1)
 struct ConnectionInfo
