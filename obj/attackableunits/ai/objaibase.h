@@ -2,8 +2,8 @@
 #define OBJAIBASE_H
 
 #include "../attackableunit.h"
-#include "../../../rep/characterintermediaterep.h"
-#include "../../../rep/characterstate.h"
+#include "../../properties/characterintermediaterep.hpp"
+#include "../../properties/characterstate.hpp"
 
 class ObjAiBase : public AttackableUnit
 {

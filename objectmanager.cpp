@@ -1,70 +1,85 @@
+#include "objectmanager.h"
 #include "world.h"
-#include "../obj/gameobjectsall.h"
-#include <string.h>
-
-#include <iostream>
+#include "obj/gameobjectsall.h"
 
 using namespace std;
 
-std::string World::levelName() const
-{
-    return mLevelName;
-}
-
-void World::setLevelName(const std::string &levelName)
-{
-    mLevelName = levelName;
-}
-
-ObjectManager *World::objectmanager()
-{
-    return &mObjectManager;
-}
-
-void World::init()
+ObjectManager::ObjectManager(World *world)
+    : pWorld(world)
 {
 
 }
 
-GameObject *World::CreateGameObject(string className, string loadName, r3dPoint3D pos, int flags, void *data)
+void ObjectManager::add(GameObject *obj)
+{
+    mObjects[obj->networkID()] = obj;
+    mObjectsVect.push_back(obj);
+}
+
+void ObjectManager::removeById(uint32_t id)
+{
+
+}
+
+uint32_t ObjectManager::getNextID()
+{
+    static int nextID = 1;
+    return 0x40000000 | ++nextID;
+}
+
+GameObject *ObjectManager::getByName(std::string name)
+{
+    for(GameObject *o: mObjectsVect)
+
+        if(o->getName() == name)
+            return o;
+    return nullptr;
+}
+
+void ObjectManager::update()
+{
+
+}
+
+GameObject *ObjectManager::CreateGameObject(string className, string loadName, r3dPoint3D pos, int flags, void *data)
 {
     GameObject *obj;
     if(className == "ObjAiBase")
-        obj = new ObjAiBase(this);
+        obj = new ObjAiBase(pWorld);
     else if(className == "ObjAiMinion")
-        obj = new ObjAiMinion(this);
+        obj = new ObjAiMinion(pWorld);
     else if(className == "ObjAiHero")
-        obj = new ObjAiHero(this);
+        obj = new ObjAiHero(pWorld);
     else if(className == "ObjAiTurret")
-        obj = new ObjAiTurret(this);
+        obj = new ObjAiTurret(pWorld);
     else if(className == "AttackableUnit")
-        obj = new AttackableUnit(this);
+        obj = new AttackableUnit(pWorld);
     else if(className == "ObjAnimatedBuilding")
-        obj = new ObjAnimatedBuilding(this);
+        obj = new ObjAnimatedBuilding(pWorld);
     else if(className == "ObjBarracksDampener")
-        obj = new ObjBarracksDampener(this);
+        obj = new ObjBarracksDampener(pWorld);
     else if(className == "ObjHQ")
-        obj = new ObjHQ(this);
+        obj = new ObjHQ(pWorld);
     else if(className == "ObjTurret")
-        obj = new ObjTurret(this);
+        obj = new ObjTurret(pWorld);
     else if(className == "ObjBarracks")
-        obj = new ObjBarracks(this);
+        obj = new ObjBarracks(pWorld);
     else if(className == "ObjBuilding")
-        obj = new ObjBuilding(this);
+        obj = new ObjBuilding(pWorld);
     else if(className == "ObjLake")
-        obj = new ObjLake(this);
+        obj = new ObjLake(pWorld);
     else if(className == "ObjLevelSizer")
-        obj = new ObjLevelSizer(this);
+        obj = new ObjLevelSizer(pWorld);
     else if(className == "ObjNavPoint")
-        obj = new ObjNavPoint(this);
+        obj = new ObjNavPoint(pWorld);
     else if(className == "ObjShop")
-        obj = new ObjShop(this);
+        obj = new ObjShop(pWorld);
     else if(className == "ObjSpawnPoint")
-        obj = new ObjSpawnPoint(this);
+        obj = new ObjSpawnPoint(pWorld);
     else if(className == "ObjSpellMissile")
-        obj = new ObjSpellMissile(this);
+        obj = new ObjSpellMissile(pWorld);
     else if(className == "GameObject")
-        obj = new GameObject(this);
+        obj = new GameObject(pWorld);
     else
         return nullptr;
 
@@ -73,7 +88,7 @@ GameObject *World::CreateGameObject(string className, string loadName, r3dPoint3
     return obj;
 }
 
-GameObject *World::CreateWorldObject(string loadName)
+GameObject *ObjectManager::CreateWorldObject(string loadName)
 {
 
     static struct {
@@ -108,18 +123,4 @@ GameObject *World::CreateWorldObject(string loadName)
         }
     }
     return nullptr;
-}
-
-void World::LoadWorld()
-{
-    mGrid.load("LEVELS/"+mLevelName+"/AIPath.aimesh_ngrid");
-    r3dFile dsc("LEVELS/"+mLevelName+"/Scene/room.dsc");
-    std::string name, quality;
-    while(dsc >> name >> quality)
-    {
-        if(name.size()<6)
-            continue;
-        name = name.substr(0, name.size() - 4);
-        CreateWorldObject(name);
-    }
 }

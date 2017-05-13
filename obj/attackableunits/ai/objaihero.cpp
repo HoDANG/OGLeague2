@@ -1,5 +1,5 @@
 #include "objaihero.h"
-#include "../../../rep/replicationhelper.h"
+#include "../../properties/replicationhelper.hpp"
 
 ObjAiHero::ObjAiHero(World *world)
     : ObjAiBase(world)

@@ -2,7 +2,7 @@
 #define OBJBARRACKSDAMPENER_H
 
 #include "objanimatedbuilding.h"
-#include "../../../../rep/replicationhelper.h"
+#include "../../../properties/replicationhelper.hpp"
 
 class ObjBarracksDampener : public ObjAnimatedBuilding
 {

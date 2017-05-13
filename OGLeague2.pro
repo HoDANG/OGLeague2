@@ -6,7 +6,6 @@ CONFIG -= qt
 SOURCES += \
     dep/blowfish/base64.cpp \
     dep/blowfish/blowfish.cpp \
-    dep/crc32/crc32.cpp \
     dep/enet/callbacks.c \
     dep/enet/host.c \
     dep/enet/list.c \
@@ -44,18 +43,12 @@ SOURCES += \
     dep/lua/lundump.c \
     dep/lua/lvm.c \
     dep/lua/lzio.c \
-    dep/r3d/r3dmesh.cpp \
-    content/spelldata.cpp \
-    content/chardata.cpp \
-    game/world.cpp \
-    content/itemdata.cpp \
     obj/gameobject.cpp \
     obj/attackableunits/attackableunit.cpp \
     obj/attackableunits/ai/objaibase.cpp \
     obj/attackableunits/ai/objaihero.cpp \
     obj/attackableunits/ai/objaiminion.cpp \
     obj/attackableunits/ai/objaiturret.cpp \
-    game/objectmanager.cpp \
     obj/attackableunits/building/objbuilding.cpp \
     obj/attackableunits/building/objbarracks.cpp \
     obj/attackableunits/building/objspawnpoint.cpp \
@@ -68,14 +61,13 @@ SOURCES += \
     obj/attackableunits/building/objlake.cpp \
     obj/attackableunits/building/objnavpoint.cpp \
     obj/spellmissile/objspellmissile.cpp \
-    rep/replicationmanager.cpp \
-    rep/replicationhelper.cpp \
-    main.cpp
+    main.cpp \
+    objectmanager.cpp \
+    world.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
     dep/blowfish/blowfish.h \
-    dep/crc32/crc32.h \
     dep/enet/callbacks.h \
     dep/enet/enet.h \
     dep/enet/list.h \
@@ -132,10 +124,6 @@ HEADERS += \
     dep/r3d/r3dmesh.h \
     dep/r3d/r3dpoint.h \
     dep/r3d.hpp \
-    content/spelldata.h \
-    content/chardata.h \
-    game/world.h \
-    content/itemdata.h \
     obj/gameobject.h \
     obj/attackableunits/attackableunit.h \
     obj/attackableunits/ai/objaibase.h \
@@ -143,7 +131,6 @@ HEADERS += \
     obj/attackableunits/ai/objaiminion.h \
     obj/attackableunits/ai/objaiturret.h \
     common/team_e.h \
-    game/objectmanager.h \
     obj/attackableunits/building/objbuilding.h \
     obj/attackableunits/building/objbarracks.h \
     obj/attackableunits/building/objspawnpoint.h \
@@ -157,14 +144,6 @@ HEADERS += \
     obj/attackableunits/building/objnavpoint.h \
     obj/spellmissile/objspellmissile.h \
     obj/gameobjectsall.h \
-    rep/replicationmanager.h \
-    rep/replicationhelper.h \
-    common/health.h \
-    rep/characterintermediaterep.h \
-    rep/characterstate.h \
-    common/mana.h \
-    common/experience.h \
-    common/gold.h \
     net/pkt/000_PKT_Dummy.hpp \
     net/pkt/001_PKT_C2S_ClientConnect_NamedPipe.hpp \
     net/pkt/002_PKT_CHAT.hpp \
@@ -374,7 +353,20 @@ HEADERS += \
     dep/r3d/r3dfilemanager.h \
     dep/r3d/r3dconf.h \
     dep/r3d/r3dbuffer.h \
-    dep/r3d/r3dnavgrid.h
+    dep/r3d/r3dnavgrid.h \
+    content/chardata.hpp \
+    content/itemdata.hpp \
+    content/spelldata.hpp \
+    obj/properties/characterintermediaterep.hpp \
+    obj/properties/characterstate.hpp \
+    obj/properties/replicationhelper.hpp \
+    obj/properties/replicationmanager.hpp \
+    obj/properties/experience.hpp \
+    obj/properties/gold.hpp \
+    obj/properties/health.hpp \
+    obj/properties/mana.hpp \
+    objectmanager.h \
+    world.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

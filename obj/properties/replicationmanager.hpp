@@ -5,7 +5,7 @@
 #include <string.h>
 #include <bitset>
 #include <sstream>
-#include "../common/stringutils.h"
+#include "../../common/stringutils.h"
 
 enum ReplicationType
 {
@@ -108,8 +108,42 @@ struct ReplicationManager
     uint32_t mModified = 0;
     void *mBase = nullptr;
     void Init(CReplInfo32 *npc_ClientOnly, CReplInfo32 *npc_LocalRepData1, CReplInfo32 *npc_LocalRepData2,
-              CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData, void *base = nullptr);
-    void MarkChanged(ReplicationType type, int index, uint32_t value);
+              CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData, void *base = nullptr)
+    {
+        mClientOnlyRepData1.Init(npc_ClientOnly);
+        mLocalRepData1.Init(npc_LocalRepData1);
+        mLocalRepData2.Init(npc_LocalRepData2);
+        mMapRepData.Init(npc_MapRepData);
+        mOnVisibleRepData.Init(npc_OnVisibleRepData);
+        mBase = base;
+    }
+    void MarkChanged(ReplicationType type, int index, uint32_t value)
+    {
+        CReplData32 *rd = nullptr;
+        switch(type)
+        {
+        case CLIENT_ONLY_REP_DATA:
+            rd = &mClientOnlyRepData1;
+            break;
+        case LOCAL_REP_DATA1:
+            rd = &mLocalRepData1;
+            break;
+        case LOCAL_REP_DATA2:
+            rd = &mLocalRepData2;
+            break;
+        case MAP_REPDATA:
+            rd = &mMapRepData;
+            break;
+        case ONVISIBLE_REP_DATA:
+            rd = &mOnVisibleRepData;
+            break;
+        }
+        if(rd == nullptr)
+            return;
+        mModified |= type;
+        rd->valuesThatHaveChanged |= (1 << index);
+        rd->mValueCopy[index] = value;
+    }
     uint8_t DumpReplication(std::vector<uint32_t> &data)
     {
         if(mModified == 0)

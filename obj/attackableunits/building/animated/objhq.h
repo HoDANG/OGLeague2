@@ -2,7 +2,7 @@
 #define OBJHQ_H
 
 #include "objanimatedbuilding.h"
-#include "../../../../rep/replicationhelper.h"
+#include "../../../properties/replicationhelper.hpp"
 
 class ObjHQ : public ObjAnimatedBuilding
 {

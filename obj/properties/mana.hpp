@@ -1,8 +1,7 @@
 #ifndef MANA_H
 #define MANA_H
 
-#include "../rep/replicationmanager.h"
-
+#include "replicationmanager.hpp"
 
 struct Mana
 {

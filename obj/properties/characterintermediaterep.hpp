@@ -1,7 +1,7 @@
 #ifndef CHARACTERINTERMEDIATEREP_H
 #define CHARACTERINTERMEDIATEREP_H
 
-#include "replicationmanager.h"
+#include "replicationmanager.hpp"
 
 struct CharacterIntermediateRep
 {

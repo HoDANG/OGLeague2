@@ -1,7 +1,8 @@
 #ifndef GOLD_H
 #define GOLD_H
 
-#include "../rep/replicationmanager.h"
+#include "replicationmanager.hpp"
+
 struct Gold
 {
     Replicate<float> mValue;

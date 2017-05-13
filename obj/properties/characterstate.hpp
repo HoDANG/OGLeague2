@@ -2,7 +2,7 @@
 #define CHARACTERSTATE_H
 
 #include <streambuf>
-#include "replicationmanager.h"
+#include "replicationmanager.hpp"
 
 struct CharacterState
 {

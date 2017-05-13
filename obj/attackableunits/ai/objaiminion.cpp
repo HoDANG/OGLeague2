@@ -1,5 +1,5 @@
 #include "objaiminion.h"
-#include "../../../rep/replicationhelper.h"
+#include "../../properties/replicationhelper.hpp"
 
 namespace
 {

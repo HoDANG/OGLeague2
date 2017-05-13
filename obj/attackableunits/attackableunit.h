@@ -2,8 +2,8 @@
 #define ATTACKABLEUNIT_H
 
 #include "../gameobject.h"
-#include "../../common/health.h"
-#include "../../common/mana.h"
+#include "../properties/health.hpp"
+#include "../properties/mana.hpp"
 
 class AttackableUnit : public GameObject
 {

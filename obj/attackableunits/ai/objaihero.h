@@ -2,8 +2,8 @@
 #define OBJAIHERO_H
 
 #include "objaibase.h"
-#include "../../../common/experience.h"
-#include "../../../common/gold.h"
+#include "../../properties/experience.hpp"
+#include "../../properties/gold.hpp"
 
 class ObjAiHero : public ObjAiBase
 {
