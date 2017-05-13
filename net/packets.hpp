@@ -198,10 +198,10 @@
 #include "pkt/194_PKT_ResetForSlowLoader.hpp"
 #include "pkt/255_PKT_Batched.hpp"
 
-#include "egp/64_egp_requestjointeam.h"
-#include "egp/65_egp_requestreskin.h"
-#include "egp/66_egp_requestrename.h"
-#include "egp/67_egp_teamrosterupdate.h"
-#include "egp/egp_chat.h"
+#include "egp/64_egp_requestjointeam.hpp"
+#include "egp/65_egp_requestreskin.hpp"
+#include "egp/66_egp_requestrename.hpp"
+#include "egp/67_egp_teamrosterupdate.hpp"
+#include "egp/egp_chat.hpp"
 
 #endif

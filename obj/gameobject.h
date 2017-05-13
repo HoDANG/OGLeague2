@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include <string>
 #include "../dep/r3d.hpp"
-#include "../common/team_e.h"
+#include "../common/team_e.hpp"
 #include "../world.h"
 #include "../objectmanager.h"
 

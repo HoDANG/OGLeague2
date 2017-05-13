@@ -7,8 +7,8 @@
 #include <sstream>
 #include "../dep/buffer.hpp"
 #include "../dep/enet.hpp"
-#include "../common/connectioninfo.h"
-#include "../common/playerliteinfo.h"
+#include "../common/connectioninfo.hpp"
+#include "../common/playerliteinfo.hpp"
 #include "packetenums.hpp"
 #include "netbasepacket.hpp"
 

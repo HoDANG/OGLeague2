@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <array>
-#include "../common/stringutils.h"
+#include "../common/stringutils.hpp"
 #include "../dep/r3d.hpp"
 
 struct CharData

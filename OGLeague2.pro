@@ -114,11 +114,6 @@ HEADERS += \
     dep/wink.hpp \
     dep/buffer.hpp \
     net/packets.hpp \
-    net/egp/64_egp_requestjointeam.h \
-    net/egp/66_egp_requestrename.h \
-    net/egp/65_egp_requestreskin.h \
-    net/egp/67_egp_teamrosterupdate.h \
-    net/egp/egp_chat.h \
     dep/r3d/r3dbox3d.h \
     dep/r3d/r3dfile.h \
     dep/r3d/r3dmesh.h \
@@ -130,7 +125,6 @@ HEADERS += \
     obj/attackableunits/ai/objaihero.h \
     obj/attackableunits/ai/objaiminion.h \
     obj/attackableunits/ai/objaiturret.h \
-    common/team_e.h \
     obj/attackableunits/building/objbuilding.h \
     obj/attackableunits/building/objbarracks.h \
     obj/attackableunits/building/objspawnpoint.h \
@@ -346,9 +340,6 @@ HEADERS += \
     net/onpacket.hpp \
     net/netbasepacket.hpp \
     net/netpacketstream.hpp \
-    common/stringutils.h \
-    common/connectioninfo.h \
-    common/playerliteinfo.h \
     net/packetenums.hpp \
     dep/r3d/r3dfilemanager.h \
     dep/r3d/r3dconf.h \
@@ -366,7 +357,16 @@ HEADERS += \
     obj/properties/health.hpp \
     obj/properties/mana.hpp \
     objectmanager.h \
-    world.h
+    world.h \
+    common/connectioninfo.hpp \
+    common/playerliteinfo.hpp \
+    common/stringutils.hpp \
+    common/team_e.hpp \
+    net/egp/64_egp_requestjointeam.hpp \
+    net/egp/65_egp_requestreskin.hpp \
+    net/egp/66_egp_requestrename.hpp \
+    net/egp/67_egp_teamrosterupdate.hpp \
+    net/egp/egp_chat.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm

@@ -5,7 +5,7 @@
 #include <string.h>
 #include <bitset>
 #include <sstream>
-#include "../../common/stringutils.h"
+#include "../../common/stringutils.hpp"
 
 enum ReplicationType
 {
