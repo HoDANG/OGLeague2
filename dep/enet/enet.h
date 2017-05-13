@@ -15,7 +15,7 @@ extern "C"
 #ifdef WIN32
 #include "win32.h"
 #else
-#include "enet/unix.h"
+#include "unix.h"
 #endif
 
 #include "types.h"
