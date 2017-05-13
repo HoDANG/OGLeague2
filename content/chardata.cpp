@@ -1,25 +1,18 @@
 #include "chardata.h"
-#include "cfgreader.h"
-#include "manager.h"
-
 #include <string.h>
 #include "../common/stringutils.h"
+#include "../dep/r3d.hpp"
 
 using namespace std;
-using namespace Content;
 
-
-void CharData::load(string name, Manager *manager)
+void CharData::load(string name)
 {
-
-    Config conf = manager->config("DATA/Characters/"+name+"/"+name+".ini");
-    Config general = manager->config("DATA/Characters/GeneralCharacterData.ini");
-
+    r3dConf conf = r3dConf::cache("DATA/Characters/"+name+"/"+name+".ini");
+    r3dConf general = r3dConf::cache("DATA/Characters/GeneralCharacterData.ini");
     bIsMelee = StringUtils::stringicmp(conf.getString("Data", "IsMelee", "no"),
                        "yes") == 0;
     bIsWaypoint = StringUtils::stringicmp(conf.getString("Data", "IsWaypoint", "no"),
                           "yes") == 0;
-
     string klass = conf.getString("Data", "Classification", "Arcane");
     bIsArcane = StringUtils::stringicmp(klass.c_str(), "Arcane") > -1;
     bIsDeadly = StringUtils::stringicmp(klass.c_str(), "Deadly") > -1;

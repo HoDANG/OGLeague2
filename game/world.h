@@ -2,21 +2,17 @@
 #define WORLD_H
 
 #include <memory>
-#include "../content/manager.h"
 #include "../dep/wink.hpp"
-#include "objectmanager.h"
 #include "../obj/gameobject.h"
-#include "../nav/navgrid.h"
+#include "objectmanager.h"
 
 class World
 {
 private:
-    Content::Manager mContent;
     ObjectManager mObjectManager = ObjectManager(this);
-    NavGrid mGrid;
+    r3dNavGrid mGrid;
     std::string mLevelName;
 public:
-    Content::Manager *content();
     ObjectManager *objectmanager();
     void init();
     GameObject* CreateGameObject(std::string className, std::string loadName, r3dPoint3D pos,

@@ -1,15 +1,15 @@
 #include "itemdata.h"
-#include "manager.h"
 #include <sstream>
 #include <iostream>>
+#include "../dep/r3d.hpp"
 
 using namespace std;
 
-void Content::ItemData::load(int id, Content::Manager *manager)
+void ItemData::load(int id)
 {
     ItemID = id;
     std::string name = to_string(id);
-    Config conf = manager->config("DATA/Items/"+name+".ini");
+    r3dConf conf = r3dConf::cache("DATA/Items/"+name+".ini");
     Name = conf.getString("Data", "Name", name);
     mDisplayName = conf.getString("Data", "DisplayName", Name);
     MaxStack = conf.getNum("Data", "MaxStack", -1);

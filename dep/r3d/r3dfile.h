@@ -4,12 +4,18 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "r3dfilemanager.h"
 
 class r3dFile : public std::ifstream
 {
 public:
     r3dFile(std::string name)
-        : std::ifstream(name, std::ios::binary)
+        : std::ifstream(r3dFileManager::getFilePath(name))
+    {
+
+    }
+    r3dFile(std::string name, std::ios_base::openmode mode)
+        : std::ifstream(r3dFileManager::getFilePath(name), mode)
     {
 
     }

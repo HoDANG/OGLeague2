@@ -5,9 +5,6 @@
 #include "../dep/r3d.hpp"
 
 
-namespace Content
-{
-class Manager;
 struct SpellData
 {
     enum sflags_e
@@ -119,11 +116,7 @@ struct SpellData
       float mLength[6];
     };
 
-    void load(std::string name, Manager *manager);
-    void load(std::string name, Manager &manager)
-    {
-        load(name, &manager);
-    }
+    void load(std::string name);
 
     unsigned int Flags;
     unsigned int mHash;
@@ -220,6 +213,5 @@ struct SpellData
     unsigned int m_FileChangeNotificationHandleINI;
     float Mana[6];
 };
-}
 
 #endif // SPELLDATA_H

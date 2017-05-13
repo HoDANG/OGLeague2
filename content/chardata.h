@@ -5,9 +5,6 @@
 #include <string>
 #include <array>
 
-namespace Content
-{
-class Manager;
 struct PassiveData
 {
     std::string PassiveNameStr;
@@ -17,11 +14,7 @@ struct PassiveData
 
 struct CharData
 {
-    void load(std::string name, Manager *manager);
-    void load(std::string name, Manager &manager)
-    {
-        load(name, &manager);
-    }
+    void load(std::string name);
 
     std::string CritAttackNameStr;
     bool bIsWaypoint;
@@ -94,6 +87,5 @@ struct CharData
     std::array<unsigned int, 4> mSpellMaxLevelsOverride;
     //GlobalCharacterData::DataStruct *m_GlobalData;
 };
-}
 
 #endif // CHARDATA_H

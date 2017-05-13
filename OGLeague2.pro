@@ -45,11 +45,7 @@ SOURCES += \
     dep/lua/lvm.c \
     dep/lua/lzio.c \
     dep/r3d/r3dmesh.cpp \
-    nav/navgrid.cpp \
-    nav/navgridcell.cpp \
-    content/manager.cpp \
     content/spelldata.cpp \
-    content/cfgreader.cpp \
     content/chardata.cpp \
     game/world.cpp \
     content/itemdata.cpp \
@@ -136,11 +132,7 @@ HEADERS += \
     dep/r3d/r3dmesh.h \
     dep/r3d/r3dpoint.h \
     dep/r3d.hpp \
-    nav/navgrid.h \
-    nav/navgridcell.h \
-    content/manager.h \
     content/spelldata.h \
-    content/cfgreader.h \
     content/chardata.h \
     game/world.h \
     content/itemdata.h \
@@ -378,7 +370,11 @@ HEADERS += \
     common/stringutils.h \
     common/connectioninfo.h \
     common/playerliteinfo.h \
-    net/packetenums.hpp
+    net/packetenums.hpp \
+    dep/r3d/r3dfilemanager.h \
+    dep/r3d/r3dconf.h \
+    dep/r3d/r3dbuffer.h \
+    dep/r3d/r3dnavgrid.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

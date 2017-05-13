@@ -4,9 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace Content
-{
-class Manager;
+
 struct PARStats
 {
     float flatPARPoolMod = 0;
@@ -18,11 +16,7 @@ struct PARStats
 };
 struct ItemData
 {
-    void load(int id, Manager *manager);
-    void load(int id, Manager &manager)
-    {
-        load(id, &manager);
-    }
+    void load(int id);
     std::string Name;
     std::string SpellName;
     std::string mDisplayName;
@@ -123,5 +117,4 @@ struct ItemData
     };
     bool UseEffect = 0;
 };
-}
 #endif // ITEMDATA_H

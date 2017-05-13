@@ -47,7 +47,6 @@ struct TestServer
 
     void test()
     {
-        world.content()->setBasePaths({basePath});
         world.setLevelName("Map"+to_string(aMap));
         //world.LoadWorld();
         hero = dynamic_cast<ObjAiHero*>(world.CreateGameObject("ObjAiHero", "Annie", { 26.0f ,100.0f, 280.0f }, 64, 0));

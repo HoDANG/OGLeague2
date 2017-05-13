@@ -16,11 +16,6 @@ void World::setLevelName(const std::string &levelName)
     mLevelName = levelName;
 }
 
-Content::Manager *World::content()
-{
-    return &mContent;
-}
-
 ObjectManager *World::objectmanager()
 {
     return &mObjectManager;
@@ -117,8 +112,8 @@ GameObject *World::CreateWorldObject(string loadName)
 
 void World::LoadWorld()
 {
-    mGrid.load(mContent.getFile("LEVELS/"+mLevelName+"/AIPath.aimesh_ngrid"));
-    ifstream dsc(mContent.getFile("LEVELS/"+mLevelName+"/Scene/room.dsc"));
+    mGrid.load("LEVELS/"+mLevelName+"/AIPath.aimesh_ngrid");
+    r3dFile dsc("LEVELS/"+mLevelName+"/Scene/room.dsc");
     std::string name, quality;
     while(dsc >> name >> quality)
     {

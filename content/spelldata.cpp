@@ -1,15 +1,11 @@
 #include "spelldata.h"
-#include "cfgreader.h"
-#include "manager.h"
-#include <iostream>>
-
+#include "../dep/r3d.hpp"
 
 using namespace std;
-using namespace Content;
 
-void SpellData::load(string name, Manager *manager)
+void SpellData::load(string name)
 {
-    Config conf = manager->config("DATA/Spells/"+name+".ini");
+    r3dConf conf = r3dConf::cache("DATA/Spells/"+name+".ini");
     mName = name;
     for(int i = 0; i < 5; i++)
     {
