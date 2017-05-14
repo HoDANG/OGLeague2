@@ -1,6 +1,6 @@
-#ifndef SOL_HPP
-#define SOL_HPP
+#ifndef SOLLUA_HPP
+#define SOLLUA_HPP
 
 #include "lua/sol.hpp"
 
-#endif // SOL_HPP
+#endif // SOLLUA_HPP

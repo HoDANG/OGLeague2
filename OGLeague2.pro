@@ -63,7 +63,12 @@ SOURCES += \
     obj/spellmissile/objspellmissile.cpp \
     main.cpp \
     objectmanager.cpp \
-    world.cpp
+    world.cpp \
+    scripts/scripthelper.cpp \
+    scripts/scripthelperbb.cpp \
+    scripts/scripthelperdamage.cpp \
+    scripts/scripthelperextra.cpp \
+    scripts/scripthelperspells.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -366,7 +371,15 @@ HEADERS += \
     net/egp/65_egp_requestreskin.hpp \
     net/egp/66_egp_requestrename.hpp \
     net/egp/67_egp_teamrosterupdate.hpp \
-    net/egp/egp_chat.hpp
+    net/egp/egp_chat.hpp \
+    scripts/scripthelper.h \
+    scripts/scripthelperbb.h \
+    scripts/scripthelperdamage.h \
+    scripts/scripthelperextra.h \
+    scripts/scripthelperspells.h \
+    obj/properties/characterintermediate.hpp \
+    scripts/aitimer.h \
+    scripts/neutraltimer.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

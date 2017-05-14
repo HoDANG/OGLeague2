@@ -102,6 +102,7 @@ struct TestServer
         ans.fromID = cid;
         pServer->sendPacket(cid, ans);
     }
+
     void Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *req, size_t size)
     {
         cout<<"Got query status ans: "<<endl;
@@ -110,6 +111,7 @@ struct TestServer
         ans.fromID = cid;
         pServer->sendPacket(cid, ans);
     }
+
     void Handle(uint32_t cid, PKT_SynchVersionC2S_s *req, size_t size)
     {
         PKT_SynchVersionS2C_s ans;

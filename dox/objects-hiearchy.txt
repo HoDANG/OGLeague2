@@ -1,0 +1,52 @@
+Starting from parrent to child.
+#(hashtag) means additional inhertance(I for Interface?)
+
+GameObject
+	-obj_LampBulb
+	-obj_Fireball
+	-obj_SpellCaster
+	-obj_GeneralParticleEmmiter
+	-DrawFX
+	-NeutralMinionCamp					#NetVisibilityDataI
+	-MeshGameObject
+		-obj_Decal
+		-obj_Prop
+	-obj_SpellMissile 					#NetVisibilityDataI
+		-obj_SpellChainMissile
+		-obj_SpellLineMissile
+	-AttackableUnit						#GoldOwnerI, OnDamageCallbackI, IsValidSpellTargetI, NetVisibilityDataI
+		-obj_AI_Base					#IssuerI, SpellbookOwnerI, HeroInventoryOwnerI, AIManagerOwnerI, ChangeCharacterDataCallBack
+			-obj_AI_Hero				#ExperienceOwnerI
+			-obj_AI_Turret
+			-obj_AI_Minion
+		-obj_Building
+			-obj_Waterfall
+			-obj_Shop
+			-obj_PEmitter
+			-obj_Levelsizer
+			-obj_Occluder
+			-obj_NavPoint
+			-obj_Temple
+			-obj_Lake
+			-obj_SpawnPoint
+			-obj_AnimatedBuilding
+				-obj_Turret
+				-obj_HQ
+				-obj_BarracksDampener
+			-obj_Barracks
+			
+
+PositionOwnerI			
+	-GoldOwnerI
+	-UnitTestExperienceOwner			#ExperienceOwnerI
+
+SpellbookOwnerI
+	-SpellBookOwnerOverride
+	
+
+scriptBase
+	scriptBaseChar
+		scriptBaseTalent
+	scriptBaseBuff
+		scriptBaseItem
+		scriptBaseSpell

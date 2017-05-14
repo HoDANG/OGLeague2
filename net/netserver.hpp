@@ -30,7 +30,7 @@ private:
     ENetAddress mAddress;
     std::array<ENetPeer*, 13> mPeers;
     std::unique_ptr<BlowFish> mBlowFish;
-    ENetHost* mHost;
+    ENetHost* mHost = nullptr;
 
     void OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
     {

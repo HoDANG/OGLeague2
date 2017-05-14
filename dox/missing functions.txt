@@ -1,0 +1,149 @@
+Notes:
+	-This functions are not registered in IDA
+	-Some of them do have implementations but aren't registered nevertheless
+	-AI Scripts seem to not use any BB functions
+	-IsDead can have empty argument for example even tho its used by both
+	-Distance Functions seem to been abstracted to own helper and are shared inbeetween
+	-Level script don't use AI functions
+	-They may use the common functions from LuaScriptHelper ???
+	-DATA/Scripts/ folder is shared beetween AI & Level scripts
+	-The only file used by Levels in ther is EndGame.lua
+	-AI scripts may additionaly look in character folder
+	-InitTimer is used by both AI & Levels
+	-Tutorial running client side???
+
+BB:
+	DefUpdateAura
+	BBIsTargetBehindMe
+	BBIsTargetInFrontOfMe
+	IsDead
+	DistanceBetweenObjects
+	DistanceBetweenObjectAndPoint
+	DistanceBetweenPoints
+	SetSpellCastRange
+
+Levels:
+	DampenerRegenerationState number??
+	SetCanAutoAcquireTargets
+	GetBarracksType
+	SetBuildingHealthRegenEnabled	
+	DisableHUDForEndOfGame
+	SetBarracksSpawnEnabled
+	CloseShop
+	HaltAllAI
+	LuaForEachChampion
+	MoveCameraFromCurrentPositionToPoint
+	SetGreyscaleEnabledWhenDead
+	SetHQCurrentSkin
+	FadeMinions
+	SetMinionsNoRender
+	GetObjectLaneId
+	
+Tutorial:
+	OpenTutorialPopup
+	MoveCameraToPoint
+	CreateUnitHighlight
+	RemoveUnitHighlight
+	ShowAuxiliaryText
+	RegisterOnUnitNearPositionCallback
+	RegisterOnLastMinionKilledCallback
+	UnRegisterOnLastMinionKilledCallback
+	HideObjectiveText
+	HideAuxiliaryText
+	RegisterOnSpellLevelupCallback
+	UnRegisterOnSpellLevelupCallback
+	ToggleUIHighlight
+	RegisterOnSpellAvatarCastCallback
+	UnRegisterOnSpellAvatarCastCallback
+	RegisterOnSpellCastCallback
+	UnRegisterOnSpellCastCallback
+	PingMinimapPosition
+	ShowObjectiveText
+	RegisterOnShopOpenedCallback
+	RegisterOnItemPurchasedCallback
+	UnRegisterOnItemPurchasedCallback
+	RegisterOnUnitBelowPercentHealthCallback
+	UnRegisterOnUnitBelowPercentHealthCallback
+	RegisterOnUnitKilledCallback
+	UnRegisterOnUnitKilledCallback
+	RegisterOnUnitNearUnitCallback
+	RegisterOnCameraNearUnitCallback
+	MuteVolumeCategory
+	ResumeGame
+	HighlightHUDElement
+	
+AI:
+	StopTimer
+	DistanceBetweenMeAndObject
+	DistanceBetweenObjectAndTargetPos
+	DistanceBetweenObjectAndInPos
+	GetMinionDistanceToLane
+	GetDistSquared
+	GetPos
+	GetDist
+	GetState
+	SetStateAndCloseToTarget
+	GetTauntTarget
+	AddToIgnore
+	MakeWanderPoint
+	SetStateAndMove
+	ResetAndStartTimer
+	GetFearLeashPoint
+	NetSetState
+	SetStateAndMoveToForwardNav
+	FindTargetInAcR
+	GetTarget
+	TurnOnAutoAttack
+	TargetInAttackRange
+	TargetInCancelAttackRange
+	LoadScript
+	UpgradeSpellsInOrder
+	GetStructures
+	GetTeam
+	GetOtherTeam
+	GetHeroes
+	SetDebugSlotText
+	ClearTargetPosInPos
+	AssignTargetPosInPos
+	SetStateAndMoveInPos
+	IsTargetLost
+	LastAutoAttackFinished
+	CanSeeMe
+	GetTargetOrFindTargetInAcR
+	IsMovementStopped
+	GetLostTargetIfVisible
+	SetMyLeashedPos
+	GetHP
+	GetMaxHP
+	SetRoamState
+	Error
+	GetRoamState
+	GetGoldRedirectTarget
+	GetDistToLeashedPos
+	SetStateAndMoveToLeashedPos
+	GetOriginalState
+	GetCharacterData
+	Die
+	SetActorPositionFromObject
+	GetPetReturnRadius
+	IsNetworkLocal
+	GetOwner
+	SetTarget
+	SetLastPosPointWithObj
+	FindTargetInAcRUsingGoldRedirectTarget
+	GetNumInvSlotsAvailable
+	GetItemPrice
+	GetRegroupPos
+	BuyItem
+	GetMP
+	GetMaxMP
+	CanUseSpell
+	GetObject
+	objGetName
+	StopMove
+	GetLastTookDamageTime
+	GetMaxTravelDistSquared
+	GetTargetHealth
+	GetMinions
+	GetAreAllBarracksStarted
+	GetActiveTaskName

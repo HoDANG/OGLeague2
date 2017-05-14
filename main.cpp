@@ -2,15 +2,16 @@
 #include <inttypes.h>
 #include <string>
 #include <sstream>
-#include "testserver.hpp"
+#include "world.h"
 
 using namespace std;
 
 int main()
 {
-    enet_initialize();
     r3dFileManager::setBasePaths({"C:/lol/LoL-1.0.0.673"});
-    TestServer gameServer(new NetServer(ENET_HOST_ANY, 5119, "GLzvuWtyCfHyGhF2", 12));
-    gameServer.test();
+    World world;
+    world.setLevelName("Map1");
+
+    world.LoadWorld();
     return 0;
 }

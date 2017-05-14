@@ -1,0 +1,30 @@
+{
+    "table": [
+        "BuffOnAllowAddBuildingBlocks",
+        "CharOnActivateBuildingBlocks",
+        "CharOnBeingHitBuildingBlocks",
+        "CharOnDisconnectBuildingBlocks",
+        "CharOnDodgeBuildingBlocks",
+        "CharOnHitUnitBuildingBlocks",
+        "CharOnKillUnitBuildingBlocks",
+        "CharOnLevelUpBuildingBlocks",
+        "CharOnLevelUpSpellBuildingBlocks",
+        "CharOnMissBuildingBlocks",
+        "CharOnNearbyDeathBuildingBlocks",
+        "CharOnPreDamageBuildingBlocks",
+        "CharOnPreDealDamageBuildingBlocks",
+        "CharOnReconnectBuildingBlocks",
+        "CharOnResurrectBuildingBlocks",
+        "CharOnSpellCastBuildingBlocks",
+        "PreLoadBuildingBlocks",
+        "SetVarsByLevelBuildingBlocks",
+        "UpdateSelfBuffActionsBuildingBlocks",
+        "UpdateSelfBuffStatsBuildingBlocks"
+    ],
+    "var": [
+        "AutoBuffActivateEffect",
+        "BuffTextureName",
+        "NonDispellable",
+        "PersistsThroughDeath"
+    ]
+}
