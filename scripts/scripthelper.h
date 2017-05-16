@@ -46,7 +46,7 @@ struct ScriptHelper
     static sol::object Multiply3dPointByScalar(sol::stack_object point, float scalar, sol::this_state thisState){}
     static std::string GetUnitSkinName(sol::stack_object unit){}
     static void AssignTeamGold(int teamID, float gold){}
-    static void CreateChildTurret(std::string name, std::string skinName, int team, int turretIndex, int lane){}
+    static void CreateChildTurret(std::string name, std::string skinName, int team, int turretIndex, int lane);
     static void CreateGameObject(std::string name, std::string fileName, sol::stack_object position){}
     static void EndGame(int winningTeam){}
     static void FacePosition(sol::stack_object target, sol::stack_object targetPos){}
