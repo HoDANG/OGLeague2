@@ -1,12 +1,14 @@
 #include "world.h"
 #include <string.h>
 #include <iostream>
+#include "net/serveri.hpp"
 
 using namespace std;
 
-World::World()
+World::World(ServerI *server)
     : mObjectManager(this),
-      mScriptMap(this)
+      mScriptMap(this),
+      pServer(server)
 {
 }
 
@@ -81,6 +83,11 @@ GGameState_s World::gameState() const
 void World::setGameState(const GGameState_s &gameState)
 {
     mGameState = gameState;
+}
+
+ServerI *World::server() const
+{
+    return pServer;
 }
 
 

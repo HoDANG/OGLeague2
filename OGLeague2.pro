@@ -342,7 +342,6 @@ HEADERS += \
     net/pkt/255_PKT_Batched.hpp \
     net/netserver.hpp \
     net/base.hpp \
-    testserver.hpp \
     net/onpacket.hpp \
     net/netbasepacket.hpp \
     net/netpacketstream.hpp \
@@ -381,7 +380,8 @@ HEADERS += \
     obj/properties/characterintermediate.hpp \
     scripts/aitimer.h \
     scripts/neutraltimer.h \
-    scripts/scriptmap.h
+    scripts/scriptmap.h \
+    net/serveri.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm

@@ -18,7 +18,7 @@ enum GGameState_s : int
   GAMESTATE_EXIT = 0x5
 };
 
-
+class ServerI;
 class World
 {
 private:
@@ -27,9 +27,10 @@ private:
     std::string mLevelName;
     ScriptMap mScriptMap;
     GGameState_s mGameState = GAMESTATE_PREGAME;
+    ServerI *pServer;
 public:
 
-    World();
+    World(ServerI* server);
     ObjectManager &objectmanager();
     void init();
     std::string levelName() const;
@@ -39,6 +40,7 @@ public:
     void Play();
     GGameState_s gameState() const;
     void setGameState(const GGameState_s &gameState);
+    ServerI *server() const;
 };
 
 #endif // WORLD_H

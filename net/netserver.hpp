@@ -8,13 +8,12 @@
 #include <functional>
 #include <iostream>
 #include <type_traits>
-#include "base.hpp"
 #include "../dep/enet.hpp"
 #include "../dep/blowfish.hpp"
-#include "../dep/wink.hpp"
-#include "netpacketstream.hpp"
+#include "base.hpp"
+#include "serveri.hpp"
 
-class NetServer
+class NetServer : public ServerI
 {
 protected:
     struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIABLE>
@@ -29,7 +28,7 @@ private:
     uint32_t mCount;
     ENetAddress mAddress;
     std::array<ENetPeer*, 13> mPeers;
-    std::unique_ptr<BlowFish> mBlowFish;
+    BlowFish mBlowFish;
     ENetHost* mHost = nullptr;
 
     void OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
@@ -57,7 +56,7 @@ private:
     }
 public:
     NetServer(uint32_t address, uint16_t port, std::string key, uint32_t maxclients) :
-        mBlowFish(std::make_unique<BlowFish>((uint8_t*)(key.c_str()), 16)),
+        mBlowFish((uint8_t*)(key.c_str()), 16),
         mMax(maxclients+1), mHost(nullptr), mCount(1),
         mAddress()
     {
@@ -107,7 +106,7 @@ public:
                     if(event.channelID >= CHANNEL_NUM_TOTAL)
                         break;
                     if(event.packet->dataLength >= 8)
-                        mBlowFish->Decrypt(event.packet->data,
+                        mBlowFish.Decrypt(event.packet->data,
                                            event.packet->dataLength-(event.packet->dataLength%8));
                     OnNetworkPacket((uint32_t)(event.peer->data),
                                     event.channelID,
@@ -125,9 +124,7 @@ public:
         return true;
     }
 
-    bool sendPacketRaw(uint32_t cid,
-                       uint8_t *pkt, size_t size,
-                       uint8_t channel = CHANNEL_GENERIC_APP_BROADCAST,
+    bool sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t channel,
                        uint32_t flags = ENET_PACKET_FLAG_RELIABLE)
     {
         if(cid>mMax || cid>12)
@@ -138,27 +135,11 @@ public:
         std::cout<<"Sent packet with id:"<<(uint32_t)pkt[0]<<" on channel"<<(uint32_t)channel<<std::endl;
         ENetPacket *packet = enet_packet_create(pkt, size, flags);
         if(size >= 8)
-            mBlowFish->Encrypt(packet->data, size-(size%8));
+            mBlowFish.Encrypt(packet->data, size-(size%8));
         enet_peer_send(peer, channel, packet);
         return true;
     }
 
-    template<class PKT>
-    void sendPacket(uint32_t cid, PKT &pkt)
-    {
-        sendPacketRaw(cid, (uint8_t*) &pkt, sizeof(PKT), PKT::CHANNEL, PKT::FLAGS);
-    }
-
-    template<class PKT>
-    void sendStream(uint32_t cid, const PacketStream<PKT> &stream)
-    {
-        auto data = stream.data();
-        sendPacketRaw(cid, &data[0], data.size(), PKT::CHANNEL, PKT::FLAGS);
-    }
-
-    wink::signal<wink::slot<void(uint32_t, uint8_t*, size_t)>> OnPacket[7][256];
-    wink::signal<std::function<void(uint32_t cid)>> OnConnected;
-    wink::signal<std::function<void(uint32_t cid)>> OnDisconnected;
 private:
     bool handleAuth(ENetPeer *peer, ENetPacket *packet)
     {
@@ -167,9 +148,9 @@ private:
             return false;
         if(packet->dataLength != sizeof(PKT_KeyCheck_s))
             return false;
-        if(mBlowFish->Decrypt(pkt->checkId) != pkt->playerID)
+        if(mBlowFish.Decrypt(pkt->checkId) != pkt->playerID)
             return false;
-        if(mBlowFish->Encrypt(pkt->playerID) != pkt->checkId)
+        if(mBlowFish.Encrypt(pkt->playerID) != pkt->checkId)
             return false;
         if(pkt->playerID > mPeers.size())
             return false;
