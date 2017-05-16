@@ -6,7 +6,7 @@
 
 struct ScriptHelperExtra
 {
-    static void RegisterGlobals(sol::state &state);
+    static void RegisterGlobals(sol::global_table state);
 
     static void DefUpdateAura(sol::stack_object centerObj, float range, int scanType, std::string buffName);
     static bool BBIsTargetBehindMe(sol::stack_object target, sol::stack_object owner);

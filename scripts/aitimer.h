@@ -5,11 +5,11 @@
 
 struct AiTimer
 {
-  float mElapsed;
-  float mDelay;
-  bool mRepeat;
-  bool mEnabled;
-  std::string mName;
+  float mElapsed = 0;
+  float mDelay = 0;
+  bool mRepeat = 0;
+  bool mEnabled = 0;
+  std::string mName = "";
 };
 
 #endif // AITIMER_H

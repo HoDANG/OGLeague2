@@ -8,9 +8,9 @@
 
 std::vector<AiTimer *> *ScriptHelper::mLevelTimers = nullptr;
 std::vector<NeutralTimer *> *ScriptHelper::mNeutralTimers = nullptr;
-std::string ScriptHelper::mMapName = "Map1";
+sol::state *ScriptHelper::mThisState = nullptr;
 
-void ScriptHelper::RegisterGlobals(sol::global_table state)
+void ScriptHelper::RegisterGlobals(sol::state &state)
 {
     state["PHYSICAL_DAMAGE"] = 0;
     state["MAGIC_DAMAGE"] = 1;
@@ -82,42 +82,38 @@ void ScriptHelper::RegisterGlobals(sol::global_table state)
     state["GetTotalTeamMinionsSpawned"] = &ScriptHelper::GetTotalTeamMinionsSpawned;
 }
 
-void ScriptHelper::InitState(sol::state_view state)
+void ScriptHelper::InitState(std::string name, sol::state &state)
 {
-    state.open_libraries(sol::lib::base, sol::lib::math , sol::lib::os, sol::lib::string);
+    state.open_libraries(sol::lib::base, sol::lib::math , sol::lib::os);
     state.new_usertype<r3dPoint3D>("r3dPoint3D");
     state.new_usertype<GameObject>("GameObject");
-    ScriptHelper::RegisterGlobals(state.globals());
-    ScriptHelperBB::RegisterGlobals(state.globals());
-    ScriptHelperDamage::RegisterGlobals(state.globals());
-    ScriptHelperExtra::RegisterGlobals(state.globals());
-    ScriptHelperSpells::RegisterGlobals(state.globals());
+    ScriptHelper::RegisterGlobals(state);
+    ScriptHelperBB::RegisterGlobals(state);
+    ScriptHelperDamage::RegisterGlobals(state);
+    ScriptHelperExtra::RegisterGlobals(state);
+    ScriptHelperSpells::RegisterGlobals(state);
     ScriptHelper::LoadLuaFile("DATA/BuildingBlocks/BuildingBlocksBase.lua", state);
     ScriptHelper::LoadLuaFile("DATA/BuildingBlocks/BBLuaConversionLibrary.lua", state);
+    state["luaFileName"] = name;
+    LoadLuaFile(name, state);
 }
 
-r3dPoint3D ScriptHelper::Make3DPoint(float x, float y, float z, sol::this_state thisState)
+bool ScriptHelper::LoadLuaFile(std::string name, sol::state &state)
 {
-    r3dPoint3D point { x, y, z};
-    return point;
-}
-
-bool ScriptHelper::LoadLuaFile(std::string name, sol::state_view state)
-{
-    auto path = r3dFileManager::getFilePath(name);
-    if(path == "")
-        path = r3dFileManager::getFilePath(name+"obj");
+    auto path = r3dFileManager::getFilePath(name+"obj");
     if(path == "")
         return false;
-    std::cout<<"Loading: "<<path<<std::endl;
-    state.do_file(path);
+    auto result = state.do_file(path);
     return true;
 }
 
-
-void ScriptHelper::LoadScriptIntoScript(std::string name, sol::this_state state)
+bool ScriptHelper::LoadScript(std::string name, sol::state &state)
 {
-    if(!LoadLuaFile(name, state))
-        if(!LoadLuaFile("LEVELS/"+mMapName+"/Scripts/"+name, state))
-            LoadLuaFile("DATA/Scripts/"+name, state);
+
+}
+
+
+void ScriptHelper::LoadScriptIntoScript(std::string fileName)
+{
+    LoadLuaFile(fileName, *mThisState);
 }

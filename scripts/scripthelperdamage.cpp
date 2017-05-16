@@ -2,7 +2,7 @@
 
 DamageInfo* ScriptHelperDamage::sDamageInfo = nullptr;
 
-void ScriptHelperDamage::RegisterGlobals(sol::state &state)
+void ScriptHelperDamage::RegisterGlobals(sol::global_table state)
 {
     state["DAMAGESOURCE_RAW"] = 0;
     state["DAMAGESOURCE_INTERNALRAW"] = 1;

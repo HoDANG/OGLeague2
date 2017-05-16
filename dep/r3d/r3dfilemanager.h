@@ -10,9 +10,10 @@ class r3dFileManager
 public:
     static std::vector<std::string>& basePaths()
     {
-        static std::vector<std::string> man;
+        static std::vector<std::string> man = {"./"};
         return man;
     }
+
     static std::string getFilePath(std::string path)
     {
         for(auto base: basePaths())
@@ -23,11 +24,22 @@ public:
                 return complete;
             }
         }
-        return "./"+path;
+        return "";
     }
+
     static void setBasePaths(const std::vector<std::string> &basepaths)
     {
         basePaths() = basepaths;
+    }
+
+    static void addBasePath(std::string path)
+    {
+        basePaths().push_back(path);
+    }
+
+    static bool hasFile(std::string path)
+    {
+        return getFilePath(path) != "";
     }
 };
 

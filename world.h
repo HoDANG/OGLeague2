@@ -4,6 +4,7 @@
 #include <memory>
 #include "dep/wink.hpp"
 #include "dep/r3d.hpp"
+#include "scripts/scriptmap.h"
 #include "objectmanager.h"
 
 class World
@@ -12,6 +13,7 @@ private:
     ObjectManager mObjectManager;
     r3dNavGrid mGrid;
     std::string mLevelName;
+    ScriptMap mScriptMap;
 public:
     World();
     ObjectManager &objectmanager();

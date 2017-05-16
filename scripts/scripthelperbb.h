@@ -6,7 +6,7 @@
 
 struct ScriptHelperBB
 {
-    static void RegisterGlobals(sol::state &state);
+    static void RegisterGlobals(sol::global_table state);
 
     static void BBSetCameraPosition(sol::stack_object passThrough, sol::stack_object perBlockParams){}
     static void BBIsPathable(sol::stack_object passThrough, sol::stack_object perBlockParams){}

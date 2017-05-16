@@ -2,7 +2,7 @@
 
 CharacterIntermediate* ScriptHelperSpells::sCharInter = nullptr;
 
-void ScriptHelperSpells::RegisterGlobals(sol::state &state)
+void ScriptHelperSpells::RegisterGlobals(sol::global_table state)
 {
     state["SPELL_AffectBuildings"] = 4096;
     state["SPELL_AffectEnemies"] = 1024;

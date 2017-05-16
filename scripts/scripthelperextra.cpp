@@ -1,7 +1,7 @@
 #include "scripthelperextra.h"
 
 
-void ScriptHelperExtra::RegisterGlobals(sol::state &state)
+void ScriptHelperExtra::RegisterGlobals(sol::global_table state)
 {
     state["DefUpdateAura"] = &ScriptHelperExtra::DefUpdateAura;
     state["BBIsTargetBehindMe"] = &ScriptHelperExtra::BBIsTargetBehindMe;

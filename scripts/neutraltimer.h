@@ -6,7 +6,7 @@
 
 struct NeutralTimer : AiTimer
 {
-  sol::object mLuaFunction;
+  sol::object mLuaFunction = sol::nil;
 };
 
 

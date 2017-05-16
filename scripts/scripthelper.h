@@ -11,11 +11,12 @@ struct ScriptHelper
 {
     static std::vector<AiTimer *> *mLevelTimers;
     static std::vector<NeutralTimer *> *mNeutralTimers;
+    static std::string mMapName;
 
-    static bool LoadLuaFile(std::string name, sol::state &state);
-    static void RegisterGlobals(sol::state &state);
+    static bool LoadLuaFile(std::string name, sol::state_view state);
+    static void RegisterGlobals(sol::global_table state);
 
-    static void InitState(sol::state &state);
+    static void InitState(sol::state_view state);
 
     static bool IsDampener(sol::stack_object object){}
     static bool IsObjectAI(sol::stack_object obj){}
@@ -41,7 +42,7 @@ struct ScriptHelper
     static sol::object GetPosition(sol::stack_object owner, sol::this_state thisState){}
     static sol::object GetTurret(int team, int lane, int position, sol::this_state thisState){}
     static sol::object GetTutorialPlayer(){}
-    static sol::object Make3DPoint(float x, float y, float z, sol::this_state thisState){}
+    static r3dPoint3D Make3DPoint(float x, float y, float z, sol::this_state thisState);
     static sol::object Multiply3dPointByScalar(sol::stack_object point, float scalar, sol::this_state thisState){}
     static std::string GetUnitSkinName(sol::stack_object unit){}
     static void AssignTeamGold(int teamID, float gold){}
@@ -54,7 +55,7 @@ struct ScriptHelper
     static void IncGold(sol::stack_object object, float goldAmount){}
     static void IncPosition(sol::stack_object owner, sol::stack_object delta){}
     static void InitTimer(std::string timerName, float delay, bool repeat){}
-    static void LoadScriptIntoScript(std::string fileName, sol::this_state state){}
+    static void LoadScriptIntoScript(std::string name, sol::this_state state);
     static void LockCamera(bool lock){}
     static void Log(std::string message){}
     static void MakeSay(sol::stack_object talker, std::string message){}

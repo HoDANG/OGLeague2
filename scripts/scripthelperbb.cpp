@@ -1,7 +1,7 @@
 #include "scripthelperbb.h"
 
 
-void ScriptHelperBB::RegisterGlobals(sol::state &state)
+void ScriptHelperBB::RegisterGlobals(sol::global_table state)
 {
     state["TTYPE_Invalid"] = -1;
     state["TTYPE_Self"] = 0;

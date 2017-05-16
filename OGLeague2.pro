@@ -68,7 +68,8 @@ SOURCES += \
     scripts/scripthelperbb.cpp \
     scripts/scripthelperdamage.cpp \
     scripts/scripthelperextra.cpp \
-    scripts/scripthelperspells.cpp
+    scripts/scripthelperspells.cpp \
+    scripts/scriptmap.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -379,7 +380,8 @@ HEADERS += \
     scripts/scripthelperspells.h \
     obj/properties/characterintermediate.hpp \
     scripts/aitimer.h \
-    scripts/neutraltimer.h
+    scripts/neutraltimer.h \
+    scripts/scriptmap.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

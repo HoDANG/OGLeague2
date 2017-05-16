@@ -9,7 +9,7 @@ struct ScriptHelperSpells
 {
     static CharacterIntermediate *sCharInter;
 
-    static void RegisterGlobals(sol::state &state);
+    static void RegisterGlobals(sol::global_table state);
 
     static void Say(sol::stack_object owner, std::string message){}
     static void ApplyStun(sol::stack_object owner, sol::stack_object target, float duration){}

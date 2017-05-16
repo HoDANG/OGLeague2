@@ -39,7 +39,7 @@ struct ScriptHelperDamage
 {
     static DamageInfo* sDamageInfo;
 
-    static void RegisterGlobals(sol::state &state);
+    static void RegisterGlobals(sol::global_table state);
 
     static int GetDamageType();
     static int GetSourceType();

@@ -5,7 +5,8 @@
 using namespace std;
 
 World::World()
-    : mObjectManager(this)
+    : mObjectManager(this),
+      mScriptMap(this)
 {
 }
 
