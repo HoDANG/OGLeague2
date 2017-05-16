@@ -43,3 +43,46 @@ void World::LoadWorld()
         mObjectManager.CreateWorldObject(name);
     }
 }
+
+void World::LoadGame()
+{
+    //init CharacterDataArraay
+    //init SpellManager
+    //init objectManager
+    //load ai Mesh
+    //load world
+    LoadWorld();
+    //init NavPointManager
+    //load mission aka map script
+    mScriptMap.Init(mLevelName);
+}
+
+void World::Play()
+{
+    //Load game
+    LoadGame();
+    //Update objects
+    //Post load game script
+    mScriptMap.PostInit();
+    //Update objects
+    //etc...
+    mGameState = GAMESTATE_GAMELOOP;
+    while(mGameState == GAMESTATE_GAMELOOP)
+    {
+
+    }
+}
+
+GGameState_s World::gameState() const
+{
+    return mGameState;
+}
+
+void World::setGameState(const GGameState_s &gameState)
+{
+    mGameState = gameState;
+}
+
+
+
+

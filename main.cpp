@@ -11,6 +11,8 @@ using namespace std;
 int main()
 {
     r3dFileManager::addBasePath("C:/lol/LoL-1.0.0.673");
-    World *world = new World();
+    World world;
+    world.setLevelName("Map1");
+    world.Play();
     return 0;
 }

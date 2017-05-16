@@ -13,3 +13,8 @@ void ScriptMap::Init(std::string name)
     ScriptHelper::LoadLuaFile("LEVELS/"+name+"/Scripts/LevelScript.lua", mState);
     mState["OnLevelInit"]();
 }
+
+void ScriptMap::PostInit()
+{
+    mState["OnPostLevelLoad"]();
+}

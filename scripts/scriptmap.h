@@ -9,6 +9,7 @@ class ScriptMap
 public:
     ScriptMap(World *world);
     void Init(std::string name);
+    void PostInit();
     float barracksSpawnTime = 0;
     float neutralSpawnTime = 0;
     int m_SpawnInterations = 0;
