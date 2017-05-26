@@ -29,7 +29,6 @@ private:
     GGameState_s mGameState = GAMESTATE_PREGAME;
     ServerI *pServer;
 public:
-
     World(ServerI* server);
     ObjectManager &objectmanager();
     void init();
@@ -41,6 +40,7 @@ public:
     GGameState_s gameState() const;
     void setGameState(const GGameState_s &gameState);
     ServerI *server() const;
+    void loop();
 };
 
 #endif // WORLD_H

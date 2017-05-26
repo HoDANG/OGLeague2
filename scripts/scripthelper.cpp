@@ -96,22 +96,6 @@ void ScriptHelper::InitState(sol::state_view state)
     ScriptHelper::LoadLuaFile("DATA/BuildingBlocks/BBLuaConversionLibrary.lua", state);
 }
 
-r3dPoint3D ScriptHelper::Make3DPoint(float x, float y, float z, sol::this_state thisState)
-{
-    r3dPoint3D point { x, y, z};
-    return point;
-}
-
-void ScriptHelper::CreateChildTurret(std::string name, std::string skinName, int team, int turretIndex, int lane)
-{
-    std::cout<<"Creating child turre with: \""<<name
-             <<"\"\n skin: \""<<skinName
-             <<"\"\n for team: "<<team
-             <<"\n on index: "<<turretIndex
-             <<"\n on lane: "<<lane
-             <<std::endl;
-}
-
 bool ScriptHelper::LoadLuaFile(std::string name, sol::state_view state)
 {
     auto path = r3dFileManager::getFilePath(name);
@@ -125,9 +109,3 @@ bool ScriptHelper::LoadLuaFile(std::string name, sol::state_view state)
 }
 
 
-void ScriptHelper::LoadScriptIntoScript(std::string name, sol::this_state state)
-{
-    if(!LoadLuaFile(name, state))
-        if(!LoadLuaFile("LEVELS/"+mMapName+"/Scripts/"+name, state))
-            LoadLuaFile("DATA/Scripts/"+name, state);
-}

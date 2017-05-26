@@ -140,6 +140,13 @@ public:
         return true;
     }
 
+    void eachClient(std::function<void(uint32_t, ServerI*)> each)
+    {
+        for(int i = 0; i<mPeers.size(); i++)
+            if(mPeers[i] != nullptr)
+                each(i, this);
+
+    }
 private:
     bool handleAuth(ENetPeer *peer, ENetPacket *packet)
     {

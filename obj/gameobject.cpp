@@ -186,6 +186,11 @@ void GameObject::setName(const std::string &name)
     mName = name;
 }
 
+void GameObject::update()
+{
+
+}
+
 bool GameObject::Load(std::string name)
 {
     mName = name;

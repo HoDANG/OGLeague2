@@ -1,22 +1,22 @@
 #ifndef ONPACKET_H
 #define ONPACKET_H
 
-#include "netserver.hpp"
+#include "serveri.hpp"
 #include "netbasepacket.hpp"
 
 template<class PKT>
 class OnPacket
 {
 protected:
-    NetServer *pServer;
+    ServerI *pServer;
 public:
-    OnPacket(NetServer &server)
+    OnPacket(ServerI &server)
         : OnPacket(&server)
     {
 
     }
 
-    OnPacket(NetServer *server)
+    OnPacket(ServerI *server)
     {
         pServer = server;
         pServer->OnPacket[PKT::CHANNEL][PKT::ID].connect(wink::slot<void(uint32_t, uint8_t*, size_t)>(this,

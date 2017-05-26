@@ -38,7 +38,8 @@ GameObject *ObjectManager::getByName(std::string name)
 
 void ObjectManager::update()
 {
-
+    for(auto o: mObjectsVect)
+        o->update();
 }
 
 GameObject *ObjectManager::CreateGameObject(string className, string loadName, r3dPoint3D pos, int flags, void *data)

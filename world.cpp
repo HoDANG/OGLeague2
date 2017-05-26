@@ -17,11 +17,6 @@ ObjectManager &World::objectmanager()
     return mObjectManager;
 }
 
-void World::init()
-{
-
-}
-
 string World::levelName() const
 {
     return mLevelName;
@@ -31,6 +26,27 @@ void World::setLevelName(const string &levelName)
 {
     mLevelName = levelName;
 }
+
+GGameState_s World::gameState() const
+{
+    return mGameState;
+}
+
+void World::setGameState(const GGameState_s &gameState)
+{
+    mGameState = gameState;
+}
+
+ServerI *World::server() const
+{
+    return pServer;
+}
+
+void World::init()
+{
+
+}
+
 
 void World::LoadWorld()
 {
@@ -69,25 +85,15 @@ void World::Play()
     //Update objects
     //etc...
     mGameState = GAMESTATE_GAMELOOP;
+    loop();
+}
+
+void World::loop()
+{
     while(mGameState == GAMESTATE_GAMELOOP)
     {
-
+        pServer->host(0);
     }
-}
-
-GGameState_s World::gameState() const
-{
-    return mGameState;
-}
-
-void World::setGameState(const GGameState_s &gameState)
-{
-    mGameState = gameState;
-}
-
-ServerI *World::server() const
-{
-    return pServer;
 }
 
 

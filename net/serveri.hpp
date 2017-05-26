@@ -1,6 +1,7 @@
 #ifndef SERVERI_H
 #define SERVERI_H
 
+#include <functional>
 #include "../dep/enet.hpp"
 #include "../dep/wink.hpp"
 #include "netpacketstream.hpp"
@@ -14,6 +15,7 @@ public:
                                uint32_t flags = ENET_PACKET_FLAG_RELIABLE) {}
     virtual bool start() {}
     virtual  bool host(uint32_t timeout) {}
+    virtual void eachClient(std::function<void(uint32_t, ServerI*)> each){}
     template<class PKT>
     bool sendPacket(uint32_t cid, PKT &pkt)
     {

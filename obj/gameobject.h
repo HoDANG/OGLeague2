@@ -80,6 +80,7 @@ public:
     void setTeam(const team_e &value);
     std::string getName() const;
     void setName(const std::string &name);
+    virtual void update();
 };
 
 #endif // GAMEOBJECT_H
