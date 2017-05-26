@@ -354,9 +354,6 @@ HEADERS += \
     dep/r3d/r3dconf.h \
     dep/r3d/r3dbuffer.h \
     dep/r3d/r3dnavgrid.h \
-    content/chardata.hpp \
-    content/itemdata.hpp \
-    content/spelldata.hpp \
     obj/properties/characterintermediaterep.hpp \
     obj/properties/characterstate.hpp \
     obj/properties/replicationhelper.hpp \
@@ -386,7 +383,10 @@ HEADERS += \
     scripts/neutraltimer.h \
     scripts/scriptmap.h \
     net/serveri.hpp \
-    lobby.h
+    lobby.h \
+    common/chardata.hpp \
+    common/itemdata.hpp \
+    common/spelldata.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm
