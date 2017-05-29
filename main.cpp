@@ -15,6 +15,11 @@ int main()
     NetServer net(ENET_HOST_ANY, 5119, "GLzvuWtyCfHyGhF2", 12);
     World world(&net);
     world.setLevelName("Map1");
+    Lobby lobby(&net);
+    Lobby.setChampion("Annie");
+    Lobby.setName("HoDANG");
+    Lobby.setSkin(0);
+    Lobby.setSyncID(1);
     world.Play();
     return 0;
 }
