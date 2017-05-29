@@ -93,22 +93,22 @@ public:
                 event.peer->mtu = 996;
                 break;
             case ENET_EVENT_TYPE_DISCONNECT:
-                if((uint32_t)(event.peer->data) > 0)
+                if((uint64_t)(event.peer->data) > 0)
                 {
                     mCount--;
-                    mPeers[(uint32_t)(event.peer->data)] = 0;
-                    OnDisconnected((uint32_t)(event.peer->data));
+                    mPeers[(uint64_t)(event.peer->data)] = 0;
+                    OnDisconnected((uint64_t)(event.peer->data));
                 }
                 break;
             case ENET_EVENT_TYPE_RECEIVE:
-                if((uint32_t)(event.peer->data) > 0)
+                if((uint64_t)(event.peer->data) > 0)
                 {
                     if(event.channelID >= CHANNEL_NUM_TOTAL)
                         break;
                     if(event.packet->dataLength >= 8)
                         mBlowFish.Decrypt(event.packet->data,
                                            event.packet->dataLength-(event.packet->dataLength%8));
-                    OnNetworkPacket((uint32_t)(event.peer->data),
+                    OnNetworkPacket((uint64_t)(event.peer->data),
                                     event.channelID,
                                     (uint8_t*)(event.packet->data),
                                     event.packet->dataLength);
