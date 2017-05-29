@@ -19,12 +19,8 @@ ObjectManager &World::objectmanager()
 
 string World::levelName() const
 {
+    mLevelName = pServer->pGameInfo->mLevelName;
     return mLevelName;
-}
-
-void World::setLevelName(const string &levelName)
-{
-    mLevelName = levelName;
 }
 
 GGameState_s World::gameState() const

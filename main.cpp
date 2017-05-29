@@ -11,15 +11,22 @@ using namespace std;
 
 int main()
 {
-    r3dFileManager::addBasePath("C:/lol/LoL-1.0.0.673");
+
+    GameInfo info;
+    GameInfo::PlayerInfo hodang;
+    hodang.heroName = "Annie";
+    hodang.summonerName = "HoDANG";
+    hodang.skin = 0;
+    hodang.syncID = 1;
+    info.players.push_back(hodang);
+    GameInfo::PlayerInfo = info.players.front();
+
+
+    r3dFileManager::addBasePath(info.basePath);
     NetServer net(ENET_HOST_ANY, 5119, "GLzvuWtyCfHyGhF2", 12);
+
     World world(&net);
-    world.setLevelName("Map1");
     Lobby lobby(&net);
-    Lobby.setChampion("Annie");
-    Lobby.setName("HoDANG");
-    Lobby.setSkin(0);
-    Lobby.setSyncID(1);
     world.Play();
     return 0;
 }

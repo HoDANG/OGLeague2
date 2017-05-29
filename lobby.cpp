@@ -15,47 +15,32 @@ Lobby::Lobby(ServerI *server)
 
 string Lobby::champion() const
 {
+    aChampion = pServer->pGameInfo->PlayerInfo.heroName;
     return aChampion;
 }
 
 string Lobby::name() const
 {
+    aName = pServer->pGameInfo->PlayerInfo.summonerName;
     return aName;
 }
 
 int Lobby::skin()
 {
+    aSkin = pServer->pGameInfo->PlayerInfo.skin;
     return aSkin;
 }
 
 int Lobby::map()
 {
+    aMap = pServer->pGameInfo->mapNumber;
     return aMap;
 }
 
 int Lobby::syncid()
 {
+    syncID = pServer->pGameInfo->PlayerInfo.syncID;
     return syncID;
-}
-
-void Lobby::setChampion(const string &champion)
-{
-    aChampion = champion;
-}
-
-void Lobby::setName(const string &name)
-{
-    aName = name;
-}
-
-void Lobby::setSkin(int &skin)
-{
-    aSkin = skin;
-}
-
-void Lobby::setSyncID(int &syncid)
-{
-    syncID = syncid;
 }
 
 void Lobby::Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size)

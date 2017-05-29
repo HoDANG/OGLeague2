@@ -30,10 +30,6 @@ public:
     int skin();
     int map();
     int syncid();
-    void setChampion(const std::string &champion);
-    void setName(const std::string &name);
-    void setSkin(int &skin);
-    void setSyncID(int &syncid);
 
     void Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size);
     void UpdateRoster();

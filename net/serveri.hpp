@@ -5,9 +5,12 @@
 #include "../dep/enet.hpp"
 #include "../dep/wink.hpp"
 #include "netpacketstream.hpp"
+#include "../common/gameinfo.hpp"
 
 class ServerI
 {
+protected:
+    GameInfo* pGameInfo;
 public:
     ServerI() = default;
     virtual ~ServerI() = default;

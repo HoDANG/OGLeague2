@@ -33,7 +33,6 @@ public:
     ObjectManager &objectmanager();
     void init();
     std::string levelName() const;
-    void setLevelName(const std::string &levelName);
     void LoadWorld();
     void LoadGame();
     void Play();
