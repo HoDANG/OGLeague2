@@ -8,19 +8,19 @@ using namespace std;
 World::World(ServerI *server)
     : mObjectManager(this),
       mScriptMap(this),
-      pServer(server)
+      pServer(server),
+      mLobby(server)
 {
+}
+
+Lobby &World::lobby()
+{
+    return mLobby;
 }
 
 ObjectManager &World::objectmanager()
 {
     return mObjectManager;
-}
-
-string World::levelName() const
-{
-    mLevelName = pServer->pGameInfo->mLevelName;
-    return mLevelName;
 }
 
 GGameState_s World::gameState() const
@@ -71,11 +71,21 @@ void World::LoadGame()
     mScriptMap.Init(mLevelName);
 }
 
+void World::UpdateObjects()
+{
+    for(int i = 0; i < mLobby.pGameInfo->playerInfoArray.size(); i++)
+    {
+        mObjectManager.CreateGameObject("ObjAiHero", mLobby.pGameInfo->[1].heroName, { 26.0f ,100.0f, 280.0f }, 64, 0);
+    }
+}
+
+
 void World::Play()
 {
     //Load game
     LoadGame();
     //Update objects
+    UpdateObjects();
     //Post load game script
     mScriptMap.PostInit();
     //Update objects

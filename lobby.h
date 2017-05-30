@@ -4,8 +4,10 @@
 #include "net/serveri.hpp"
 #include "net/onpacket.hpp"
 #include "net/packets.hpp"
+#include "common/gameinfo.hpp"
 
-class ServerI;
+
+class World;
 class Lobby
     : public OnPacket<EGP_RequestJoinTeam_s>,
       public OnPacket<PKT_C2S_Ping_Load_Info_s>,
@@ -17,19 +19,24 @@ class Lobby
 {
 private:
     ServerI *pServer;
-    std::string aChampion;
-    std::string aName;
-    int aSkin;
-    int aMap;
-    int syncID;
-public:
-    Lobby(ServerI *server);
 
-    std::string champion() const;
-    std::string name() const;
-    int skin();
-    int map();
-    int syncid();
+    //std::string aChampion = pServer->pGameInfo->PlayerInfo.heroName;
+    //std::string aName = pServer->pGameInfo->PlayerInfo.summonerName;
+    //int aSkin = pServer->pGameInfo->PlayerInfo.skin;
+    //int aMap = pServer->pGameInfo->mapNumber;
+    //int syncID = pServer->pGameInfo->PlayerInfo.heroName;
+public:
+    GameInfo *pGameInfo;
+    Lobby(ServerI *server);
+    void assignPlayers(std::vector<pGameInfo> playerinfoarray);
+
+
+
+    std::string champion = pGameInfo->playerInfoArray[1].heroName;
+    std::string name = pGameInfo->playerInfoArray[1].summonerName;
+    int skin = pGameInfo->playerInfoArray[1].skin;
+    int map = pGameInfo->mapNumber;
+    int syncid = pGameInfo->playerInfoArray[1].syncID;
 
     void Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size);
     void UpdateRoster();

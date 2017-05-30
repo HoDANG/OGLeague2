@@ -11,22 +11,37 @@ using namespace std;
 
 int main()
 {
+    GameInfo* gameinfo;
 
-    GameInfo info;
-    GameInfo::PlayerInfo hodang;
-    hodang.heroName = "Annie";
-    hodang.summonerName = "HoDANG";
-    hodang.skin = 0;
-    hodang.syncID = 1;
-    info.players.push_back(hodang);
-    GameInfo::PlayerInfo = info.players.front();
+    GameInfo::PlayerInfo player1;
+    player1.heroName = "Annie";
+    player1.summonerName = "HoDANG";
+    player1.skin = 0;
+    player1.syncID = 1;
+
+    gameinfo.basePath = "C:/lol/LoL-1.0.0.673";
+    gameinfo.mLevelName = "Map1";
+    gameinfo.mapNumber = 1;
 
 
-    r3dFileManager::addBasePath(info.basePath);
+    //lobby.pGameInfo->basePath = "C:/lol/LoL-1.0.0.673";
+    //lobby.pGameInfo->mLevelName = "Map1";
+    //lobby.pGameInfo->mapNumber = 1;
+
+
+
+    r3dFileManager::addBasePath(gameinfo.basePath);
     NetServer net(ENET_HOST_ANY, 5119, "GLzvuWtyCfHyGhF2", 12);
 
     World world(&net);
     Lobby lobby(&net);
+    lobby.pGameInfo = &gameinfo;
+
+    lobby.pGameInfo->players[1];
+
+
+    info.players.push_back(player1);
+
     world.Play();
     return 0;
 }

@@ -6,6 +6,8 @@
 #include "dep/r3d.hpp"
 #include "scripts/scriptmap.h"
 #include "objectmanager.h"
+#include "lobby.h"
+#include "net/netserver.hpp"
 
 
 enum GGameState_s : int
@@ -23,18 +25,20 @@ class World
 {
 private:
     ObjectManager mObjectManager;
+    Lobby mLobby;
     r3dNavGrid mGrid;
-    std::string mLevelName;
+    std::string mLevelName = mLobby.pGameInfo->mLevelName;
     ScriptMap mScriptMap;
     GGameState_s mGameState = GAMESTATE_PREGAME;
     ServerI *pServer;
 public:
     World(ServerI* server);
+    Lobby &lobby();
     ObjectManager &objectmanager();
     void init();
-    std::string levelName() const;
     void LoadWorld();
     void LoadGame();
+    void UpdateObjects();
     void Play();
     GGameState_s gameState() const;
     void setGameState(const GGameState_s &gameState);

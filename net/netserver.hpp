@@ -12,7 +12,9 @@
 #include "../dep/blowfish.hpp"
 #include "base.hpp"
 #include "serveri.hpp"
+#include "../common/GameInfo.hpp"
 
+class World;
 class NetServer : public ServerI
 {
 protected:
@@ -24,6 +26,7 @@ protected:
         uint64_t checkId;
     };
 private:
+    World *pWorld;
     uint32_t mMax;
     uint32_t mCount;
     ENetAddress mAddress;
@@ -55,13 +58,13 @@ private:
         }
     }
 public:
-    NetServer(uint32_t address, uint16_t port, std::string key, uint32_t maxclients) :
-        mBlowFish((uint8_t*)(key.c_str()), 16),
-        mMax(maxclients+1), mHost(nullptr), mCount(1),
+    NetServer(World *world) :
+        mBlowFish((uint8_t*)(GameInfo.key.c_str()), 16),
+        mMax(GameInfo.maxclients+1), mHost(nullptr), mCount(1),
         mAddress()
     {
-        mAddress.host = address;
-        mAddress.port = port;
+        mAddress.host = ENET_HOST_ANY;
+        mAddress.port = GameInfo.port;
         for(int i=0;i<13;i++)
             mPeers[i] = nullptr;
     }

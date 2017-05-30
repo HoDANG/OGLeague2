@@ -1,4 +1,6 @@
 #include "lobby.h"
+#include "world.h"
+#include "net/serveri.hpp"
 
 using namespace std;
 
@@ -13,35 +15,24 @@ Lobby::Lobby(ServerI *server)
 {
 }
 
-string Lobby::champion() const
+void Lobby::assignPlayers()
 {
-    aChampion = pServer->pGameInfo->PlayerInfo.heroName;
-    return aChampion;
+    //pGameInfo::PlayerInfo hodang;
+    //hodang.heroName = "Annie";
+    //hodang.summonerName = "HoDANG";
+    //hodang.skin = 0;
+    //hodang.syncID = 1;
+    info.players.push_back(hodang);
+
+    //GameInfo::PlayerInfo = info.players.front();
+
+    //for(int i = 0; i < pGameInfo->playerInfoArray.size(); i++)
+    //{
+    //
+    //    i++;
+    //};
 }
 
-string Lobby::name() const
-{
-    aName = pServer->pGameInfo->PlayerInfo.summonerName;
-    return aName;
-}
-
-int Lobby::skin()
-{
-    aSkin = pServer->pGameInfo->PlayerInfo.skin;
-    return aSkin;
-}
-
-int Lobby::map()
-{
-    aMap = pServer->pGameInfo->mapNumber;
-    return aMap;
-}
-
-int Lobby::syncid()
-{
-    syncID = pServer->pGameInfo->PlayerInfo.syncID;
-    return syncID;
-}
 
 void Lobby::Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size)
 {
