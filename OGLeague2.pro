@@ -386,7 +386,8 @@ HEADERS += \
     lobby.h \
     common/chardata.hpp \
     common/itemdata.hpp \
-    common/spelldata.hpp
+    common/spelldata.hpp \
+    common/gameinfo.hpp
 
 win32 {
     LIBS += -lws2_32 -lwinmm

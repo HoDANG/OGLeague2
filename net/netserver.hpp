@@ -9,7 +9,6 @@
 #include <iostream>
 #include <type_traits>
 #include "../dep/enet.hpp"
-#include "../dep/blowfish.hpp"
 #include "base.hpp"
 #include "serveri.hpp"
 
@@ -24,11 +23,10 @@ protected:
         uint64_t checkId;
     };
 private:
-    uint32_t mMax;
-    uint32_t mCount;
+    uint32_t mMax = 0;
+    uint32_t mCount = 1;
     ENetAddress mAddress;
-    std::array<ENetPeer*, 13> mPeers;
-    BlowFish mBlowFish;
+    std::map<int, ENetPeer*> mPeers;
     ENetHost* mHost = nullptr;
 
     void OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
@@ -55,29 +53,22 @@ private:
         }
     }
 public:
-    NetServer(uint32_t address, uint16_t port, std::string key, uint32_t maxclients) :
-        mBlowFish((uint8_t*)(key.c_str()), 16),
-        mMax(maxclients+1), mHost(nullptr), mCount(1),
-        mAddress()
+    NetServer()
     {
-        mAddress.host = address;
-        mAddress.port = port;
-        for(int i=0;i<13;i++)
-            mPeers[i] = nullptr;
     }
     ~NetServer()
     {
         if(mHost != nullptr)
             enet_host_destroy(mHost);
     }
-    bool start()
+    bool start(GameInfo *gameinfo)
     {
-        if(mHost != nullptr)
-            return false;
-        mHost = enet_host_create(&mAddress,32,0,0);
-        if(mHost == nullptr)
-            return false;
-        return true;
+        pGameInfo = gameinfo;
+        mMax = gameinfo->getHumans();
+        mAddress.host = gameinfo->address;
+        mAddress.port = gameinfo->port;
+        mHost = enet_host_create(&mAddress, 32, 0, 0);
+        return mHost == nullptr;
     }
     bool host(uint32_t timeout = 0)
     {
@@ -106,7 +97,7 @@ public:
                     if(event.channelID >= CHANNEL_NUM_TOTAL)
                         break;
                     if(event.packet->dataLength >= 8)
-                        mBlowFish.Decrypt(event.packet->data,
+                        pGameInfo->blowfish.Decrypt(event.packet->data,
                                            event.packet->dataLength-(event.packet->dataLength%8));
                     OnNetworkPacket((uint64_t)(event.peer->data),
                                     event.channelID,
@@ -127,7 +118,7 @@ public:
     bool sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t channel,
                        uint32_t flags = ENET_PACKET_FLAG_RELIABLE)
     {
-        if(cid>mMax || cid>12)
+        if(cid > mMax)
             return false;
         ENetPeer *peer = mPeers[cid];
         if(peer == nullptr)
@@ -135,17 +126,16 @@ public:
         std::cout<<"Sent packet with id:"<<(uint32_t)pkt[0]<<" on channel"<<(uint32_t)channel<<std::endl;
         ENetPacket *packet = enet_packet_create(pkt, size, flags);
         if(size >= 8)
-            mBlowFish.Encrypt(packet->data, size-(size%8));
+            pGameInfo->blowfish.Encrypt(packet->data, size-(size%8));
         enet_peer_send(peer, channel, packet);
         return true;
     }
 
     void eachClient(std::function<void(uint32_t, ServerI*)> each)
     {
-        for(int i = 0; i<mPeers.size(); i++)
-            if(mPeers[i] != nullptr)
-                each(i, this);
-
+        for(auto p: mPeers)
+            if(p.second != nullptr)
+                each(p.first, this);
     }
 private:
     bool handleAuth(ENetPeer *peer, ENetPacket *packet)
@@ -155,9 +145,9 @@ private:
             return false;
         if(packet->dataLength != sizeof(PKT_KeyCheck_s))
             return false;
-        if(mBlowFish.Decrypt(pkt->checkId) != pkt->playerID)
+        if(pGameInfo->blowfish.Decrypt(pkt->checkId) != pkt->playerID)
             return false;
-        if(mBlowFish.Encrypt(pkt->playerID) != pkt->checkId)
+        if(pGameInfo->blowfish.Encrypt(pkt->playerID) != pkt->checkId)
             return false;
         if(pkt->playerID > mPeers.size())
             return false;

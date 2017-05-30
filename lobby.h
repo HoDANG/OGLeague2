@@ -10,8 +10,9 @@ class Lobby :
 {
 private:
     ServerI *pServer;
+    GameInfo *pGameInfo;
 public:
-    Lobby(ServerI *server) :
+    Lobby(ServerI *server, GameInfo* gameinfo) :
         OnPacket<EGP_RequestJoinTeam_s>(server)
     {
     }

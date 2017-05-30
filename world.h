@@ -6,7 +6,7 @@
 #include "dep/r3d.hpp"
 #include "scripts/scriptmap.h"
 #include "objectmanager.h"
-
+#include "lobby.h"
 
 enum GGameState_s : int
 {
@@ -22,24 +22,24 @@ class ServerI;
 class World
 {
 private:
+    Lobby mLobby;
     ObjectManager mObjectManager;
     r3dNavGrid mGrid;
-    std::string mLevelName;
     ScriptMap mScriptMap;
     GGameState_s mGameState = GAMESTATE_PREGAME;
     ServerI *pServer;
+    GameInfo *pGameInfo;
 public:
-    World(ServerI* server);
+    World(ServerI* server, GameInfo* gameinfo);
     ObjectManager &objectmanager();
-    void init();
-    std::string levelName() const;
-    void setLevelName(const std::string &levelName);
+    Lobby &lobby();
+    ServerI *server() const;
+    GameInfo *gameinfo() const;
+    GGameState_s gameState() const;
+    void setGameState(const GGameState_s &gameState);
     void LoadWorld();
     void LoadGame();
     void Play();
-    GGameState_s gameState() const;
-    void setGameState(const GGameState_s &gameState);
-    ServerI *server() const;
     void loop();
 };
 

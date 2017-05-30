@@ -5,17 +5,31 @@
 #include "../dep/enet.hpp"
 #include "../dep/wink.hpp"
 #include "netpacketstream.hpp"
+#include "../common/gameinfo.hpp"
 
 class ServerI
 {
+protected:
+    GameInfo *pGameInfo;
 public:
     ServerI() = default;
     virtual ~ServerI() = default;
     virtual bool sendPacketRaw(uint32_t cid,uint8_t *pkt, size_t size, uint8_t channel,
-                               uint32_t flags = ENET_PACKET_FLAG_RELIABLE) {}
-    virtual bool start() {}
-    virtual  bool host(uint32_t timeout) {}
-    virtual void eachClient(std::function<void(uint32_t, ServerI*)> each){}
+                               uint32_t flags = ENET_PACKET_FLAG_RELIABLE)
+    {
+    }
+    virtual bool start(GameInfo *gameinfo)
+    {
+        pGameInfo = gameinfo;
+    }
+    virtual  bool host(uint32_t timeout)
+    {
+
+    }
+    virtual void eachClient(std::function<void(uint32_t, ServerI*)> each)
+    {
+
+    }
     template<class PKT>
     bool sendPacket(uint32_t cid, PKT &pkt)
     {
@@ -34,3 +48,4 @@ public:
 };
 
 #endif // SERVERI_H
+

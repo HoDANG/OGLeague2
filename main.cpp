@@ -11,10 +11,11 @@ using namespace std;
 
 int main()
 {
-    r3dFileManager::addBasePath("C:/lol/LoL-1.0.0.673");
-    NetServer net(ENET_HOST_ANY, 5119, "GLzvuWtyCfHyGhF2", 12);
-    World world(&net);
-    world.setLevelName("Map1");
+    GameInfo gameinfo;
+    gameinfo.basePaths = { "C:/lol/LoL-1.0.0.673" };
+    r3dFileManager::setBasePaths(gameinfo.basePaths);
+    NetServer server;
+    World world(&server, &gameinfo);
     world.Play();
     return 0;
 }

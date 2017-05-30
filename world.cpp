@@ -5,10 +5,12 @@
 
 using namespace std;
 
-World::World(ServerI *server)
-    : mObjectManager(this),
-      mScriptMap(this),
-      pServer(server)
+World::World(ServerI *server, GameInfo *gameinfo)
+    : pGameInfo(gameinfo),
+      pServer(server),
+      mLobby(server, gameinfo),
+      mObjectManager(this),
+      mScriptMap(this)
 {
 }
 
@@ -17,14 +19,9 @@ ObjectManager &World::objectmanager()
     return mObjectManager;
 }
 
-string World::levelName() const
+Lobby &World::lobby()
 {
-    return mLevelName;
-}
-
-void World::setLevelName(const string &levelName)
-{
-    mLevelName = levelName;
+    return mLobby;
 }
 
 GGameState_s World::gameState() const
@@ -42,16 +39,15 @@ ServerI *World::server() const
     return pServer;
 }
 
-void World::init()
+GameInfo *World::gameinfo() const
 {
-
+    return pGameInfo;
 }
-
 
 void World::LoadWorld()
 {
-    mGrid.load("LEVELS/"+mLevelName+"/AIPath.aimesh_ngrid");
-    r3dFile dsc("LEVELS/"+mLevelName+"/Scene/room.dsc");
+    mGrid.load("LEVELS/"+pGameInfo->getMapName()+"/AIPath.aimesh_ngrid");
+    r3dFile dsc("LEVELS/"+pGameInfo->getMapName()+"/Scene/room.dsc");
     std::string name, quality;
     while(dsc >> name >> quality)
     {
@@ -72,11 +68,12 @@ void World::LoadGame()
     LoadWorld();
     //init NavPointManager
     //load mission aka map script
-    mScriptMap.Init(mLevelName);
+    mScriptMap.Init(pGameInfo->getMapName());
 }
 
 void World::Play()
 {
+    pServer->start(pGameInfo);
     //Load game
     LoadGame();
     //Update objects
@@ -90,9 +87,10 @@ void World::Play()
 
 void World::loop()
 {
-    while(mGameState == GAMESTATE_GAMELOOP)
+    while(mGameState != GAMESTATE_EXIT)
     {
         pServer->host(0);
+        mObjectManager.update();
     }
 }
 
