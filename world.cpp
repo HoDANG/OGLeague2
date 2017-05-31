@@ -90,6 +90,7 @@ void World::loop()
     while(mGameState != GAMESTATE_EXIT)
     {
         pServer->host(0);
+        mLobby.update();
         mObjectManager.update();
     }
 }
