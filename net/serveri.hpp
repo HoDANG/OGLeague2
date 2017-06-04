@@ -4,7 +4,7 @@
 #include <functional>
 #include "../dep/enet.hpp"
 #include "../dep/wink.hpp"
-#include "netpacketstream.hpp"
+#include "packetstream.hpp"
 #include "../common/gameinfo.hpp"
 
 class ServerI

@@ -73,7 +73,16 @@ SOURCES += \
     lobby.cpp \
     scripts/scripthelper_stub.cpp \
     scripts/scripthelperbb_stub.cpp \
-    scripts/scripthelperspells_stub.cpp
+    scripts/scripthelperspells_stub.cpp \
+    dep/r3d/r3dconf.cpp \
+    dep/r3d/r3dpoint.cpp \
+    dep/r3d/r3dnavgrid.cpp \
+    dep/r3d/r3dmesh.cpp \
+    dep/r3d/r3dfilemanager.cpp \
+    dep/r3d/r3dfile.cpp \
+    dep/r3d/r3dbuffer.cpp \
+    dep/r3d/r3dbox3d.cpp \
+    netserver.cpp
 
 HEADERS += \
     dep/blowfish/base64.h \
@@ -344,11 +353,8 @@ HEADERS += \
     net/pkt/193_PKT_S2C_Neutral_Camp_Empty.hpp \
     net/pkt/194_PKT_ResetForSlowLoader.hpp \
     net/pkt/255_PKT_Batched.hpp \
-    net/netserver.hpp \
     net/base.hpp \
     net/onpacket.hpp \
-    net/netbasepacket.hpp \
-    net/netpacketstream.hpp \
     net/packetenums.hpp \
     dep/r3d/r3dfilemanager.h \
     dep/r3d/r3dconf.h \
@@ -387,7 +393,10 @@ HEADERS += \
     common/chardata.hpp \
     common/itemdata.hpp \
     common/spelldata.hpp \
-    common/gameinfo.hpp
+    common/gameinfo.hpp \
+    net/basepacket.hpp \
+    net/packetstream.hpp \
+    netserver.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

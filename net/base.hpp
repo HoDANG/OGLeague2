@@ -10,7 +10,7 @@
 #include "../common/connectioninfo.hpp"
 #include "../common/playerliteinfo.hpp"
 #include "packetenums.hpp"
-#include "netbasepacket.hpp"
+#include "basepacket.hpp"
 
 //CHANNEL_MIDDLE_TIER_ROSTER
 template<uint8_t TID,

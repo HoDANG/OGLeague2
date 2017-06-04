@@ -8,39 +8,15 @@
 class r3dFileManager
 {
 public:
-    static std::vector<std::string>& basePaths()
-    {
-        static std::vector<std::string> man = {"./"};
-        return man;
-    }
+    static std::vector<std::string>& basePaths();
 
-    static std::string getFilePath(std::string path)
-    {
-        for(auto base: basePaths())
-        {
-            std::string complete = base+"/"+path;
-            if(std::fstream(complete).good())
-            {
-                return complete;
-            }
-        }
-        return "";
-    }
+    static std::string getFilePath(std::string path);
 
-    static void setBasePaths(const std::vector<std::string> &basepaths)
-    {
-        basePaths() = basepaths;
-    }
+    static void setBasePaths(const std::vector<std::string> &basepaths);
 
-    static void addBasePath(std::string path)
-    {
-        basePaths().push_back(path);
-    }
+    static void addBasePath(std::string path);
 
-    static bool hasFile(std::string path)
-    {
-        return getFilePath(path) != "";
-    }
+    static bool hasFile(std::string path);
 };
 
 #endif // R3DFILEMANAGER_H

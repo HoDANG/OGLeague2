@@ -3,9 +3,7 @@
 #include <string>
 #include <sstream>
 #include "world.h"
-#include "scripts/scriptmap.h"
-#include "scripts/scripthelper.h"
-#include "net/netserver.hpp"
+#include "netserver.h"
 
 using namespace std;
 

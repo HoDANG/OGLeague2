@@ -2,7 +2,7 @@
 #define ONPACKET_H
 
 #include "serveri.hpp"
-#include "netbasepacket.hpp"
+#include "basepacket.hpp"
 
 template<class PKT>
 class OnPacket

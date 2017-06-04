@@ -9,16 +9,8 @@
 class r3dFile : public std::ifstream
 {
 public:
-    r3dFile(std::string name)
-        : std::ifstream(r3dFileManager::getFilePath(name))
-    {
-
-    }
-    r3dFile(std::string name, std::ios_base::openmode mode)
-        : std::ifstream(r3dFileManager::getFilePath(name), mode)
-    {
-
-    }
+    r3dFile(std::string name);
+    r3dFile(std::string name, std::ios_base::openmode mode);
 
     template<typename T>
     bool readb(T &dest, size_t count = 1)
