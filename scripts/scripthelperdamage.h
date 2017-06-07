@@ -1,9 +1,9 @@
 #ifndef SCRIPTHELPERDAMAGE_H
 #define SCRIPTHELPERDAMAGE_H
 
-#include "dep/sol.hpp"
-#include "dep/r3d.hpp"
 #include <inttypes.h>
+#include "sol.hpp"
+#include "r3d.hpp"
 
 enum DamageTypes : uint8_t
 {

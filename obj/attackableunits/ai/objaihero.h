@@ -1,9 +1,9 @@
 #ifndef OBJAIHERO_H
 #define OBJAIHERO_H
 
-#include "objaibase.h"
-#include "../../properties/experience.hpp"
-#include "../../properties/gold.hpp"
+#include "obj/attackableunits/ai/objaibase.h"
+#include "stats/experience.hpp"
+#include "stats/gold.hpp"
 
 class ObjAiHero : public ObjAiBase
 {

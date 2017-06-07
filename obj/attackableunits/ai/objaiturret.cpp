@@ -1,5 +1,5 @@
 #include "objaiturret.h"
-#include "../../properties/replicationhelper.hpp"
+#include "stats/replicationhelper.hpp"
 
 namespace
 {

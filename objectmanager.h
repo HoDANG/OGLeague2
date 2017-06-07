@@ -3,7 +3,7 @@
 
 #include <map>
 #include <vector>
-#include "dep/r3d.hpp"
+#include "r3d.hpp"
 
 class World;
 class GameObject;

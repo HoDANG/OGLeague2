@@ -2,8 +2,7 @@
 #define WORLD_H
 
 #include <memory>
-#include "dep/wink.hpp"
-#include "dep/r3d.hpp"
+#include "wink.hpp"
 #include "scripts/scriptmap.h"
 #include "objectmanager.h"
 #include "lobby.h"

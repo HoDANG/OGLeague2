@@ -1,4 +1,6 @@
 #include "netserver.h"
+#include "net/basepacket.hpp"
+#include "packets/packetenums.hpp"
 
 namespace
 {

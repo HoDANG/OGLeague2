@@ -1,8 +1,8 @@
 #ifndef SCRIPTHELPEREXTRA_H
 #define SCRIPTHELPEREXTRA_H
 
-#include "dep/sol.hpp"
-#include "dep/r3d.hpp"
+#include "sol.hpp"
+#include "r3d.hpp"
 
 struct ScriptHelperExtra
 {

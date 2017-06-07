@@ -2,10 +2,10 @@
 #define SERVERI_H
 
 #include <functional>
-#include "../dep/enet.hpp"
-#include "../dep/wink.hpp"
+#include "enet.hpp"
+#include "wink.hpp"
 #include "packetstream.hpp"
-#include "../common/gameinfo.hpp"
+#include "common/gameinfo.hpp"
 
 class ServerI
 {

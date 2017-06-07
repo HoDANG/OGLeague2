@@ -3,7 +3,7 @@
 
 #include "net/serveri.hpp"
 #include "net/onpacket.hpp"
-#include "net/packets.hpp"
+#include "packets/packets.hpp"
 
 class Lobby :
         public OnPacket<EGP_RequestJoinTeam_s>,

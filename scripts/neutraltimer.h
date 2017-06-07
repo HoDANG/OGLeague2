@@ -2,7 +2,7 @@
 #define NEUTRALTIMER_H
 
 #include "aitimer.h"
-#include "dep/sol.hpp"
+#include "sol.hpp"
 
 struct NeutralTimer : AiTimer
 {

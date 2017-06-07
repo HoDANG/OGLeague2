@@ -1,7 +1,7 @@
 #ifndef SCRIPTMAP_H
 #define SCRIPTMAP_H
 
-#include "dep/sol.hpp"
+#include "sol.hpp"
 
 class World;
 class ScriptMap

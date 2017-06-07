@@ -1,9 +1,9 @@
 #ifndef OBJAIBASE_H
 #define OBJAIBASE_H
 
-#include "../attackableunit.h"
-#include "../../properties/characterintermediaterep.hpp"
-#include "../../properties/characterstate.hpp"
+#include "obj/attackableunits/attackableunit.h"
+#include "stats/characterintermediaterep.hpp"
+#include "stats/characterstate.hpp"
 
 class ObjAiBase : public AttackableUnit
 {

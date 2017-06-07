@@ -1,9 +1,9 @@
 #ifndef ATTACKABLEUNIT_H
 #define ATTACKABLEUNIT_H
 
-#include "../gameobject.h"
-#include "../properties/health.hpp"
-#include "../properties/mana.hpp"
+#include "obj/gameobject.h"
+#include "stats/health.hpp"
+#include "stats/mana.hpp"
 
 class AttackableUnit : public GameObject
 {

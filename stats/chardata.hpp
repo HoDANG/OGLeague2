@@ -5,7 +5,7 @@
 #include <string>
 #include <array>
 #include "stringutils.hpp"
-#include "../dep/r3d.hpp"
+#include "r3d.hpp"
 
 struct CharData
 {

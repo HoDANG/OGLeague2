@@ -2,8 +2,8 @@
 #define SCRIPTHELPER_H
 
 #include <vector>
-#include "dep/sol.hpp"
-#include "dep/r3d.hpp"
+#include "sol.hpp"
+#include "r3d.hpp"
 #include "aitimer.h"
 #include "neutraltimer.h"
 

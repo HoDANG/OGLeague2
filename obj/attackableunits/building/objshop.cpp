@@ -1,6 +1,6 @@
 #include "objshop.h"
 #include <string.h>
-#include "../../../common/stringutils.hpp"
+#include "stringutils.hpp"
 
 ObjShop::ObjShop(World *world)
     : ObjBuilding(world)

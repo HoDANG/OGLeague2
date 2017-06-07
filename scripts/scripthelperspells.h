@@ -1,9 +1,9 @@
 #ifndef SCRIPTHELPERSPELLS_H
 #define SCRIPTHELPERSPELLS_H
 
-#include "dep/sol.hpp"
-#include "dep/r3d.hpp"
-#include "../obj/properties/characterintermediate.hpp"
+#include "sol.hpp"
+#include "r3d.hpp"
+#include "stats/characterintermediate.hpp"
 
 struct ScriptHelperSpells
 {

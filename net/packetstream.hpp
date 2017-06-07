@@ -1,7 +1,7 @@
 #ifndef NETPACKETSTREAM_H
 #define NETPACKETSTREAM_H
 
-#include "../dep/buffer.hpp"
+#include "r3d/r3dbuffer.h"
 
 template<class PKT>
 class PacketStream

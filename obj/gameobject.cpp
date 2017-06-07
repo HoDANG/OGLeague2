@@ -1,5 +1,5 @@
 #include "gameobject.h"
-#include "../dep/crc32.hpp"
+#include "crc32.hpp"
 
 GameObject::GameObject(World *world) : pWorld(world)
 {

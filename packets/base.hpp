@@ -5,12 +5,12 @@
 #include <stdint.h>
 #include <vector>
 #include <sstream>
-#include "../dep/buffer.hpp"
-#include "../dep/enet.hpp"
-#include "../common/connectioninfo.hpp"
-#include "../common/playerliteinfo.hpp"
-#include "packetenums.hpp"
-#include "basepacket.hpp"
+#include "r3d/r3dbuffer.h"
+#include "enet.hpp"
+#include "packets/shared/connectioninfo.hpp"
+#include "packets/shared/playerliteinfo.hpp"
+#include "packets/packetenums.hpp"
+#include "net/basepacket.hpp"
 
 //CHANNEL_MIDDLE_TIER_ROSTER
 template<uint8_t TID,

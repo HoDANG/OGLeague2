@@ -8,8 +8,7 @@
 #include <functional>
 #include <iostream>
 #include <type_traits>
-#include "dep/enet.hpp"
-#include "net/base.hpp"
+#include "enet.hpp"
 #include "net/serveri.hpp"
 
 class NetServer : public ServerI
