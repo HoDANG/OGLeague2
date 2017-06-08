@@ -1,5 +1,5 @@
 #include "objbarracks.h"
-#include "stats/replicationhelper.hpp"
+#include "stats/replicationhelper.h"
 
 namespace
 {

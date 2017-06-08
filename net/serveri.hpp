@@ -17,18 +17,19 @@ public:
     virtual bool sendPacketRaw(uint32_t cid,uint8_t *pkt, size_t size, uint8_t channel,
                                uint32_t flags = ENET_PACKET_FLAG_RELIABLE)
     {
+        return true;
     }
     virtual bool start(GameInfo *gameinfo)
     {
         pGameInfo = gameinfo;
+        return true;
     }
     virtual  bool host(uint32_t timeout)
     {
-
+        return true;
     }
     virtual void eachClient(std::function<void(uint32_t, ServerI*)> each)
     {
-
     }
     template<class PKT>
     bool sendPacket(uint32_t cid, PKT &pkt)

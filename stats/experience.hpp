@@ -1,7 +1,7 @@
 #ifndef EXPERIENCE_H
 #define EXPERIENCE_H
 
-#include "replicationmanager.hpp"
+#include "replicate.hpp"
 
 struct Experience
 {

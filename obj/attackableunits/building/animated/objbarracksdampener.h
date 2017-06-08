@@ -3,7 +3,7 @@
 
 #include "obj/attackableunits/building/animated/objanimatedbuilding.h"
 #include "objanimatedbuilding.h"
-#include "stats/replicationhelper.hpp"
+#include "stats/replicationhelper.h"
 
 class ObjBarracksDampener : public ObjAnimatedBuilding
 {

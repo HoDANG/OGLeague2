@@ -1,12 +1,10 @@
 #ifndef CHARACTERINTERMEDIATE_H
 #define CHARACTERINTERMEDIATE_H
 
-#include "replicationmanager.hpp"
-
 struct CharacterIntermediate
 {
     float mFlatCooldownMod;
-    Replicate<float> mPercentCooldownMod;
+    float mPercentCooldownMod;
     float mFlatHPPoolMod;
     float mPercentHPPoolMod;
     float mFlatPARPoolMod;
@@ -44,7 +42,7 @@ struct CharacterIntermediate
     float mPercentEXPBonus;
     float mFlatAttackRangeMod;
     float mPercentAttackRangeMod;
-    Replicate<float> mFlatCastRangeMod;
+    float mFlatCastRangeMod;
     float mPercentCastRangeMod;
     float mAcquisitionRangeMod;
     float mPercentAttackSpeedMod;

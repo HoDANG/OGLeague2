@@ -1,7 +1,7 @@
 #ifndef HEALTH_H
 #define HEALTH_H
 
-#include "replicationmanager.hpp"
+#include "replicate.hpp"
 
 struct Health
 {

@@ -8,6 +8,11 @@ HEADERS += \
     $$PWD/health.hpp \
     $$PWD/itemdata.hpp \
     $$PWD/mana.hpp \
-    $$PWD/replicationhelper.hpp \
-    $$PWD/replicationmanager.hpp \
-    $$PWD/spelldata.hpp
+    $$PWD/spelldata.hpp \
+    $$PWD/replicationhelper.h \
+    $$PWD/replicationmanager.h \
+    $$PWD/replicate.hpp
+
+SOURCES += \
+    $$PWD/replicationmanager.cpp \
+    $$PWD/replicationhelper.cpp

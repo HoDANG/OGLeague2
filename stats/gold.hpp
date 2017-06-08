@@ -1,7 +1,7 @@
 #ifndef GOLD_H
 #define GOLD_H
 
-#include "replicationmanager.hpp"
+#include "replicate.hpp"
 
 struct Gold
 {
