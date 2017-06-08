@@ -12,37 +12,31 @@
 5. pathing?
 6. movement?
 
-
-
 # Setup guide
 
-#### Download and setup client files
-* Download version 1.0.0.673 or 1.0.0.106/1.0.0.105 of League client (https://drive.google.com/uc?id=0B6s8bt_HRu-gV21Ed1RWVnlLUXc&export=download)
-
-* After extracting the league client, copy the contents of these 5 folders: 
-    * `X:/Path/To/Extracted/LoL-1.0.0.673/RADS/projects/lol_game_client/managedfiles/0.0.0.0/`
-    * `X:/Path/To/Extracted/LoL-1.0.0.673/RADS/projects/lol_game_client/managedfiles/0.0.0.1/`
-    * `X:/Path/To/Extracted/LoL-1.0.0.673/RADS/projects/lol_game_client/managedfiles/0.0.0.2/`
-    * `X:/Path/To/Extracted/LoL-1.0.0.673/RADS/projects/lol_game_client/managedfiles/0.0.0.3/`
-    * `X:/Path/To/Extracted/LoL-1.0.0.673/RADS/solutions/lol_game_client_sln/releases/0.0.0.2/deploy/`
-
-    and paste the contents into `X:/Path/To/Extracted/LoL-1.0.0.673/`
-
+#### Download and extract client files
+* Download version 1.0.0.673 of League client: [(LoL-1.0.0.673.zip)](https://drive.google.com/uc?id=0B6s8bt_HRu-gMDNqT2lWbnpleXc&export=download)
+* Extract version 1.0.0.673 League client files like so:
+    * `C:/`
+        * `lol/`
+            * `LoL-1.0.0.673/`
+                * `DATA/`
+                * `LEVELS/`
+                * `League of Legends.exe`
 
 #### Install Qt and setup project
-* Install Qt. http://download.qt.io/official_releases/online_installers/ (note: During installation, needed components are Qt 5.8, 32bit compiler of choice, and QtCreator)
+* Install Qt: (http://download.qt.io/official_releases/online_installers/) 
+    * Note: *During installation, needed components are Qt 5.8, compiler of choice(mingw/msvc2015/etc.), and QtCreator*
 * Clone the git repository
 * Open OGLeague2.pro project file in QtCreator
-* Open main.cpp and change `gameinfo.basePaths = { "C:/lol/LoL-1.0.0.673" };` to `X:/Path/To/Extracted/LoL-1.0.0.673/`
+    * Note: *If the path to your 1.0.0.673 folder is not `C:/lol/LoL-1.0.0.673` , you must specify the path to your 1.0.0.673 folder in main.cpp:  `gameinfo.basePaths = { "X:/Path/To/Extracted/LoL-1.0.0.673" };`*
 * Rebuild and run
-
 
 # Running the client
 
 #### To run the game, make a .bat file:
 ```
 @echo off
-cd "X:/Path/To/Extracted/LoL-1.0.0.673/"
+cd "C:/lol/LoL-1.0.0.673"
 start "" "League of Legends.exe" "8394" "LoLLauncher.exe" "" "127.0.0.1 5119 GLzvuWtyCfHyGhF2 1"
 ```
-
