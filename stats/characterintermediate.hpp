@@ -1,9 +1,11 @@
 #ifndef CHARACTERINTERMEDIATE_H
 #define CHARACTERINTERMEDIATE_H
 
+#include "chardata.hpp"
+
 struct CharacterIntermediate
 {
-    float mFlatCooldownMod;
+    float mFlatCooldownMod = 0;
     float mPercentCooldownMod;
     float mFlatHPPoolMod;
     float mPercentHPPoolMod;

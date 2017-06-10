@@ -23,14 +23,14 @@ struct CharData
                                            "yes") == 0;
         bIsWaypoint = StringUtils::stringicmp(conf.getString("Data", "IsWaypoint", "no"),
                                               "yes") == 0;
-        string klass = conf.getString("Data", "Classification", "Arcane");
+        std::string klass = conf.getString("Data", "Classification", "Arcane");
         bIsArcane = StringUtils::stringicmp(klass.c_str(), "Arcane") > -1;
         bIsDeadly = StringUtils::stringicmp(klass.c_str(), "Deadly") > -1;
         bIsStrong = StringUtils::stringicmp(klass.c_str(), "Strong") > -1;
         bNeverRender = conf.getNum("Data", "NeverRender", 0) != 0;
         bServerOnly = conf.getNum("Data", "ServerOnly", 0) != 0;
         bNoAutoAttack = conf.getNum("Data", "NoAutoAttack", 0) != 0;
-        string partype = conf.getString("Data", "PARType", "MP");
+        std::string partype = conf.getString("Data", "PARType", "MP");
         //TODO: convert string partype to int
         mBaseHP = conf.getNum("Data", "BaseHP", 100.0f);
         mBasePAR = conf.getNum("Data", "BaseMP", 100.0f);
@@ -74,20 +74,20 @@ struct CharData
 
         for(int i=0; i<4; i++)
         {
-            SpellNames[i] = conf.getString("Data", "Spell"+to_string(i+1), "");
+            SpellNames[i] = conf.getString("Data", "Spell"+std::to_string(i+1), "");
         }
         for(int i=0; i<8; i++)
         {
-            ExtraSpells[i] = conf.getString("Data", "ExtraSpell"+to_string(i+1), "");
+            ExtraSpells[i] = conf.getString("Data", "ExtraSpell"+std::to_string(i+1), "");
         }
         CritAttackNameStr = conf.getString("Data", "CriticalAttack", "");
         for(int i=0; i<6; i++)
         {
-            Passives[i].PassiveNameStr = conf.getString("Data", "Passive"+to_string(i+1)+"Name", "");
-            Passives[i].PassiveLuaName = conf.getString("Data", "Passive"+to_string(i+1)+"LuaName", "");
+            Passives[i].PassiveNameStr = conf.getString("Data", "Passive"+std::to_string(i+1)+"Name", "");
+            Passives[i].PassiveLuaName = conf.getString("Data", "Passive"+std::to_string(i+1)+"LuaName", "");
             for(int c = 0; c<6; c++)
             {
-                Passives[i].PassiveLevels[c] = conf.getNum("Data", "Passive"+to_string(i+1)+"Level"+to_string(c+1), -1);
+                Passives[i].PassiveLevels[c] = conf.getNum("Data", "Passive"+std::to_string(i+1)+"Level"+std::to_string(c+1), -1);
             }
         }
         mHitFxScale = conf.getNum("Data", "HitFxScale", 1.0f);
