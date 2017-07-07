@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "team_e.hpp"
-#include "blowfish.h"
+#include "blowfish.hpp"
 
 struct GameInfo
 {

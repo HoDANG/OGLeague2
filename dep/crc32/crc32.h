@@ -1,5 +1,5 @@
-#ifndef CRC32_HPP
-#define CRC32_HPP
+#ifndef CRC32_H
+#define CRC32_H
 
 #include <string.h>
 class CRC32
@@ -108,4 +108,4 @@ public:
     }
 };
 
-#endif // CRC32_HPP
+#endif // CRC32_HP

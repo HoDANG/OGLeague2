@@ -1,7 +1,7 @@
 #ifndef OBJBARRACKSDAMPENER_H
 #define OBJBARRACKSDAMPENER_H
 
-#include "obj/attackableunits/building/animated/objanimatedbuilding.h"
+#include "object/attackableunits/building/animated/objanimatedbuilding.h"
 #include "objanimatedbuilding.h"
 #include "stats/replicationhelper.h"
 
@@ -11,7 +11,7 @@ protected:
     ReplicationManager mReplicationManager;
 public:
     ObjBarracksDampener(World *world);
-     void SetupReplicationInfo();
+    void SetupReplicationInfo();
 };
 
 #endif // OBJBARRACKSDAMPENER_H

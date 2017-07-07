@@ -1,7 +1,7 @@
 #ifndef OBJAIHERO_H
 #define OBJAIHERO_H
 
-#include "obj/attackableunits/ai/objaibase.h"
+#include "object/attackableunits/ai/objaibase.h"
 #include "stats/experience.hpp"
 #include "stats/gold.hpp"
 

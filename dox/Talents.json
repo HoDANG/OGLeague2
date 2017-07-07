@@ -1,0 +1,16 @@
+{
+    "table": [
+        "CharOnBeingHitBuildingBlocks",
+        "CharOnDodgeBuildingBlocks",
+        "CharOnPreAttackBuildingBlocks",
+        "CharOnPreDamageBuildingBlocks",
+        "PreLoadBuildingBlocks",
+        "SetVarsByLevelBuildingBlocks",
+        "UpdateSelfBuffActionsBuildingBlocks",
+        "UpdateSelfBuffStatsBuildingBlocks"
+    ],
+    "var": [
+        "BuffName",
+        "BuffTextureName"
+    ]
+}

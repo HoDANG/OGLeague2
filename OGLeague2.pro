@@ -3,17 +3,13 @@ CONFIG += console c++14
 CONFIG -= app_bundle
 CONFIG -= qt
 
-INCLUDEPATH +=  extra
+INCLUDEPATH += dep
 
-
-include(extra/extra.pri)
-include(r3d/r3d.pri)
-include(lua/lua.pri)
-include(enet/enet.pri)
+include(dep/dep.pri)
 include(common/common.pri)
 include(net/network.pri)
 include(stats/stats.pri)
-include(obj/object.pri)
+include(object/object.pri)
 include(scripts/scripts.pri)
 include(packets/packets.pri)
 

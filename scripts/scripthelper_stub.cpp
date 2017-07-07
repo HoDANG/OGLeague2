@@ -1,5 +1,5 @@
 #include <iostream>
-#include "obj/gameobject.h"
+#include "object/gameobject.h"
 #include "scripthelper.h"
 
 bool ScriptHelper::IsDampener(sol::stack_object object)

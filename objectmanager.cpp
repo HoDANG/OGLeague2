@@ -1,6 +1,6 @@
 #include "objectmanager.h"
 #include "world.h"
-#include "obj/gameobjectsall.h"
+#include "object/gameobjectsall.h"
 
 using namespace std;
 

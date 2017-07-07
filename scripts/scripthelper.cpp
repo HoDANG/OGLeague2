@@ -1,10 +1,10 @@
+#include <iostream>
 #include "scripthelper.h"
 #include "scripthelperbb.h"
 #include "scripthelperdamage.h"
 #include "scripthelperextra.h"
 #include "scripthelperspells.h"
-#include <iostream>
-#include "obj/gameobject.h"
+#include "object/gameobject.h"
 
 std::vector<AiTimer *> *ScriptHelper::mLevelTimers = nullptr;
 std::vector<NeutralTimer *> *ScriptHelper::mNeutralTimers = nullptr;

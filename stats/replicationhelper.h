@@ -4,7 +4,7 @@
 #include "replicationmanager.h"
 #include "characterintermediaterep.hpp"
 #include "characterstate.hpp"
-#include "obj/gameobjectsall.h"
+#include "object/gameobjectsall.h"
 
 struct ReplicationHelper
 {

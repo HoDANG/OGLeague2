@@ -1,7 +1,7 @@
 #ifndef ATTACKABLEUNIT_H
 #define ATTACKABLEUNIT_H
 
-#include "obj/gameobject.h"
+#include "object/gameobject.h"
 #include "stats/health.hpp"
 #include "stats/mana.hpp"
 
