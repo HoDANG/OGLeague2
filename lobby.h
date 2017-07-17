@@ -37,7 +37,8 @@ public:
     void Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *pkt, size_t size);
     void Handle(uint32_t cid, PKT_C2S_CharSelected_s *pkt, size_t size);
     void UpdateRoster(EGP_TeamRosterUpdate_s update);
-    void update();
+    void update(float delta);
+    void wait(float delta);
 };
 
 #endif // LOBBY_H

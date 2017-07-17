@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_RemoveItemReq_s : DefaultPacket<PKT_RemoveItemReq>
 {
+    char slot;
+    char bSell;
 };
 #pragma pack(pop)
 

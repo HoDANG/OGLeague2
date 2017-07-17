@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_LineMissileHitList_s : DefaultPacket<PKT_S2C_LineMissileHitList>
 {
+    int16_t size;
 };
 #pragma pack(pop)
 

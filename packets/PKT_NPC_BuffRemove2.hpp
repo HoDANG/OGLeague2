@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_NPC_BuffRemove2_s : DefaultPacket<PKT_NPC_BuffRemove2>
 {
+    char buffSlot;
+    unsigned int buffNameHash;
 };
 #pragma pack(pop)
 

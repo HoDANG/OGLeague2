@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_HighlightHUDElement_s : DefaultPacket<PKT_S2C_HighlightHUDElement>
 {
+    char elementType;
+    char elementNumber;
 };
 #pragma pack(pop)
 

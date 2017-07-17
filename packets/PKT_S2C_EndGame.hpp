@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_EndGame_s : DefaultPacket<PKT_S2C_EndGame>
 {
+    char teamIsOrder;
+    bool surrender;
 };
 #pragma pack(pop)
 

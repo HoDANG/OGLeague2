@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_ModifyDebugCircleColor_s : DefaultPacket<PKT_S2C_ModifyDebugCircleColor>
 {
+    int id;
+    r3dColor color;
 };
 #pragma pack(pop)
 

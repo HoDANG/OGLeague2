@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_OpenTutorialPopup_s : DefaultPacket<PKT_S2C_OpenTutorialPopup>
 {
+    char messageboxTextStringID[128];
 };
 #pragma pack(pop)
 

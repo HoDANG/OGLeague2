@@ -5,6 +5,9 @@
 #pragma pack(push, 1)
 struct PKT_S2C_HighlightShopElement_s : DefaultPacket<PKT_S2C_HighlightShopElement>
 {
+    char elementType;
+    char elementNumber;
+    char elementSubCategory;
 };
 #pragma pack(pop)
 

@@ -5,6 +5,9 @@
 #pragma pack(push, 1)
 struct PKT_S2C_FadeMinions_s : DefaultPacket<PKT_S2C_FadeMinions>
 {
+    char team;
+    float fadeAmount;
+    float fadeTime;
 };
 #pragma pack(pop)
 

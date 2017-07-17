@@ -5,6 +5,10 @@
 #pragma pack(push, 1)
 struct PKT_BuyItemAns_s : DefaultPacket<PKT_BuyItemAns>
 {
+    char slot;
+    unsigned int itemID;
+    char itemsInSlot;
+    char useOnBought;
 };
 #pragma pack(pop)
 

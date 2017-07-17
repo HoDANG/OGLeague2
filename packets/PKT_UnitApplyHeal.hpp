@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_UnitApplyHeal_s : DefaultPacket<PKT_UnitApplyHeal>
 {
+    float maxHP;
+    float heal;
 };
 #pragma pack(pop)
 

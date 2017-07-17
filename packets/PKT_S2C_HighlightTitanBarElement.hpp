@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_HighlightTitanBarElement_s : DefaultPacket<PKT_S2C_HighlightTitanBarElement>
 {
+    char elementType;
 };
 #pragma pack(pop)
 

@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_SetInputLockingFlag_s : DefaultPacket<PKT_S2C_SetInputLockingFlag>
 {
+    unsigned int inputLockingFlags;
+    bool flagValue;
 };
 #pragma pack(pop)
 

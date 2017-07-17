@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_OnEvent_s : DefaultPacket<PKT_OnEvent>
 {
+    char eventNameID;
+    uint32_t mOtherNetworkID;
 };
 #pragma pack(pop)
 

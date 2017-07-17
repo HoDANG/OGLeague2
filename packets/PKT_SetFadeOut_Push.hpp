@@ -5,6 +5,9 @@
 #pragma pack(push, 1)
 struct PKT_SetFadeOut_Push_s : DefaultPacket<PKT_SetFadeOut_Push>
 {
+    int16_t id;
+    float fadeTime;
+    float fadeTargetValue;
 };
 #pragma pack(pop)
 

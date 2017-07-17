@@ -5,6 +5,9 @@
 #pragma pack(push, 1)
 struct PKT_Pause_s : DefaultPacket<PKT_Pause>
 {
+    r3dPoint3D pos;
+    r3dPoint3D forward;
+    int syncID;
 };
 #pragma pack(pop)
 

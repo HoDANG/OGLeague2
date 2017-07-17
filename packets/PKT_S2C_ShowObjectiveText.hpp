@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_ShowObjectiveText_s : DefaultPacket<PKT_S2C_ShowObjectiveText>
 {
+    char textStringID[128];
 };
 #pragma pack(pop)
 

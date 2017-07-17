@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_SPM_HierarchicalProfilerUpdate_s : DefaultPacket<PKT_SPM_HierarchicalProfilerUpdate>
 {
+    unsigned int m_FrameNum;
+    unsigned int m_EntryCount;
 };
 #pragma pack(pop)
 

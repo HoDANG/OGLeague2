@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_Connected_s : DefaultPacket<PKT_Connected>
 {
+    unsigned int clientID;
 };
 #pragma pack(pop)
 

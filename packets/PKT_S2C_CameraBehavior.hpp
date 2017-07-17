@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_CameraBehavior_s : DefaultPacket<PKT_S2C_CameraBehavior>
 {
+    r3dPoint3D position;
 };
 #pragma pack(pop)
 

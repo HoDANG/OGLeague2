@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_StopAnimation_s : DefaultPacket<PKT_S2C_StopAnimation>
 {
+    unsigned int flags;
 };
 #pragma pack(pop)
 

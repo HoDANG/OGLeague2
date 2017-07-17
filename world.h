@@ -28,10 +28,12 @@ private:
     GGameState_s mGameState = GAMESTATE_PREGAME;
     ServerI *pServer;
     GameInfo *pGameInfo;
+    r3dTime mTime;
 public:
     World(ServerI* server, GameInfo* gameinfo);
     ObjectManager &objectmanager();
     Lobby &lobby();
+    r3dTime &time();
     ServerI *server() const;
     GameInfo *gameinfo() const;
     GGameState_s gameState() const;
@@ -39,7 +41,7 @@ public:
     void LoadWorld();
     void LoadGame();
     void Play();
-    void loop();
+    void loop(float delta);
 };
 
 #endif // WORLD_H

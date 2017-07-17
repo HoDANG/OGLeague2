@@ -5,6 +5,9 @@
 #pragma pack(push, 1)
 struct PKT_NPC_BuffReplaceGroup_s : DefaultPacket<PKT_NPC_BuffReplaceGroup>
 {
+    float runningTime;
+    float duration;
+    char numInGroup;
 };
 #pragma pack(pop)
 

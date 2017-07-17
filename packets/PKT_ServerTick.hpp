@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_ServerTick_s : DefaultPacket<PKT_ServerTick>
 {
+    float delta;
 };
 #pragma pack(pop)
 

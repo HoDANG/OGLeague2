@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_World_SendCamera_Server_Acknologment_s : DefaultPacket<PKT_World_SendCamera_Server_Acknologment>
 {
+    char syncID;
 };
 #pragma pack(pop)
 

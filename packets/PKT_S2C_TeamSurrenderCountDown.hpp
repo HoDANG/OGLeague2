@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_TeamSurrenderCountDown_s : DefaultPacket<PKT_S2C_TeamSurrenderCountDown>
 {
+    float timeRemaining;
 };
 #pragma pack(pop)
 

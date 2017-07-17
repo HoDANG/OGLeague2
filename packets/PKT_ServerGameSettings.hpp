@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_ServerGameSettings_s : DefaultPacket<PKT_ServerGameSettings>
 {
+    bool FoW_LocalCulling;
+    bool FoW_BroadcastEverything;
 };
 #pragma pack(pop)
 

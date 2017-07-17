@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_CastSpellAns_s : DefaultPacket<PKT_NPC_CastSpellAns>
 {
+    int casterPosSyncID;
 };
 #pragma pack(pop)
 

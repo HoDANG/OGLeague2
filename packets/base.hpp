@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <vector>
 #include <sstream>
-#include "r3d/r3dbuffer.h"
+#include "r3d.hpp"
 #include "enet.hpp"
 #include "packets/shared/connectioninfo.hpp"
 #include "packets/shared/playerliteinfo.hpp"

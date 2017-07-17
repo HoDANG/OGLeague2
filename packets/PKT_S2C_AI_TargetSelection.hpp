@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_AI_TargetSelection_s : DefaultPacket<PKT_S2C_AI_TargetSelection>
 {
+    unsigned int mTargetIDs[5];
 };
 #pragma pack(pop)
 

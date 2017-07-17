@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_WaypointList_s : DefaultPacket<PKT_WaypointList>
 {
+    int syncID;
 };
 #pragma pack(pop)
 

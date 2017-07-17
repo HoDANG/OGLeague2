@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_Neutral_Camp_Empty_s : DefaultPacket<PKT_S2C_Neutral_Camp_Empty>
 {
+    char campIndex;
+    bool state;
 };
 #pragma pack(pop)
 

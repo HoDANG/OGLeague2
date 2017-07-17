@@ -5,6 +5,9 @@
 #pragma pack(push, 1)
 struct PKT_UseItemAns_s : DefaultPacket<PKT_UseItemAns>
 {
+    char slot;
+    char itemsInSlot;
+    char spellCharges;
 };
 #pragma pack(pop)
 

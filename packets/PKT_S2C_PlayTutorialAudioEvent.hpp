@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_PlayTutorialAudioEvent_s : DefaultPacket<PKT_S2C_PlayTutorialAudioEvent>
 {
+    char eventID[64];
+    int8_t bShouldRegisterCallback : 1;
 };
 #pragma pack(pop)
 

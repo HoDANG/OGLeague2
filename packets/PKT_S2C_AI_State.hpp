@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_AI_State_s : DefaultPacket<PKT_S2C_AI_State>
 {
+    int mStateID;
 };
 #pragma pack(pop)
 

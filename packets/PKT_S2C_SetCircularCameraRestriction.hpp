@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_S2C_SetCircularCameraRestriction_s : DefaultPacket<PKT_S2C_SetCircularCameraRestriction>
 {
+    r3dPoint3D center;
+    float radius;
 };
 #pragma pack(pop)
 

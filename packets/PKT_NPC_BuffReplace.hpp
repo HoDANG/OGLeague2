@@ -5,6 +5,10 @@
 #pragma pack(push, 1)
 struct PKT_NPC_BuffReplace_s : DefaultPacket<PKT_NPC_BuffReplace>
 {
+    char buffSlot;
+    float runningTime;
+    float duration;
+    unsigned int casterNetID;
 };
 #pragma pack(pop)
 

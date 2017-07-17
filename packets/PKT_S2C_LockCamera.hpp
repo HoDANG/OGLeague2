@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_LockCamera_s : DefaultPacket<PKT_S2C_LockCamera>
 {
+    bool lock;
 };
 #pragma pack(pop)
 

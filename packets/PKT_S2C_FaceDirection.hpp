@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_FaceDirection_s : DefaultPacket<PKT_S2C_FaceDirection>
 {
+    r3dPoint3D facing;
 };
 #pragma pack(pop)
 

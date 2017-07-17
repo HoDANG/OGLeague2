@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_UpdateGoldRedirectTarget_s : DefaultPacket<PKT_UpdateGoldRedirectTarget>
 {
+    unsigned int goldRedirectTargetNetID;
 };
 #pragma pack(pop)
 

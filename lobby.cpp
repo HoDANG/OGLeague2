@@ -35,7 +35,12 @@ void Lobby::UpdateRoster(EGP_TeamRosterUpdate_s update)
     });
 }
 
-void Lobby::update()
+void Lobby::update(float delta)
+{
+
+}
+
+void Lobby::wait(float delta)
 {
 
 }

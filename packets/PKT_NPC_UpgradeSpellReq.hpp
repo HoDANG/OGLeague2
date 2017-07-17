@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_UpgradeSpellReq_s : DefaultPacket<PKT_NPC_UpgradeSpellReq>
 {
+    char slot;
 };
 #pragma pack(pop)
 

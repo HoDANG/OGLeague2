@@ -204,4 +204,11 @@ HEADERS += \
     $$PWD/shared/playerliteinfo.hpp \
     $$PWD/base.hpp \
     $$PWD/packetenums.hpp \
-    $$PWD/packets.hpp
+    $$PWD/packets.hpp \
+    $$PWD/shared/avatarinfo.h \
+    $$PWD/shared/talent.h \
+    $$PWD/shared/commonbasicattack.h \
+    $$PWD/shared/combatmessage.h \
+    $$PWD/shared/orderinfo.h \
+    $$PWD/shared/speedparams.h \
+    $$PWD/shared/herostats.h

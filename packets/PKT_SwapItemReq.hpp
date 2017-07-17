@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_SwapItemReq_s : DefaultPacket<PKT_SwapItemReq>
 {
+    char source;
+    char dest;
 };
 #pragma pack(pop)
 

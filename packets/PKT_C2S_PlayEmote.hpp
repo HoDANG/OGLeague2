@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_C2S_PlayEmote_s : DefaultPacket<PKT_C2S_PlayEmote>
 {
+    unsigned int mEmotId;
 };
 #pragma pack(pop)
 

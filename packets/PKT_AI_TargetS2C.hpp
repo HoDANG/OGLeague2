@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_AI_TargetS2C_s : DefaultPacket<PKT_AI_TargetS2C>
 {
+    uint32_t mTargetID;
 };
 #pragma pack(pop)
 

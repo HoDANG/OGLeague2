@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_ClientCheatDetectionSignal_s : DefaultPacket<PKT_ClientCheatDetectionSignal>
 {
+    unsigned int m_Signal;
+    unsigned int m_Flags;
 };
 #pragma pack(pop)
 

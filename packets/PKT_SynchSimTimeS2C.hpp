@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_SynchSimTimeS2C_s : DefaultPacket<PKT_SynchSimTimeS2C>
 {
+    float synchtime;
 };
 #pragma pack(pop)
 

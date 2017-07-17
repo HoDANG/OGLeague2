@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_SendSelectedObjID_s : DefaultPacket<PKT_SendSelectedObjID>
 {
+    unsigned int clientID;
+    unsigned int selectedNetworkID;
 };
 #pragma pack(pop)
 

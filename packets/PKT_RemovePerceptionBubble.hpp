@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_RemovePerceptionBubble_s : DefaultPacket<PKT_RemovePerceptionBubble>
 {
+    unsigned int bubbleID;
 };
 #pragma pack(pop)
 

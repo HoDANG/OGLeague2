@@ -5,6 +5,12 @@
 #pragma pack(push, 1)
 struct PKT_Barrack_SpawnUnit_s : DefaultPacket<PKT_Barrack_SpawnUnit>
 {
+    uint32_t netObjID;
+    int8_t netNodeID;
+    int8_t waveCount;
+    int8_t minionType;
+    int16_t DamageBonus;
+    int16_t HealthBonus;
 };
 #pragma pack(pop)
 

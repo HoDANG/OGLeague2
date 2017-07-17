@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_DisplayLocalizedTutorialChatText_s : DefaultPacket<PKT_S2C_DisplayLocalizedTutorialChatText>
 {
+    char stringID[128];
 };
 #pragma pack(pop)
 

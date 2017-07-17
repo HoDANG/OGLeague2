@@ -5,6 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_SetAutocast_s : DefaultPacket<PKT_NPC_SetAutocast>
 {
+    char slot;
 };
 #pragma pack(pop)
 

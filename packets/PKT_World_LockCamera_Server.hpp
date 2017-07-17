@@ -5,6 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_World_LockCamera_Server_s : DefaultPacket<PKT_World_LockCamera_Server>
 {
+    bool lockCamera;
+    unsigned int clientID;
 };
 #pragma pack(pop)
 

@@ -6,7 +6,9 @@ HEADERS += \
     $$PWD/r3dfilemanager.h \
     $$PWD/r3dmesh.h \
     $$PWD/r3dnavgrid.h \
-    $$PWD/r3dpoint.h
+    $$PWD/r3dpoint.h \
+    $$PWD/r3dtime.h \
+    $$PWD/r3dcolor.h
 
 SOURCES += \
     $$PWD/r3dbox3d.cpp \
@@ -16,4 +18,6 @@ SOURCES += \
     $$PWD/r3dfilemanager.cpp \
     $$PWD/r3dmesh.cpp \
     $$PWD/r3dnavgrid.cpp \
-    $$PWD/r3dpoint.cpp
+    $$PWD/r3dpoint.cpp \
+    $$PWD/r3dtime.cpp \
+    $$PWD/r3dcolor.cpp

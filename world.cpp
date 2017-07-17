@@ -24,6 +24,11 @@ Lobby &World::lobby()
     return mLobby;
 }
 
+r3dTime &World::time()
+{
+    return mTime;
+}
+
 GGameState_s World::gameState() const
 {
     return mGameState;
@@ -74,6 +79,8 @@ void World::LoadGame()
 void World::Play()
 {
     pServer->start(pGameInfo);
+    mTime.reset();
+    mTime.startFrame();
     //Load game
     LoadGame();
     //Update objects
@@ -82,16 +89,36 @@ void World::Play()
     //Update objects
     //etc...
     mGameState = GAMESTATE_GAMELOOP;
-    loop();
-}
-
-void World::loop()
-{
+    float delta = 0;
     while(mGameState != GAMESTATE_EXIT)
     {
+        mTime.startFrame();
         pServer->host(0);
-        mLobby.update();
-        mObjectManager.update();
+        loop(delta);
+        mTime.endFrame();
+        delta = mTime.getFrameLastTime();
+    }
+}
+
+void World::loop(float delta)
+{
+    switch(mGameState)
+    {
+        case GAMESTATE_PREGAME:
+            mLobby.wait(delta);
+        break;
+        case GAMESTATE_SPAWN:
+        break;
+        case GAMESTATE_GAMELOOP:
+            mLobby.update(delta);
+            mObjectManager.update();
+        break;
+        case GAMESTATE_ENDGAME:
+        break;
+        case GAMESTATE_PRE_EXIT:
+        break;
+        case GAMESTATE_EXIT:
+        break;
     }
 }
 
