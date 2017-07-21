@@ -5,7 +5,7 @@
 #include "net/onpacket.hpp"
 #include "packets/packets.hpp"
 
-class Lobby :
+class PlayerManager :
         public OnPacket<EGP_RequestJoinTeam_s>,
         public OnPacket<PKT_SynchVersionC2S_s>,
         public OnPacket<PKT_C2S_Ping_Load_Info_s>,
@@ -16,14 +16,7 @@ private:
     ServerI *pServer;
     GameInfo *pGameInfo;
 public:
-    enum LobbyState
-    {
-        LOBBY_WAITING,
-        LOBBY_RUNNING,
-        LOBBY_DONE
-    };
-
-    Lobby(ServerI *server, GameInfo* gameinfo) :
+    PlayerManager(ServerI *server, GameInfo* gameinfo) :
         OnPacket<EGP_RequestJoinTeam_s>(server),
         OnPacket<PKT_SynchVersionC2S_s>(server),
         OnPacket<PKT_C2S_Ping_Load_Info_s>(server),
@@ -38,7 +31,6 @@ public:
     void Handle(uint32_t cid, PKT_C2S_CharSelected_s *pkt, size_t size);
     void UpdateRoster(EGP_TeamRosterUpdate_s update);
     void update(float delta);
-    void wait(float delta);
 };
 
 #endif // LOBBY_H

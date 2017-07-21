@@ -15,16 +15,16 @@ include(packets/packets.pri)
 
 SOURCES += \
     main.cpp \
-    lobby.cpp \
     netserver.cpp \
     objectmanager.cpp \
-    world.cpp
+    world.cpp \
+    playermanager.cpp
 
 HEADERS += \
-    lobby.h \
     netserver.h \
     objectmanager.h \
-    world.h
+    world.h \
+    playermanager.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

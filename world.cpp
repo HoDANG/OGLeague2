@@ -8,7 +8,7 @@ using namespace std;
 World::World(ServerI *server, GameInfo *gameinfo)
     : pGameInfo(gameinfo),
       pServer(server),
-      mLobby(server, gameinfo),
+      mPlayerManager(server, gameinfo),
       mObjectManager(this),
       mScriptMap(this)
 {
@@ -19,9 +19,9 @@ ObjectManager &World::objectmanager()
     return mObjectManager;
 }
 
-Lobby &World::lobby()
+PlayerManager &World::playerManager()
 {
-    return mLobby;
+    return mPlayerManager;
 }
 
 r3dTime &World::time()
@@ -88,12 +88,13 @@ void World::Play()
     mScriptMap.PostInit();
     //Update objects
     //etc...
-    mGameState = GAMESTATE_GAMELOOP;
+    mGameState = GAMESTATE_PREGAME;
     float delta = 0;
     while(mGameState != GAMESTATE_EXIT)
     {
         mTime.startFrame();
         pServer->host(0);
+        mPlayerManager.update(delta);
         loop(delta);
         mTime.endFrame();
         delta = mTime.getFrameLastTime();
@@ -102,23 +103,9 @@ void World::Play()
 
 void World::loop(float delta)
 {
-    switch(mGameState)
+    if(mGameState == GAMESTATE_GAMELOOP)
     {
-        case GAMESTATE_PREGAME:
-            mLobby.wait(delta);
-        break;
-        case GAMESTATE_SPAWN:
-        break;
-        case GAMESTATE_GAMELOOP:
-            mLobby.update(delta);
-            mObjectManager.update();
-        break;
-        case GAMESTATE_ENDGAME:
-        break;
-        case GAMESTATE_PRE_EXIT:
-        break;
-        case GAMESTATE_EXIT:
-        break;
+        mObjectManager.update(delta);
     }
 }
 

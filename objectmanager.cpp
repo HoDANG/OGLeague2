@@ -36,7 +36,7 @@ GameObject *ObjectManager::getByName(std::string name)
     return nullptr;
 }
 
-void ObjectManager::update()
+void ObjectManager::update(float delta)
 {
     for(auto o: mObjectsVect)
         o->update();

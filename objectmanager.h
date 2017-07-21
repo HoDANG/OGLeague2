@@ -23,7 +23,7 @@ public:
     GameObject* CreateGameObject(std::string className, std::string loadName, r3dPoint3D pos,
                                  int flags, void* data);
     GameObject* CreateWorldObject(std::string loadName);
-    void update();
+    void update(float delta);
 };
 
 #endif // OBJECTMANAGER_H

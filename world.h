@@ -5,7 +5,7 @@
 #include "wink.hpp"
 #include "scripts/scriptmap.h"
 #include "objectmanager.h"
-#include "lobby.h"
+#include "playermanager.h"
 
 enum GGameState_s : int
 {
@@ -21,7 +21,7 @@ class ServerI;
 class World
 {
 private:
-    Lobby mLobby;
+    PlayerManager mPlayerManager;
     ObjectManager mObjectManager;
     r3dNavGrid mGrid;
     ScriptMap mScriptMap;
@@ -32,7 +32,7 @@ private:
 public:
     World(ServerI* server, GameInfo* gameinfo);
     ObjectManager &objectmanager();
-    Lobby &lobby();
+    PlayerManager &playerManager();
     r3dTime &time();
     ServerI *server() const;
     GameInfo *gameinfo() const;
