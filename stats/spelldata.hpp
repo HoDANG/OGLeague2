@@ -2,7 +2,7 @@
 #define SPELLDATA_H
 
 #include <string>
-#include "../dep/r3d.hpp"
+#include "r3d.hpp"
 
 
 struct SpellData

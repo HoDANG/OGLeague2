@@ -1,4 +1,6 @@
 #include "objbarracksdampener.h"
+#include "world.h"
+#include "objectmanager.h"
 
 namespace
 {

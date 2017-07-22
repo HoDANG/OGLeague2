@@ -54,7 +54,7 @@ bool NetServer::start(GameInfo *gameinfo)
     mAddress.host = gameinfo->address;
     mAddress.port = gameinfo->port;
     mHost = enet_host_create(&mAddress, 32, 0, 0);
-    return mHost == nullptr;
+    return mHost != nullptr;
 }
 
 bool NetServer::host(uint32_t timeout)

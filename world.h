@@ -3,9 +3,7 @@
 
 #include <memory>
 #include "wink.hpp"
-#include "scripts/scriptmap.h"
-#include "objectmanager.h"
-#include "playermanager.h"
+#include "r3d.hpp"
 
 enum GGameState_s : int
 {
@@ -18,26 +16,31 @@ enum GGameState_s : int
 };
 
 class ServerI;
+class PlayerManager;
+class ObjectManager;
+class r3dNavGrid;
+class GameInfo;
+class ScriptMap;
 class World
 {
 private:
-    PlayerManager mPlayerManager;
-    ObjectManager mObjectManager;
     r3dNavGrid mGrid;
-    ScriptMap mScriptMap;
-    GGameState_s mGameState = GAMESTATE_PREGAME;
+    r3dTime mTime;
+    PlayerManager *pPlayerManager;
+    ObjectManager *pObjectManager;
+    ScriptMap *pScriptMap;
+    GGameState_s mGameState;
     ServerI *pServer;
     GameInfo *pGameInfo;
-    r3dTime mTime;
 public:
     World(ServerI* server, GameInfo* gameinfo);
-    ObjectManager &objectmanager();
-    PlayerManager &playerManager();
-    r3dTime &time();
-    ServerI *server() const;
-    GameInfo *gameinfo() const;
-    GGameState_s gameState() const;
-    void setGameState(const GGameState_s &gameState);
+    ObjectManager *objectmanager();
+    PlayerManager *playerManager();
+    r3dTime& time();
+    ServerI *server();
+    GameInfo *gameinfo();
+    GGameState_s gameState();
+    void setGameState(GGameState_s gameState);
     void LoadWorld();
     void LoadGame();
     void Play();

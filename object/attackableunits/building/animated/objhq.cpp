@@ -1,4 +1,6 @@
 #include "objhq.h"
+#include "world.h"
+#include "objectmanager.h"
 
 namespace
 {

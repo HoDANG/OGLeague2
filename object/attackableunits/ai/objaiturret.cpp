@@ -1,5 +1,7 @@
 #include "objaiturret.h"
 #include "stats/replicationhelper.h"
+#include "world.h"
+#include "objectmanager.h"
 
 namespace
 {

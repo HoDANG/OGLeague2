@@ -30,7 +30,6 @@ uint32_t ObjectManager::getNextID()
 GameObject *ObjectManager::getByName(std::string name)
 {
     for(GameObject *o: mObjectsVect)
-
         if(o->getName() == name)
             return o;
     return nullptr;

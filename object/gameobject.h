@@ -5,8 +5,7 @@
 #include <string>
 #include "r3d.hpp"
 #include "common/team_e.hpp"
-#include "world.h"
-#include "objectmanager.h"
+
 
 enum EGameObjectFlags
 {
@@ -21,6 +20,8 @@ enum EGameObjectFlags
   OBJFLAG_DefaultObject = 0x200000,
 };
 
+class World;
+class ObjectManager;
 class GameObject
 {
 protected:

@@ -1,27 +1,30 @@
-#include "world.h"
 #include <string.h>
 #include <iostream>
+#include "world.h"
 #include "net/serveri.hpp"
+#include "objectmanager.h"
+#include "playermanager.h"
+#include "scripts/scriptmap.h"
 
 using namespace std;
 
 World::World(ServerI *server, GameInfo *gameinfo)
     : pGameInfo(gameinfo),
       pServer(server),
-      mPlayerManager(server, gameinfo),
-      mObjectManager(this),
-      mScriptMap(this)
+      pPlayerManager(new PlayerManager(server, gameinfo)),
+      pObjectManager(new ObjectManager(this)),
+      pScriptMap(new ScriptMap(this))
 {
 }
 
-ObjectManager &World::objectmanager()
+ObjectManager* World::objectmanager()
 {
-    return mObjectManager;
+    return pObjectManager;
 }
 
-PlayerManager &World::playerManager()
+PlayerManager* World::playerManager()
 {
-    return mPlayerManager;
+    return pPlayerManager;
 }
 
 r3dTime &World::time()
@@ -29,22 +32,22 @@ r3dTime &World::time()
     return mTime;
 }
 
-GGameState_s World::gameState() const
+GGameState_s World::gameState()
 {
     return mGameState;
 }
 
-void World::setGameState(const GGameState_s &gameState)
+void World::setGameState(GGameState_s gameState)
 {
     mGameState = gameState;
 }
 
-ServerI *World::server() const
+ServerI* World::server()
 {
     return pServer;
 }
 
-GameInfo *World::gameinfo() const
+GameInfo* World::gameinfo()
 {
     return pGameInfo;
 }
@@ -59,7 +62,7 @@ void World::LoadWorld()
         if(name.size()<6)
             continue;
         name = name.substr(0, name.size() - 4);
-        mObjectManager.CreateWorldObject(name);
+        pObjectManager->CreateWorldObject(name);
     }
 }
 
@@ -73,7 +76,7 @@ void World::LoadGame()
     LoadWorld();
     //init NavPointManager
     //load mission aka map script
-    mScriptMap.Init(pGameInfo->getMapName());
+    pScriptMap->Init(pGameInfo->getMapName());
 }
 
 void World::Play()
@@ -85,7 +88,7 @@ void World::Play()
     LoadGame();
     //Update objects
     //Post load game script
-    mScriptMap.PostInit();
+    pScriptMap->PostInit();
     //Update objects
     //etc...
     mGameState = GAMESTATE_PREGAME;
@@ -94,7 +97,7 @@ void World::Play()
     {
         mTime.startFrame();
         pServer->host(0);
-        mPlayerManager.update(delta);
+        pPlayerManager->update(delta);
         loop(delta);
         mTime.endFrame();
         delta = mTime.getFrameLastTime();
@@ -104,9 +107,7 @@ void World::Play()
 void World::loop(float delta)
 {
     if(mGameState == GAMESTATE_GAMELOOP)
-    {
-        mObjectManager.update(delta);
-    }
+        pObjectManager->update(delta);
 }
 
 

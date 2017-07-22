@@ -1,4 +1,6 @@
 #include "objbuilding.h"
+#include "world.h"
+#include "objectmanager.h"
 
 ObjBuilding::ObjBuilding(World *world)
     : AttackableUnit(world)
