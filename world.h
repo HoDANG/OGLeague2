@@ -11,6 +11,8 @@ enum GGameState_s : int
   GAMESTATE_EXIT = 0x5
 };
 
+class NavigationManager;
+class TimeManager;
 class ServerI;
 class PlayerManager;
 class ObjectManager;
@@ -25,8 +27,8 @@ class ScriptManager;
 class SpellManager;
 struct World
 {
-    r3dNavGrid *grid;
-    r3dTime *time;
+    TimeManager *timemanager;
+    NavigationManager *navigationmanager;
     PlayerManager *playermanager;
     ObjectManager *objectmanager;
     LocationsManager *locationsmanager;

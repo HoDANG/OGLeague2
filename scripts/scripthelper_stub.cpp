@@ -114,14 +114,8 @@ void ScriptHelper::AssignTeamGold(int teamID, float gold)
 {
 }
 void ScriptHelper::CreateChildTurret(std::string name, std::string skinName, int team, int turretIndex, int lane){
-    std::cout<<"Creating child turre with: \""<<name
-             <<"\"\n skin: \""<<skinName
-             <<"\"\n for team: "<<team
-             <<"\n on index: "<<turretIndex
-             <<"\n on lane: "<<lane
-             <<std::endl;
-}
 
+}
 void ScriptHelper::CreateGameObject(std::string name, std::string fileName, sol::stack_object position)
 {
 }
@@ -145,11 +139,6 @@ void ScriptHelper::IncPosition(sol::stack_object owner, sol::stack_object delta)
 }
 void ScriptHelper::InitTimer(std::string timerName, float delay, bool repeat)
 {
-}
-void ScriptHelper::LoadScriptIntoScript(std::string name, sol::this_state state){
-    if(!LoadLuaFile(name, state))
-        if(!LoadLuaFile("LEVELS/"+mMapName+"/Scripts/"+name, state))
-            LoadLuaFile("DATA/Scripts/"+name, state);
 }
 void ScriptHelper::LockCamera(bool lock)
 {

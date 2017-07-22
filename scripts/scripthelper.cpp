@@ -709,3 +709,8 @@ bool ScriptHelper::LoadLuaFile(std::string name, sol::state_view state)
     return true;
 }
 
+void ScriptHelper::LoadScriptIntoScript(std::string name, sol::this_state state){
+    if(!LoadLuaFile(name, state))
+        if(!LoadLuaFile("LEVELS/"+mMapName+"/Scripts/"+name, state))
+            LoadLuaFile("DATA/Scripts/"+name, state);
+}

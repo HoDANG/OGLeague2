@@ -24,7 +24,9 @@ SOURCES += \
     visibilitymanager.cpp \
     spellmanager.cpp \
     scriptmanager.cpp \
-    itemmanager.cpp
+    itemmanager.cpp \
+    navigationmanager.cpp \
+    timemanager.cpp
 
 HEADERS += \
     netserver.h \
@@ -36,7 +38,9 @@ HEADERS += \
     visibilitymanager.h \
     spellmanager.h \
     scriptmanager.h \
-    itemmanager.h
+    itemmanager.h \
+    navigationmanager.h \
+    timemanager.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

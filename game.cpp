@@ -6,6 +6,8 @@
 #include "playermanager.h"
 #include "scripts/scriptmap.h"
 #include "common/gameinfo.hpp"
+#include "timemanager.h"
+#include "navigationmanager.h"
 #include "world.h"
 
 using namespace std;
@@ -18,7 +20,7 @@ Game::Game()
 
 void Game::LoadWorld()
 {
-    pWorld->grid->load("LEVELS/"+pWorld->gameinfo->getMapName()+"/AIPath.aimesh_ngrid");
+    pWorld->navigationmanager->init();
     r3dFile dsc("LEVELS/"+pWorld->gameinfo->getMapName()+"/Scene/room.dsc");
     std::string name, quality;
     while(dsc >> name >> quality)
@@ -52,8 +54,8 @@ void Game::Play()
         std::cout<<"Could not start sever!"<<std::endl;
         return;
     }
-    pWorld->time->reset();
-    pWorld->time->startFrame();
+    pWorld->timemanager->reset();
+    pWorld->timemanager->startFrame();
     //Load game
     LoadGame();
     //Update objects
@@ -65,15 +67,15 @@ void Game::Play()
     float delta = 0;
     while(pWorld->gamestate != GAMESTATE_EXIT)
     {
-        pWorld->time->startFrame();
+        pWorld->timemanager->startFrame();
         pWorld->server->host(0);
         pWorld->objectmanager->update(delta);
         if(pWorld->gamestate == GAMESTATE_GAMELOOP)
         {
             pWorld->objectmanager->update(delta);
         }
-        pWorld->time->endFrame();
-        delta = pWorld->time->getFrameLastTime();
+        pWorld->timemanager->endFrame();
+        delta = pWorld->timemanager->getFrameLastTime();
     }
 }
 
