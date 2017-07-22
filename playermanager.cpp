@@ -1,4 +1,5 @@
 #include "playermanager.h"
+#include "net/serveri.hpp"
 
 void PlayerManager::Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size)
 {

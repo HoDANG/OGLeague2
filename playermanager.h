@@ -1,10 +1,10 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 
-#include "net/serveri.hpp"
 #include "net/onpacket.hpp"
 #include "packets/packets.hpp"
 
+class ServerI;
 class PlayerManager :
         public OnPacket<EGP_RequestJoinTeam_s>,
         public OnPacket<PKT_SynchVersionC2S_s>,
