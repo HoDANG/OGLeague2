@@ -33,7 +33,7 @@ private:
     ServerI *pServer;
     GameInfo *pGameInfo;
 public:
-    World(ServerI* server, GameInfo* gameinfo);
+    World(GameInfo* gameinfo);
     ObjectManager *objectmanager();
     PlayerManager *playerManager();
     r3dTime& time();

@@ -5,16 +5,18 @@
 #include "objectmanager.h"
 #include "playermanager.h"
 #include "scripts/scriptmap.h"
+#include "netserver.h"
 
 using namespace std;
 
-World::World(ServerI *server, GameInfo *gameinfo)
-    : pGameInfo(gameinfo),
-      pServer(server),
-      pPlayerManager(new PlayerManager(server, gameinfo)),
-      pObjectManager(new ObjectManager(this)),
-      pScriptMap(new ScriptMap(this))
+World::World(GameInfo *gameinfo)
 {
+    r3dFileManager::setBasePaths(gameinfo->basePaths);
+    pGameInfo = gameinfo;
+    pServer = new NetServer;
+    pPlayerManager = new PlayerManager(pServer, gameinfo);
+    pObjectManager = new ObjectManager(this);
+    pScriptMap = new ScriptMap(this);
 }
 
 ObjectManager* World::objectmanager()
