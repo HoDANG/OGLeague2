@@ -17,14 +17,16 @@ SOURCES += \
     main.cpp \
     netserver.cpp \
     objectmanager.cpp \
-    world.cpp \
-    playermanager.cpp
+    playermanager.cpp \
+    game.cpp \
+    world.cpp
 
 HEADERS += \
     netserver.h \
     objectmanager.h \
-    world.h \
-    playermanager.h
+    playermanager.h \
+    game.h \
+    world.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

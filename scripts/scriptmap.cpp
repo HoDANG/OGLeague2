@@ -1,6 +1,6 @@
 #include "scriptmap.h"
 #include "scripthelper.h"
-#include "../world.h"
+#include "world.h"
 
 ScriptMap::ScriptMap(World *world)
     : pWorld(world)

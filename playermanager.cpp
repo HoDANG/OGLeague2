@@ -79,8 +79,8 @@ void PlayerManager::Handle(uint32_t cid, PKT_SynchVersionC2S_s *pkt, size_t size
     PKT_SynchVersionS2C_s ans;
     ans.fromID = cid;
     ans.mIsVersionOk = true;
-    strcpy(ans.mMapMode, pGameInfo->getMapName().c_str());
-    ans.mMapToLoad = pGameInfo->mapNumber;
+    strcpy(ans.mMapMode, pWorld->gameinfo->getMapName().c_str());
+    ans.mMapToLoad = pWorld->gameinfo->mapNumber;
     strcpy(ans.mVersionString , pkt->mVersionString);
     ans.playerInfo[0].ID = cid;
     ans.playerInfo[0].summonorLevel = 30;

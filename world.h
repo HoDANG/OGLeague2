@@ -1,9 +1,5 @@
-#ifndef WORLD_H
-#define WORLD_H
-
-#include <memory>
-#include "wink.hpp"
-#include "r3d.hpp"
+#ifndef IWORLD_H
+#define IWORLD_H
 
 enum GGameState_s : int
 {
@@ -21,30 +17,19 @@ class ObjectManager;
 class r3dNavGrid;
 class GameInfo;
 class ScriptMap;
-class World
+class r3dTime;
+struct World
 {
-private:
-    r3dNavGrid mGrid;
-    r3dTime mTime;
-    PlayerManager *pPlayerManager;
-    ObjectManager *pObjectManager;
-    ScriptMap *pScriptMap;
-    GGameState_s mGameState;
-    ServerI *pServer;
-    GameInfo *pGameInfo;
-public:
-    World(GameInfo* gameinfo);
-    ObjectManager *objectmanager();
-    PlayerManager *playerManager();
-    r3dTime& time();
-    ServerI *server();
-    GameInfo *gameinfo();
-    GGameState_s gameState();
-    void setGameState(GGameState_s gameState);
-    void LoadWorld();
-    void LoadGame();
-    void Play();
-    void loop(float delta);
+    r3dNavGrid *grid = nullptr;
+    r3dTime *time = nullptr;
+    PlayerManager *playermanager = nullptr;
+    ObjectManager *objectmanager = nullptr;
+    ScriptMap *scriptmap = nullptr;
+    ServerI *server = nullptr;
+    GameInfo *gameinfo = nullptr;
+    GGameState_s gamestate = GAMESTATE_PREGAME;
+    World();
+    ~World();
 };
 
-#endif // WORLD_H
+#endif // IWORLD_H

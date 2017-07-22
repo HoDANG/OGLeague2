@@ -135,8 +135,6 @@ bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
         return false;
     if(pGameInfo->blowfish.Encrypt(pkt->playerID) != pkt->checkId)
         return false;
-    if(pkt->playerID > mPeers.size())
-        return false;
     if(pkt->playerID > mMax)
         return false;
     if(mPeers[pkt->playerID] != nullptr)

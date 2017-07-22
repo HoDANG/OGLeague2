@@ -28,7 +28,7 @@ void GameObject::assignIDByName()
 
 void GameObject::assignID()
 {
-    setNetworkID(pWorld->objectmanager()->getNextID());
+    setNetworkID(pWorld->objectmanager->getNextID());
 }
 
 uint32_t GameObject::networkID() const
@@ -45,7 +45,7 @@ void GameObject::setNetworkID(const uint32_t &networkID)
 void GameObject::OnNetworkIDChanged()
 {
     if(pWorld != nullptr)
-        pWorld->objectmanager()->add(this);
+        pWorld->objectmanager->add(this);
 }
 
 uint32_t GameObject::ownerID() const

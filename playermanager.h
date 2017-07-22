@@ -3,6 +3,7 @@
 
 #include "net/onpacket.hpp"
 #include "packets/packets.hpp"
+#include "world.h"
 
 class ServerI;
 class PlayerManager :
@@ -15,17 +16,19 @@ class PlayerManager :
         public OnPacket<PKT_C2S_ClientReady_s>
 {
 private:
-    ServerI *pServer;
-    GameInfo *pGameInfo;
+    World* pWorld;
+    ServerI* pServer;
 public:
-    PlayerManager(ServerI *server, GameInfo* gameinfo) :
-        OnPacket<EGP_RequestJoinTeam_s>(server),
-        OnPacket<PKT_SynchVersionC2S_s>(server),
-        OnPacket<PKT_C2S_Ping_Load_Info_s>(server),
-        OnPacket<PKT_C2S_Reconnect_s>(server),
-        OnPacket<PKT_C2S_QueryStatusReq_s>(server),
-        OnPacket<PKT_C2S_CharSelected_s>(server),
-        OnPacket<PKT_C2S_ClientReady_s>(server)
+    PlayerManager(World* world) :
+        pWorld(world),
+        pServer(world->server),
+        OnPacket<EGP_RequestJoinTeam_s>(world->server),
+        OnPacket<PKT_SynchVersionC2S_s>(world->server),
+        OnPacket<PKT_C2S_Ping_Load_Info_s>(world->server),
+        OnPacket<PKT_C2S_Reconnect_s>(world->server),
+        OnPacket<PKT_C2S_QueryStatusReq_s>(world->server),
+        OnPacket<PKT_C2S_CharSelected_s>(world->server),
+        OnPacket<PKT_C2S_ClientReady_s>(world->server)
     {
     }
     void Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size);
